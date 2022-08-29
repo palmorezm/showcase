@@ -1,5 +1,19 @@
 ---
 title: "About"
+image: portrait.jpg
+about:
+  template: jolla
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/zachary-palmore-361919104/
+    - icon: github
+      text: Github
+      href: https://github.com/palmorezm
 ---
 
-About this site
+[Zachary Palmore - Data Scientist](https://www.linkedin.com/in/zachary-palmore-361919104/)
+
+Zach Palmore is currently working as a Data Scientist in Rock County, WI. When not innovating data pipelines, he enjoys spending time gardening and making homemade pizzas.
+
+M.S. Data Science
