@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Zach Palmore">
+<meta name="dcterms.date" content="2022-08-14">
+
+<title>Zachary Palmore - Claim Estimation</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Zachary Palmore</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html">Home</a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <div class="quarto-title-block"><div><h1 class="title">Claim Estimation</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+            <p class="subtitle lead">An Auto Insurance Example</p>
+                                <div class="quarto-categories">
+                <div class="quarto-category">predictive</div>
+                <div class="quarto-category">modeling</div>
+                <div class="quarto-category">data science</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Zach Palmore </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">August 14, 2022</p>
+      </div>
+    </div>
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-challenge" id="toc-the-challenge" class="nav-link active" data-scroll-target="#the-challenge">The Challenge</a></li>
+  <li><a href="#data-prep" id="toc-data-prep" class="nav-link" data-scroll-target="#data-prep">Data Prep</a></li>
+  <li><a href="#model-building" id="toc-model-building" class="nav-link" data-scroll-target="#model-building">Model Building</a></li>
+  <li><a href="#model-selection" id="toc-model-selection" class="nav-link" data-scroll-target="#model-selection">Model Selection</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<hr>
+<div class="cell" data-hash="index_cache/html/load-pkgs_52e43ed26d7d86859723d6a32eef76a5">
+
+</div>
+<section id="the-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
+<p>A key part of insurance is charging each customer the appropriate price for the risk they represent.</p>
+<p>The challenge is knowing what is most likely to happen before it occurs. If we have confidence in what could occur, then we may better manage our risk. Data science offers a solution to this challenge. Developing advanced computational models with the capacity to crunch high volume data allows us to calculate probabilities of risk for many individuals at scale.</p>
+<p>The business need is to predict the probability that a person will submit a claim and then estimate that claim amount. Multiple linear regression and binary logistic regression models were built to answer these questions. We explore, analyze and model with a data set containing records of customer behavior at an auto insurance company. A table with a selection of five variables that represent behavioral characteristics from customer records is shown below with a brief description of each for reference.</p>
+<div class="cell" data-hash="index_cache/html/unnamed-chunk-1_45e82e2b3157b51263de1396a977a208">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># short descriptions of variables as table from matrix</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>vardesc <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="st">'TARGET_FLAG'</span>,  <span class="st">'Was a claim submitted? 1 = Yes, 0 = No'</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="st">'TARGET_AMT'</span>,   <span class="st">'Estimated amount of claim'</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="st">'CLM_FREQ'</span>, <span class="st">'Number of claims filed in past five years'</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="st">'MVR_PTS'</span>,  <span class="st">'Motor vehicle inspection points'</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">'TRAVETIME'</span>,    <span class="st">'Distance to work in minutes'</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>),  <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">ncol =</span> <span class="dv">2</span>))</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(vardesc) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Variable'</span>, <span class="st">'Description'</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">kbl</span>(vardesc, <span class="at">booktabs =</span> T, <span class="at">caption =</span> <span class="st">"Variable Descriptions"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"HOLD_position"</span>), <span class="at">full_width =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Variable Descriptions</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Variable </th>
+   <th style="text-align:left;"> Description </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> TARGET_FLAG </td>
+   <td style="text-align:left;"> Was a claim submitted? 1 = Yes, 0 = No </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> TARGET_AMT </td>
+   <td style="text-align:left;"> Estimated amount of claim </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> CLM_FREQ </td>
+   <td style="text-align:left;"> Number of claims filed in past five years </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> MVR_PTS </td>
+   <td style="text-align:left;"> Motor vehicle inspection points </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> TRAVETIME </td>
+   <td style="text-align:left;"> Distance to work in minutes </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</section>
+<section id="data-prep" class="level2">
+<h2 class="anchored" data-anchor-id="data-prep">Data Prep</h2>
+<p>There are over 8000 records in this data set, with 26 variables in each record. We begin by loading in the data and exploring.</p>
+<p>When exploring we look for missing values and abnormalities and try to find patterns in the records. We calculate some descriptive and inferential statistics that show the characteristics present in the data. These statistics inform us if imputations, transformations, or other adjustments are needed. For example, this violin plot with a box plot inlay, provides a wealth of information.</p>
+<div class="cell" data-hash="index_cache/html/explore-violin-plot_1466e4ab1bc5bf47217cccb6104a6f0d">
+<details>
+<summary>Kernel Density Estimation &amp; Outliers</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>tdata <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_if</span>(is.numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value, key)) <span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> key, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="fu">aes</span>(<span class="at">color =</span> key, <span class="at">alpha =</span> <span class="dv">1</span>)) <span class="sc">+</span> </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> key, <span class="at">alpha =</span> .<span class="dv">5</span>), <span class="at">notch =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> .<span class="dv">1</span>, <span class="at">lty =</span> <span class="dv">3</span>) <span class="sc">+</span>  </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.y =</span> mean, <span class="at">geom =</span> <span class="st">"point"</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">shape =</span> <span class="dv">8</span>, <span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">"#000000"</span>) <span class="sc">+</span> </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">"none"</span>, <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span> </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Kernel Density Estimation &amp; Outliers"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/explore-violin-plot-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Perhaps one of the easiest things to spot in this plot are outliers, shown as grey dots on the left and right sides of the variables. These points are located far from where the rest of the data is, and there are so many that some dots appear solid black due to repeated grey dots plotted in the same spot. Our target amount, the value we intend to predict, is a great example of a distribution with a lot of outliers. These points give a good idea of what ‘normal’ is for each variable but this plot offers some more.</p>
+<p>In this plot the asterisk near the center of each boxplot is the median of the distribution for all records that contain the variable named, however, what exactly the median is less important than where it lies within the distribution. The top and bottom edges (the curvy colored lines) of the violin plot use the non-parametric method kernel density estimation (KDE) to smoothly estimate the probability of a value occurring anywhere along its range. Here again, we already notice problems with our target amount. Although not every variable follows this pattern. For these reasons, we need to be careful about how we handle this data before making any predictions.</p>
+<p>Another method used to explore and prepare the data is a correlation plot. These examine the strength of relationships between variables, whether they are positive or negative, and how they compare to one another. We take a look at some selected variables in hopes that they confirm some expectations.</p>
+<div class="cell" data-hash="index_cache/html/explore-correlation-plot_b740cf143a382e2c6ff88c02f903ed0f">
+<details>
+<summary>Correlation Plot</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tdata <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_if</span>(is.numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggcorrplot</span>(<span class="at">method =</span> <span class="st">"circle"</span>, <span class="at">type=</span><span class="st">"upper"</span>, </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">ggtheme =</span> ggplot2<span class="sc">::</span>theme_minimal, <span class="at">legend.title =</span> <span class="st">"Influence"</span>) <span class="sc">+</span> <span class="fu">coord_flip</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/explore-correlation-plot-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>If we are trying to predict the amount of a claim and we have a true or false variable indicating the presence or absences of claim submission (TARGET_FLAG) and the claim amount (TARGET_AMT), shouldn’t we expect the two to be correlated? I would hope so, given that, when an individual does not file a claim, the resultant claim amount is 0. We notice this in the big red circle towards the bottom left of the screen. This shows a strong positive correlation between the amount of a claim and presence of a claim. From this correlation plot we start to confirm these expectations and validate some conventional auto insurance knowledge.</p>
+<p>These demonstrate only two ways to look at data before model building. However, to ensure that a model functions in the real world, a multitude of exploratory methods should be used to fully understand the data. To keep it brief, the data is split 70-30 into training and testing data sets, then cleaned up with using the multiple imputation by chained equations (MICE) method, perform a Yeo-Johnson transformation, and adjust other points as necessary to make the non-normal predictor appear normal enough for prediction. A quick look at the imputed summary statistics is shown for four numeric variables as a reference.</p>
+<div class="cell" data-hash="index_cache/html/prep-imputed-statistics-table_ff5c2f71fb8a1689d623b4bf60d91387">
+<details>
+<summary>Imputed Summary Statistics</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>imputed.stats.table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">29707</span>,<span class="dv">54028</span>,<span class="dv">61469</span>,<span class="dv">83304</span>,<span class="dv">367030</span>, </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>         <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">161160</span>,<span class="dv">155225</span>,<span class="dv">233352</span>,<span class="dv">885282</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>         <span class="dv">1500</span>,<span class="dv">9280</span>,<span class="dv">14440</span>,<span class="dv">15710</span>,<span class="dv">20850</span>,<span class="dv">69740</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>         <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">4037</span>,<span class="dv">4636</span>,<span class="dv">57037</span>), <span class="at">ncol =</span> <span class="dv">4</span>, <span class="at">byrow =</span> F)) </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(imputed.stats.table) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Income"</span>, <span class="st">"Home Value"</span>, </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"Bluebook Value"</span>, <span class="st">"Old Claims"</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>imputed.stats.table <span class="ot">&lt;-</span> imputed.stats.table <span class="sc">%&gt;%</span> </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Statistic =</span> <span class="fu">c</span>(<span class="st">"Min"</span>, <span class="st">"1st Quartile"</span>, <span class="st">"Median"</span>, </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"Mean"</span>, <span class="st">"3rd Qartile"</span>, <span class="st">"Max"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="st">"Statistic"</span>, <span class="st">"Income"</span>, <span class="st">"Home Value"</span>, </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Bluebook Value"</span>, <span class="st">"Old Claims"</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">kbl</span>(imputed.stats.table,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">booktabs =</span> T,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Imputed Summary Statistics"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hold_position"</span>),</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">full_width =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<caption>Imputed Summary Statistics</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Statistic </th>
+   <th style="text-align:right;"> Income </th>
+   <th style="text-align:right;"> Home Value </th>
+   <th style="text-align:right;"> Bluebook Value </th>
+   <th style="text-align:right;"> Old Claims </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Min </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1500 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 1st Quartile </td>
+   <td style="text-align:right;"> 29707 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 9280 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Median </td>
+   <td style="text-align:right;"> 54028 </td>
+   <td style="text-align:right;"> 161160 </td>
+   <td style="text-align:right;"> 14440 </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Mean </td>
+   <td style="text-align:right;"> 61469 </td>
+   <td style="text-align:right;"> 155225 </td>
+   <td style="text-align:right;"> 15710 </td>
+   <td style="text-align:right;"> 4037 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 3rd Qartile </td>
+   <td style="text-align:right;"> 83304 </td>
+   <td style="text-align:right;"> 233352 </td>
+   <td style="text-align:right;"> 20850 </td>
+   <td style="text-align:right;"> 4636 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Max </td>
+   <td style="text-align:right;"> 367030 </td>
+   <td style="text-align:right;"> 885282 </td>
+   <td style="text-align:right;"> 69740 </td>
+   <td style="text-align:right;"> 57037 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</section>
+<section id="model-building" class="level2">
+<h2 class="anchored" data-anchor-id="model-building">Model Building</h2>
+<p>Our objective was to build multiple linear regression and binomial logistic regression models to predict the amount of auto insurance claim. We explored, analyzed, and prepared the data as best we could in an attempt to improve the predictive outcome. The manner in which these were built is detailed in the Caret Model code chunk.</p>
+<div class="cell" data-hash="index_cache/html/model-builds_9cd48fd09a1354965688ce130262b173">
+<details>
+<summary>Caret Models</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 1: Establish Baseline</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This models uses only previous accident as a predictor</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(TARGET_FLAG <span class="sc">~</span> previous_accident, </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>), train)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 2: Experimentally Determine Best Features by Hand</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># These features were selected by alpha level and intuition</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(TARGET_FLAG <span class="sc">~</span> previous_accident <span class="sc">+</span> </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                city <span class="sc">+</span> young <span class="sc">+</span> clean_rec <span class="sc">+</span> </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                educated, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>), train)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 3: Add Recommended Risk Predictors from III</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># This model takes another step towards improving accuracy </span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>model3 <span class="ot">&lt;-</span> <span class="fu">glm</span>(TARGET_FLAG <span class="sc">~</span> previous_accident <span class="sc">+</span> </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                city <span class="sc">+</span> mstatus <span class="sc">+</span> income.values <span class="sc">+</span> </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                sex <span class="sc">+</span> car_use <span class="sc">+</span> educated <span class="sc">+</span> KIDSDRIV <span class="sc">+</span> </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                revoked, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>), </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>              train)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 4: All in One</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Examine results with all variables included, what worked?</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>model4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(target_amt <span class="sc">~</span> ., train) </span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 5: Linear Regression with Dollar Estimators</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co"># This model leans heavy on the variables with specific dollar figures</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>model5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(target_amt <span class="sc">~</span> income.values <span class="sc">+</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>               home.values <span class="sc">+</span> bluebook.values <span class="sc">+</span> </span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>               oldclaim.values <span class="sc">+</span> avg_claim, </span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>             train) </span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 6: Multidirectional StepAIC Regression</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="co"># This uses a Stepwise Akaike Information Criteria to evaluate </span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="co"># and select predictors in the model with some special data prep</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>model6 <span class="ot">&lt;-</span> <span class="fu">lm</span>(target_amt <span class="sc">~</span> . <span class="sc">-</span>TARGET_AMT <span class="sc">-</span>TARGET_FLAG, train) </span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>pm <span class="ot">&lt;-</span> <span class="fu">stepAIC</span>(model6, <span class="at">trace =</span> F, <span class="at">direction =</span> <span class="st">"both"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Another model wherein everything but the kitchen sink was thrown at it (aptly known as the kitchen sink model), gave us insights into which variables were significant to use and what their effect on the model would probably be. Of course, with a model that contains over 30 variables, there is room for some complex interactions to occur. We rely on our exploration and analysis to guide us in the creation of additional models alongside the results from the kitchen sink model, historical model, and conventional wisdom from the auto insurance domain.</p>
+<p>Since we humans tend to poorly judge relationships represented as mathematical operations, a stepwise AIC model was created to do a lot of work for us. This model performs a check by cycling through the variables both forwards and backwards to pick the variables that are most likely to improve the predictive capacity of the model. The AIC just stands for Akaike Information Criterion which is an estimator of prediction error. In this model, when stepping (or cycling) through variables, we are using this criterion to select variables that reduce the amount of error present in the model. Ideally, this will improve model quality and output.</p>
+<p>We finish with some general predictions of each model type. We created a historical model, kitchen sink model, a multidirectional stepwiseAIC, backward stepwiseAIC, high risk predictor model, and a conventional wisdom model using information from the Insurance Information Institute (III). These will be put to the test in the model selection process. Which one do you think will perform best?</p>
+</section>
+<section id="model-selection" class="level2">
+<h2 class="anchored" data-anchor-id="model-selection">Model Selection</h2>
+<p>To standardize the process of model selection, a function is created wherein all statistics are computed the same way. It begins by bringing in the holdout data we created in the data prep section. This is named the test data. With this we evaluate how accurately the model predicted the result. We then compute a confusion matrix which contains the rates of false positives, true positives, false negatives, and true negatives and estimate model specificity, sensitivity, precision, and recall with those values. These combined measures let us find the F1 score, and from them we can create a receiver operating characteristic (ROC) plot and find the area under the curve (AUC). These provide details about the accuracy and real-world effectiveness of a model.</p>
+<p>As a quick reference, we show the results from one of the best models, that of the multidirectional stepwiseAIC. The receiver operating characteristic curve is plotted alongside text containing the accuracy, its bounds, how precise and sensitive it is as well as multiple significance values including McNemars p-value and an accuracy p-value. Each model went through this evaluation process.</p>
+<div class="cell" data-hash="index_cache/html/model-selection-model6-summary_f6acdc174812c2b6c040a9c09e3e56ca">
+<details>
+<summary>Model Summary</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Function to Evaluate All Models</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>modstat <span class="ot">&lt;-</span> <span class="cf">function</span>(model, test, </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">target =</span> <span class="st">"TARGET_FLAG"</span>, <span class="at">threshold =</span> <span class="fl">0.5</span>){</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># test model using predictions with test data</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  test<span class="sc">$</span>new <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">predict.glm</span>(</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    model, test, <span class="st">"response"</span>) <span class="sc">&gt;=</span> threshold, <span class="dv">1</span>, <span class="dv">0</span>) </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create confusion matrix with stats</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># shows true positive, false positive, and their inverse</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    cm <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(<span class="fu">factor</span>(test<span class="sc">$</span>new), </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">factor</span>(test[[target]]), <span class="st">"1"</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Organize information into data frame</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">obs =</span> test<span class="sc">$</span>TARGET_FLAG, </span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>                     <span class="at">predicted =</span> test<span class="sc">$</span>new, </span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>                     <span class="at">probs =</span> <span class="fu">predict</span>(model, test))</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate performance and significance values</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  Pscores <span class="ot">&lt;-</span> <span class="fu">prediction</span>(df<span class="sc">$</span>probs, </span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>                        df<span class="sc">$</span>obs)</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># AUC = "Area Under the Curve" </span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  AUC <span class="ot">&lt;-</span> <span class="fu">performance</span>(Pscores, </span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>                     <span class="at">measure =</span> <span class="st">"auc"</span>)<span class="sc">@</span>y.values[[<span class="dv">1</span>]]</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    pscores <span class="ot">&lt;-</span> <span class="fu">performance</span>(Pscores, </span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"tpr"</span>, <span class="st">"fpr"</span>)</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plot the scores of true positive/ false positive</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This is a receiver operating characteristic (ROC) curve </span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(pscores,<span class="at">main=</span><span class="st">"ROC Curve"</span>, </span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">sub =</span> <span class="fu">paste0</span>(<span class="st">"AUC: "</span>, </span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">round</span>(AUC, <span class="dv">3</span>)))</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extract the F1 score </span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># place it below the plot for each model when run</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">cat</span>(<span class="st">"F1 = "</span>, </span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>                       cm<span class="sc">$</span>byClass[<span class="dv">7</span>], <span class="st">" "</span>), cm)</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Output results with a ROC curve and all scores </span></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate and show ONLY model 6 for quick reference</span></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="fu">modstat</span>(model6, test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/model-selection-model6-summary-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>F1 =  0.4838057  </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] " 1"                                                                                                                                                                                                                                                                                                                                                                                             
+[2] " c(1699, 113, 397, 239)"                                                                                                                                                                                                                                                                                                                                                                        
+[3] " c(Accuracy = 0.791666666666667, Kappa = 0.36653677545056, AccuracyLower = 0.775030346732191, AccuracyUpper = 0.807602177444679, AccuracyNull = 0.740196078431373, AccuracyPValue = 1.62575683811825e-09, McnemarPValue = 5.02353275353728e-36)"                                                                                                                                                
+[4] " c(Sensitivity = 0.375786163522013, Specificity = 0.937637969094923, `Pos Pred Value` = 0.678977272727273, `Neg Pred Value` = 0.810591603053435, Precision = 0.678977272727273, Recall = 0.375786163522013, F1 = 0.483805668016194, Prevalence = 0.259803921568627, `Detection Rate` = 0.0976307189542484, `Detection Prevalence` = 0.143790849673203, `Balanced Accuracy` = 0.656712066308468)"
+[5] " sens_spec"                                                                                                                                                                                                                                                                                                                                                                                     
+[6] " list()"                                                                                                                                                                                                                                                                                                                                                                                        </code></pre>
+</div>
+</div>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Risk varies widely from customer to customer, and a deep understanding of different risk factors helps predict the likelihood and cost of insurance claims. Many factors contribute to the frequency and severity of car accidents including how, where and under what conditions people drive, as well as what they are driving. We developed 6 models. Half of these were multiple linear regression models and the other half were binomial logistic regression. Both have their benefits in the right context.</p>
+<div class="cell" data-hash="index_cache/html/conclusion-model-comparison_f99809853813b3e1d735825179943b9a">
+<details>
+<summary>Comparison Table</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mod.stats.table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Model 1"</span>, <span class="fl">0.722</span>, <span class="fl">0.757</span>, <span class="fl">0.5</span>, .<span class="dv">01</span>, </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Model 2"</span>, <span class="fl">0.732</span>, <span class="fl">0.767</span>, <span class="fl">0.58</span>, <span class="fl">0.333</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Model 3"</span>, <span class="fl">0.754</span>, <span class="fl">0.788</span>, <span class="fl">0.625</span>, <span class="fl">0.422</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Model 4"</span>, <span class="fl">0.998</span>, <span class="fl">0.999</span>, <span class="fl">0.999</span>, <span class="fl">0.999</span>, </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Model 5"</span>, <span class="fl">0.719</span>, <span class="fl">0.753</span>, <span class="fl">0.514</span>, .<span class="dv">090</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Model 6"</span>, <span class="fl">0.775</span>, <span class="fl">0.808</span>, <span class="fl">0.657</span>, <span class="fl">0.484</span>),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">nrow =</span> <span class="dv">6</span>, <span class="at">byrow =</span> T))</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(mod.stats.table) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ID"</span>, <span class="st">"Lower Bound"</span>, <span class="st">"Upper Bound"</span>, </span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"Balanced Accuracy"</span>, <span class="st">"F1 Score"</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>mod.stats.table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["ID"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Lower Bound"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Upper Bound"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Balanced Accuracy"],"name":[4],"type":["chr"],"align":["left"]},{"label":["F1 Score"],"name":[5],"type":["chr"],"align":["left"]}],"data":[{"1":"Model 1","2":"0.722","3":"0.757","4":"0.5","5":"0.01"},{"1":"Model 2","2":"0.732","3":"0.767","4":"0.58","5":"0.333"},{"1":"Model 3","2":"0.754","3":"0.788","4":"0.625","5":"0.422"},{"1":"Model 4","2":"0.998","3":"0.999","4":"0.999","5":"0.999"},{"1":"Model 5","2":"0.719","3":"0.753","4":"0.514","5":"0.09"},{"1":"Model 6","2":"0.775","3":"0.808","4":"0.657","5":"0.484"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+<p>With an accuracy between 78 - 81%, the multidirectional stepwiseAIC model wins the contest between these two model types. It was also the most useful real-world model with a balanced accuracy at 65.7%. Its F1 score was 0.484, indicating the relationship between precision (how well it predicts true positives) and recall (ratio of correct positives in the predictions) is better than any other method of modeling.</p>
+<p>In this table we reviewed the model’s lower and upper accuracy bounds, its balanced accuracy, and F1 scores. The results show Model 3, our other stepwiseAIC, is the runner up. Model 4 is the only model that appears to have been too effective, and is not realistic for a variety of reasons. Perhaps the most important being over-fitting.</p>
+<p>Of these factors in prediction, balanced accuracy is likely the best criteria to judge the models on in this scenario. This is because it finds arithmetic mean of sensitivity and specificity which tends to represent imbalanced data better than accuracy alone. Since our data set was highly imbalanced and the target class of claim amount appeared much less than the non-target class, this accuracy estimate helps balance expectations.</p>
+<p>Of course, these predictions could be improved. When building models, it may be a good idea to perform some feature engineering to better isolate the riskiest and least risky customers. Other model types may also offer new insights.</p>
+<p>For more, view the <a href="https://github.com/palmorezm/misc/blob/master/DS2_Share">full report</a> on my GitHub page.</p>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } 
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb10" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Claim Estimation"</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="an">subtitle:</span><span class="co"> "An Auto Insurance Example"</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Zach Palmore"</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2022-08-14"</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="an">categories:</span><span class="co"> [predictive, modeling, data science]</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="an">image:</span><span class="co"> "image.jpg"</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-link: true</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">    highlight-style: pygments</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">    html-math-method: katex</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">    df-print: paged</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co">    cache: true</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co">    theme:</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">      light: flatly</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co">      dark: darkly</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="in">```{r Packages, warning=F, message=F}</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: load-pkgs</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Packages"</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggcorrplot)</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bestNormalize)</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pROC)</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stats)</span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ROCR)</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_minimal</span>())</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Challenge</span></span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>A key part of insurance is charging each customer the appropriate price for the risk they represent.</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>The challenge is knowing what is most likely to happen before it occurs. If we have confidence in what could occur, then we may better manage our risk. Data science offers a solution to this challenge. Developing advanced computational models with the capacity to crunch high volume data allows us to calculate probabilities of risk for many individuals at scale.</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>The business need is to predict the probability that a person will submit a claim and then estimate that claim amount. Multiple linear regression and binary logistic regression models were built to answer these questions. We explore, analyze and model with a data set containing records of customer behavior at an auto insurance company. A table with a selection of five variables that represent behavioral characteristics from customer records is shown below with a brief description of each for reference.</span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a><span class="co"># short descriptions of variables as table from matrix</span></span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a>vardesc <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(</span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a><span class="st">'TARGET_FLAG'</span>,  <span class="st">'Was a claim submitted? 1 = Yes, 0 = No'</span>,</span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a><span class="st">'TARGET_AMT'</span>,   <span class="st">'Estimated amount of claim'</span>,</span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a><span class="st">'CLM_FREQ'</span>, <span class="st">'Number of claims filed in past five years'</span>,</span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a><span class="st">'MVR_PTS'</span>,  <span class="st">'Motor vehicle inspection points'</span>,</span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a><span class="st">'TRAVETIME'</span>,    <span class="st">'Distance to work in minutes'</span></span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a>),  <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">ncol =</span> <span class="dv">2</span>))</span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(vardesc) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Variable'</span>, <span class="st">'Description'</span>)</span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a><span class="fu">kbl</span>(vardesc, <span class="at">booktabs =</span> T, <span class="at">caption =</span> <span class="st">"Variable Descriptions"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"HOLD_position"</span>), <span class="at">full_width =</span> F)</span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Prep</span></span>
+<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a>There are over 8000 records in this data set, with 26 variables in each record. We begin by loading in the data and exploring.</span>
+<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a>When exploring we look for missing values and abnormalities and try to find patterns in the records. We calculate some descriptive and inferential statistics that show the characteristics present in the data. These statistics inform us if imputations, transformations, or other adjustments are needed. For example, this violin plot with a box plot inlay, provides a wealth of information.</span>
+<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: load-data</span></span>
+<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Data Access"</span></span>
+<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a>tdata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(</span>
+<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a>  <span class="st">"https://raw.githubusercontent.com/palmorezm/msds/main/Business%20Analytics%20and%20Data%20Mining/HW4/insurance_training_data.csv"</span>)</span>
+<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a>edata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(</span>
+<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a>  <span class="st">"https://raw.githubusercontent.com/palmorezm/msds/main/Business%20Analytics%20and%20Data%20Mining/HW4/insurance-evaluation-data.csv"</span>)</span>
+<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a>tdata.nas <span class="ot">&lt;-</span> <span class="fu">lapply</span>(tdata, <span class="cf">function</span>(x) <span class="fu">sum</span>(<span class="fu">is.na</span>(x)))</span>
+<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a>tdata.len <span class="ot">&lt;-</span> <span class="fu">lapply</span>(tdata, <span class="cf">function</span>(x) <span class="fu">length</span>(x))</span>
+<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a>tdata.permis <span class="ot">&lt;-</span> <span class="fu">lapply</span>(tdata, <span class="cf">function</span>(x) <span class="fu">round</span>(<span class="fu">sum</span>(<span class="fu">is.na</span>(x))<span class="sc">/</span><span class="fu">length</span>(x)<span class="sc">*</span><span class="dv">100</span>, <span class="dv">1</span>))</span>
+<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a>tdata.types <span class="ot">&lt;-</span> <span class="fu">lapply</span>(tdata, <span class="cf">function</span>(x) <span class="fu">class</span>(x))</span>
+<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a>tdata.firstob <span class="ot">&lt;-</span> <span class="fu">lapply</span>(tdata, <span class="cf">function</span>(x) <span class="fu">head</span>(x, <span class="dv">1</span>))</span>
+<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a>tdata.uniques <span class="ot">&lt;-</span> <span class="fu">lapply</span>(tdata, <span class="cf">function</span>(x) <span class="fu">length</span>(<span class="fu">unique</span>(<span class="fu">factor</span>(x))))</span>
+<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a>tdata.tbl.natypes <span class="ot">&lt;-</span> <span class="fu">cbind</span>(tdata.nas, tdata.len, tdata.permis, tdata.types, tdata.firstob, tdata.uniques) </span>
+<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(tdata.tbl.natypes) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Missing"</span>, <span class="st">"Total"</span>, <span class="st">"%"</span>, <span class="st">"Data Type"</span>, <span class="st">"Example"</span>, <span class="st">"Factors"</span>)</span>
+<span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a><span class="fu">kbl</span>(tdata.tbl.natypes, <span class="at">booktabs =</span> T, <span class="at">caption =</span> <span class="st">"Data Characteristics"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-94"><a href="#cb10-94" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"HOLD_position"</span>), <span class="at">full_width =</span> F)</span>
+<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: explore-violin-plot</span></span>
+<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Kernel Density Estimation &amp; Outliers"</span></span>
+<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a>tdata <span class="sc">%&gt;%</span> </span>
+<span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_if</span>(is.numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value, key)) <span class="sc">+</span></span>
+<span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> key, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
+<span id="cb10-109"><a href="#cb10-109" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="fu">aes</span>(<span class="at">color =</span> key, <span class="at">alpha =</span> <span class="dv">1</span>)) <span class="sc">+</span> </span>
+<span id="cb10-110"><a href="#cb10-110" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> key, <span class="at">alpha =</span> .<span class="dv">5</span>), <span class="at">notch =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> .<span class="dv">1</span>, <span class="at">lty =</span> <span class="dv">3</span>) <span class="sc">+</span>  </span>
+<span id="cb10-111"><a href="#cb10-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.y =</span> mean, <span class="at">geom =</span> <span class="st">"point"</span>,</span>
+<span id="cb10-112"><a href="#cb10-112" aria-hidden="true" tabindex="-1"></a>               <span class="at">shape =</span> <span class="dv">8</span>, <span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">"#000000"</span>) <span class="sc">+</span> </span>
+<span id="cb10-113"><a href="#cb10-113" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb10-114"><a href="#cb10-114" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb10-115"><a href="#cb10-115" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb10-116"><a href="#cb10-116" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">"none"</span>, <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span> </span>
+<span id="cb10-117"><a href="#cb10-117" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Kernel Density Estimation &amp; Outliers"</span>) </span>
+<span id="cb10-118"><a href="#cb10-118" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-119"><a href="#cb10-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-120"><a href="#cb10-120" aria-hidden="true" tabindex="-1"></a>Perhaps one of the easiest things to spot in this plot are outliers, shown as grey dots on the left and right sides of the variables. These points are located far from where the rest of the data is, and there are so many that some dots appear solid black due to repeated grey dots plotted in the same spot. Our target amount, the value we intend to predict, is a great example of a distribution with a lot of outliers. These points give a good idea of what 'normal' is for each variable but this plot offers some more.</span>
+<span id="cb10-121"><a href="#cb10-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-122"><a href="#cb10-122" aria-hidden="true" tabindex="-1"></a>In this plot the asterisk near the center of each boxplot is the median of the distribution for all records that contain the variable named, however, what exactly the median is less important than where it lies within the distribution. The top and bottom edges (the curvy colored lines) of the violin plot use the non-parametric method kernel density estimation (KDE) to smoothly estimate the probability of a value occurring anywhere along its range. Here again, we already notice problems with our target amount. Although not every variable follows this pattern. For these reasons, we need to be careful about how we handle this data before making any predictions.</span>
+<span id="cb10-123"><a href="#cb10-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a>Another method used to explore and prepare the data is a correlation plot. These examine the strength of relationships between variables, whether they are positive or negative, and how they compare to one another. We take a look at some selected variables in hopes that they confirm some expectations.</span>
+<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-128"><a href="#cb10-128" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-129"><a href="#cb10-129" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: explore-correlation-plot</span></span>
+<span id="cb10-130"><a href="#cb10-130" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Correlation Plot"</span></span>
+<span id="cb10-131"><a href="#cb10-131" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb10-132"><a href="#cb10-132" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb10-133"><a href="#cb10-133" aria-hidden="true" tabindex="-1"></a>tdata <span class="sc">%&gt;%</span></span>
+<span id="cb10-134"><a href="#cb10-134" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_if</span>(is.numeric) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-135"><a href="#cb10-135" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb10-136"><a href="#cb10-136" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggcorrplot</span>(<span class="at">method =</span> <span class="st">"circle"</span>, <span class="at">type=</span><span class="st">"upper"</span>, </span>
+<span id="cb10-137"><a href="#cb10-137" aria-hidden="true" tabindex="-1"></a>             <span class="at">ggtheme =</span> ggplot2<span class="sc">::</span>theme_minimal, <span class="at">legend.title =</span> <span class="st">"Influence"</span>) <span class="sc">+</span> <span class="fu">coord_flip</span>() </span>
+<span id="cb10-138"><a href="#cb10-138" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-139"><a href="#cb10-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a>If we are trying to predict the amount of a claim and we have a true or false variable indicating the presence or absences of claim submission (TARGET_FLAG) and the claim amount (TARGET_AMT), shouldn't we expect the two to be correlated? I would hope so, given that, when an individual does not file a claim, the resultant claim amount is 0. We notice this in the big red circle towards the bottom left of the screen. This shows a strong positive correlation between the amount of a claim and presence of a claim. From this correlation plot we start to confirm these expectations and validate some conventional auto insurance knowledge.</span>
+<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-142"><a href="#cb10-142" aria-hidden="true" tabindex="-1"></a>These demonstrate only two ways to look at data before model building. However, to ensure that a model functions in the real world, a multitude of exploratory methods should be used to fully understand the data. To keep it brief, the data is split 70-30 into training and testing data sets, then cleaned up with using the multiple imputation by chained equations (MICE) method, perform a Yeo-Johnson transformation, and adjust other points as necessary to make the non-normal predictor appear normal enough for prediction. A quick look at the imputed summary statistics is shown for four numeric variables as a reference.</span>
+<span id="cb10-143"><a href="#cb10-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-146"><a href="#cb10-146" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-147"><a href="#cb10-147" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: prep-training</span></span>
+<span id="cb10-148"><a href="#cb10-148" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Correlation Plot"</span></span>
+<span id="cb10-149"><a href="#cb10-149" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb10-150"><a href="#cb10-150" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb10-151"><a href="#cb10-151" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb10-152"><a href="#cb10-152" aria-hidden="true" tabindex="-1"></a><span class="co"># Select character variables</span></span>
+<span id="cb10-153"><a href="#cb10-153" aria-hidden="true" tabindex="-1"></a>chars <span class="ot">&lt;-</span> tdata <span class="sc">%&gt;%</span> </span>
+<span id="cb10-154"><a href="#cb10-154" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select_if</span>(is.character)</span>
+<span id="cb10-155"><a href="#cb10-155" aria-hidden="true" tabindex="-1"></a><span class="co"># Use function to extract dollars</span></span>
+<span id="cb10-156"><a href="#cb10-156" aria-hidden="true" tabindex="-1"></a>to_num <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb10-157"><a href="#cb10-157" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">as.character</span>(x)</span>
+<span id="cb10-158"><a href="#cb10-158" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">","</span>, <span class="st">""</span>, x)</span>
+<span id="cb10-159"><a href="#cb10-159" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">$"</span>, <span class="st">""</span>, x)</span>
+<span id="cb10-160"><a href="#cb10-160" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.numeric</span>(x)</span>
+<span id="cb10-161"><a href="#cb10-161" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-162"><a href="#cb10-162" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify those dollar variables </span></span>
+<span id="cb10-163"><a href="#cb10-163" aria-hidden="true" tabindex="-1"></a>income.values <span class="ot">&lt;-</span> <span class="fu">to_num</span>(chars<span class="sc">$</span>INCOME)</span>
+<span id="cb10-164"><a href="#cb10-164" aria-hidden="true" tabindex="-1"></a>home.values <span class="ot">&lt;-</span> <span class="fu">to_num</span>(chars<span class="sc">$</span>HOME_VAL)</span>
+<span id="cb10-165"><a href="#cb10-165" aria-hidden="true" tabindex="-1"></a>bluebook.values <span class="ot">&lt;-</span> <span class="fu">to_num</span>(chars<span class="sc">$</span>BLUEBOOK)</span>
+<span id="cb10-166"><a href="#cb10-166" aria-hidden="true" tabindex="-1"></a>oldclaim.values <span class="ot">&lt;-</span> <span class="fu">to_num</span>(chars<span class="sc">$</span>OLDCLAIM)</span>
+<span id="cb10-167"><a href="#cb10-167" aria-hidden="true" tabindex="-1"></a>concept_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">cbind</span>(income.values, </span>
+<span id="cb10-168"><a href="#cb10-168" aria-hidden="true" tabindex="-1"></a>                    home.values, </span>
+<span id="cb10-169"><a href="#cb10-169" aria-hidden="true" tabindex="-1"></a>                    bluebook.values, </span>
+<span id="cb10-170"><a href="#cb10-170" aria-hidden="true" tabindex="-1"></a>                    oldclaim.values))</span>
+<span id="cb10-171"><a href="#cb10-171" aria-hidden="true" tabindex="-1"></a>income.values.stat <span class="ot">&lt;-</span> <span class="fu">to_num</span>(chars<span class="sc">$</span>INCOME)</span>
+<span id="cb10-172"><a href="#cb10-172" aria-hidden="true" tabindex="-1"></a>home.values.stat <span class="ot">&lt;-</span> <span class="fu">to_num</span>(chars<span class="sc">$</span>HOME_VAL)</span>
+<span id="cb10-173"><a href="#cb10-173" aria-hidden="true" tabindex="-1"></a>bluebook.values.stat <span class="ot">&lt;-</span> <span class="fu">to_num</span>(chars<span class="sc">$</span>BLUEBOOK)</span>
+<span id="cb10-174"><a href="#cb10-174" aria-hidden="true" tabindex="-1"></a>oldclaim.values.stat <span class="ot">&lt;-</span> <span class="fu">to_num</span>(chars<span class="sc">$</span>OLDCLAIM)</span>
+<span id="cb10-175"><a href="#cb10-175" aria-hidden="true" tabindex="-1"></a><span class="co"># impute median values for missing variables</span></span>
+<span id="cb10-176"><a href="#cb10-176" aria-hidden="true" tabindex="-1"></a>income.values[<span class="fu">is.na</span>(income.values)] <span class="ot">&lt;-</span> </span>
+<span id="cb10-177"><a href="#cb10-177" aria-hidden="true" tabindex="-1"></a>  <span class="fu">median</span>(income.values, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-178"><a href="#cb10-178" aria-hidden="true" tabindex="-1"></a>home.values[<span class="fu">is.na</span>(home.values)] <span class="ot">&lt;-</span> </span>
+<span id="cb10-179"><a href="#cb10-179" aria-hidden="true" tabindex="-1"></a>  <span class="fu">median</span>(home.values, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-180"><a href="#cb10-180" aria-hidden="true" tabindex="-1"></a>bluebook.values[<span class="fu">is.na</span>(bluebook.values)] <span class="ot">&lt;-</span> </span>
+<span id="cb10-181"><a href="#cb10-181" aria-hidden="true" tabindex="-1"></a>  <span class="fu">median</span>(bluebook.values, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-182"><a href="#cb10-182" aria-hidden="true" tabindex="-1"></a>oldclaim.values[<span class="fu">is.na</span>(oldclaim.values)] <span class="ot">&lt;-</span> </span>
+<span id="cb10-183"><a href="#cb10-183" aria-hidden="true" tabindex="-1"></a>  <span class="fu">median</span>(oldclaim.values, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-184"><a href="#cb10-184" aria-hidden="true" tabindex="-1"></a><span class="co"># Recombine into data frame</span></span>
+<span id="cb10-185"><a href="#cb10-185" aria-hidden="true" tabindex="-1"></a>dollar.values <span class="ot">&lt;-</span> </span>
+<span id="cb10-186"><a href="#cb10-186" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="fu">cbind</span>(income.values, </span>
+<span id="cb10-187"><a href="#cb10-187" aria-hidden="true" tabindex="-1"></a>                   home.values, </span>
+<span id="cb10-188"><a href="#cb10-188" aria-hidden="true" tabindex="-1"></a>                   bluebook.values, </span>
+<span id="cb10-189"><a href="#cb10-189" aria-hidden="true" tabindex="-1"></a>                   oldclaim.values))</span>
+<span id="cb10-190"><a href="#cb10-190" aria-hidden="true" tabindex="-1"></a>dollar.values.stats <span class="ot">&lt;-</span> </span>
+<span id="cb10-191"><a href="#cb10-191" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="fu">cbind</span>(income.values.stat, </span>
+<span id="cb10-192"><a href="#cb10-192" aria-hidden="true" tabindex="-1"></a>                   home.values.stat, </span>
+<span id="cb10-193"><a href="#cb10-193" aria-hidden="true" tabindex="-1"></a>                   bluebook.values.stat,</span>
+<span id="cb10-194"><a href="#cb10-194" aria-hidden="true" tabindex="-1"></a>                   oldclaim.values.stat))</span>
+<span id="cb10-195"><a href="#cb10-195" aria-hidden="true" tabindex="-1"></a><span class="co"># Join with training data</span></span>
+<span id="cb10-196"><a href="#cb10-196" aria-hidden="true" tabindex="-1"></a>tdata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">cbind</span>(tdata, dollar.values))</span>
+<span id="cb10-197"><a href="#cb10-197" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the difference</span></span>
+<span id="cb10-198"><a href="#cb10-198" aria-hidden="true" tabindex="-1"></a>dollar.values.tbl <span class="ot">&lt;-</span> <span class="fu">summary</span>(dollar.values)</span>
+<span id="cb10-199"><a href="#cb10-199" aria-hidden="true" tabindex="-1"></a>dollar.values.stats.tbl <span class="ot">&lt;-</span> <span class="fu">summary</span>(dollar.values.stats)</span>
+<span id="cb10-200"><a href="#cb10-200" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-201"><a href="#cb10-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-204"><a href="#cb10-204" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-205"><a href="#cb10-205" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: prep-imputed-statistics-table</span></span>
+<span id="cb10-206"><a href="#cb10-206" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Imputed Summary Statistics"</span></span>
+<span id="cb10-207"><a href="#cb10-207" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb10-208"><a href="#cb10-208" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb10-209"><a href="#cb10-209" aria-hidden="true" tabindex="-1"></a>imputed.stats.table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">29707</span>,<span class="dv">54028</span>,<span class="dv">61469</span>,<span class="dv">83304</span>,<span class="dv">367030</span>, </span>
+<span id="cb10-210"><a href="#cb10-210" aria-hidden="true" tabindex="-1"></a>         <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">161160</span>,<span class="dv">155225</span>,<span class="dv">233352</span>,<span class="dv">885282</span>,</span>
+<span id="cb10-211"><a href="#cb10-211" aria-hidden="true" tabindex="-1"></a>         <span class="dv">1500</span>,<span class="dv">9280</span>,<span class="dv">14440</span>,<span class="dv">15710</span>,<span class="dv">20850</span>,<span class="dv">69740</span>,</span>
+<span id="cb10-212"><a href="#cb10-212" aria-hidden="true" tabindex="-1"></a>         <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">4037</span>,<span class="dv">4636</span>,<span class="dv">57037</span>), <span class="at">ncol =</span> <span class="dv">4</span>, <span class="at">byrow =</span> F)) </span>
+<span id="cb10-213"><a href="#cb10-213" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(imputed.stats.table) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Income"</span>, <span class="st">"Home Value"</span>, </span>
+<span id="cb10-214"><a href="#cb10-214" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"Bluebook Value"</span>, <span class="st">"Old Claims"</span>)</span>
+<span id="cb10-215"><a href="#cb10-215" aria-hidden="true" tabindex="-1"></a>imputed.stats.table <span class="ot">&lt;-</span> imputed.stats.table <span class="sc">%&gt;%</span> </span>
+<span id="cb10-216"><a href="#cb10-216" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Statistic =</span> <span class="fu">c</span>(<span class="st">"Min"</span>, <span class="st">"1st Quartile"</span>, <span class="st">"Median"</span>, </span>
+<span id="cb10-217"><a href="#cb10-217" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"Mean"</span>, <span class="st">"3rd Qartile"</span>, <span class="st">"Max"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-218"><a href="#cb10-218" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="st">"Statistic"</span>, <span class="st">"Income"</span>, <span class="st">"Home Value"</span>, </span>
+<span id="cb10-219"><a href="#cb10-219" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Bluebook Value"</span>, <span class="st">"Old Claims"</span>)</span>
+<span id="cb10-220"><a href="#cb10-220" aria-hidden="true" tabindex="-1"></a><span class="fu">kbl</span>(imputed.stats.table,</span>
+<span id="cb10-221"><a href="#cb10-221" aria-hidden="true" tabindex="-1"></a>    <span class="at">booktabs =</span> T,</span>
+<span id="cb10-222"><a href="#cb10-222" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Imputed Summary Statistics"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-223"><a href="#cb10-223" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hold_position"</span>),</span>
+<span id="cb10-224"><a href="#cb10-224" aria-hidden="true" tabindex="-1"></a>                <span class="at">full_width =</span> F)</span>
+<span id="cb10-225"><a href="#cb10-225" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-226"><a href="#cb10-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-229"><a href="#cb10-229" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-230"><a href="#cb10-230" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: prep-cleaning-sample-steps</span></span>
+<span id="cb10-231"><a href="#cb10-231" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Sample of Cleaning Steps"</span></span>
+<span id="cb10-232"><a href="#cb10-232" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb10-233"><a href="#cb10-233" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb10-234"><a href="#cb10-234" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb10-235"><a href="#cb10-235" aria-hidden="true" tabindex="-1"></a>factors <span class="ot">&lt;-</span> tdata <span class="sc">%&gt;%</span> </span>
+<span id="cb10-236"><a href="#cb10-236" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="st">"PARENT1"</span>, </span>
+<span id="cb10-237"><a href="#cb10-237" aria-hidden="true" tabindex="-1"></a>         <span class="st">"MSTATUS"</span>, </span>
+<span id="cb10-238"><a href="#cb10-238" aria-hidden="true" tabindex="-1"></a>         <span class="st">"SEX"</span>, </span>
+<span id="cb10-239"><a href="#cb10-239" aria-hidden="true" tabindex="-1"></a>         <span class="st">"EDUCATION"</span>, </span>
+<span id="cb10-240"><a href="#cb10-240" aria-hidden="true" tabindex="-1"></a>         <span class="st">"JOB"</span>, </span>
+<span id="cb10-241"><a href="#cb10-241" aria-hidden="true" tabindex="-1"></a>         <span class="st">"CAR_USE"</span>,</span>
+<span id="cb10-242"><a href="#cb10-242" aria-hidden="true" tabindex="-1"></a>         <span class="st">"CAR_TYPE"</span>,</span>
+<span id="cb10-243"><a href="#cb10-243" aria-hidden="true" tabindex="-1"></a>         <span class="st">"RED_CAR"</span>, </span>
+<span id="cb10-244"><a href="#cb10-244" aria-hidden="true" tabindex="-1"></a>         <span class="st">"REVOKED"</span>, </span>
+<span id="cb10-245"><a href="#cb10-245" aria-hidden="true" tabindex="-1"></a>         <span class="st">"URBANICITY"</span>) </span>
+<span id="cb10-246"><a href="#cb10-246" aria-hidden="true" tabindex="-1"></a>factors <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">lapply</span>(factors, <span class="cf">function</span>(x) <span class="fu">as.factor</span>(x)))</span>
+<span id="cb10-247"><a href="#cb10-247" aria-hidden="true" tabindex="-1"></a>factors <span class="ot">&lt;-</span> factors <span class="sc">%&gt;%</span> </span>
+<span id="cb10-248"><a href="#cb10-248" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">"parent1"</span> <span class="ot">=</span> <span class="st">"PARENT1"</span>, </span>
+<span id="cb10-249"><a href="#cb10-249" aria-hidden="true" tabindex="-1"></a>         <span class="st">"mstatus"</span> <span class="ot">=</span> <span class="st">"MSTATUS"</span>, </span>
+<span id="cb10-250"><a href="#cb10-250" aria-hidden="true" tabindex="-1"></a>         <span class="st">"sex"</span> <span class="ot">=</span> <span class="st">"SEX"</span>, </span>
+<span id="cb10-251"><a href="#cb10-251" aria-hidden="true" tabindex="-1"></a>         <span class="st">"education"</span> <span class="ot">=</span> <span class="st">"EDUCATION"</span>, </span>
+<span id="cb10-252"><a href="#cb10-252" aria-hidden="true" tabindex="-1"></a>         <span class="st">"job"</span> <span class="ot">=</span> <span class="st">"JOB"</span>, </span>
+<span id="cb10-253"><a href="#cb10-253" aria-hidden="true" tabindex="-1"></a>         <span class="st">"car_use"</span> <span class="ot">=</span> <span class="st">"CAR_USE"</span>, </span>
+<span id="cb10-254"><a href="#cb10-254" aria-hidden="true" tabindex="-1"></a>         <span class="st">"car_type"</span> <span class="ot">=</span> <span class="st">"CAR_TYPE"</span>,</span>
+<span id="cb10-255"><a href="#cb10-255" aria-hidden="true" tabindex="-1"></a>         <span class="st">"red_car"</span> <span class="ot">=</span> <span class="st">"RED_CAR"</span>, </span>
+<span id="cb10-256"><a href="#cb10-256" aria-hidden="true" tabindex="-1"></a>         <span class="st">"revoked"</span> <span class="ot">=</span> <span class="st">"REVOKED"</span>, </span>
+<span id="cb10-257"><a href="#cb10-257" aria-hidden="true" tabindex="-1"></a>         <span class="st">"urbanicity"</span> <span class="ot">=</span> <span class="st">"URBANICITY"</span>)</span>
+<span id="cb10-258"><a href="#cb10-258" aria-hidden="true" tabindex="-1"></a>tdata <span class="ot">&lt;-</span> <span class="fu">cbind</span>(tdata, factors)</span>
+<span id="cb10-259"><a href="#cb10-259" aria-hidden="true" tabindex="-1"></a>tdata <span class="ot">&lt;-</span> tdata <span class="sc">%&gt;%</span> </span>
+<span id="cb10-260"><a href="#cb10-260" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">car_age =</span> <span class="fu">ifelse</span>(CAR_AGE<span class="sc">&lt;</span><span class="dv">0</span>, <span class="cn">NA</span>, CAR_AGE))</span>
+<span id="cb10-261"><a href="#cb10-261" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop INDEX and other unnecessary columns</span></span>
+<span id="cb10-262"><a href="#cb10-262" aria-hidden="true" tabindex="-1"></a>tdata <span class="ot">&lt;-</span> tdata <span class="sc">%&gt;%</span> </span>
+<span id="cb10-263"><a href="#cb10-263" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="st">"TARGET_FLAG"</span>,</span>
+<span id="cb10-264"><a href="#cb10-264" aria-hidden="true" tabindex="-1"></a>         <span class="st">"TARGET_AMT"</span>,</span>
+<span id="cb10-265"><a href="#cb10-265" aria-hidden="true" tabindex="-1"></a>         <span class="st">"KIDSDRIV"</span>,</span>
+<span id="cb10-266"><a href="#cb10-266" aria-hidden="true" tabindex="-1"></a>         <span class="st">"AGE"</span>,</span>
+<span id="cb10-267"><a href="#cb10-267" aria-hidden="true" tabindex="-1"></a>         <span class="st">"HOMEKIDS"</span>,</span>
+<span id="cb10-268"><a href="#cb10-268" aria-hidden="true" tabindex="-1"></a>         <span class="st">"YOJ"</span>,</span>
+<span id="cb10-269"><a href="#cb10-269" aria-hidden="true" tabindex="-1"></a>         <span class="st">"TRAVTIME"</span>,</span>
+<span id="cb10-270"><a href="#cb10-270" aria-hidden="true" tabindex="-1"></a>         <span class="st">"TIF"</span>,</span>
+<span id="cb10-271"><a href="#cb10-271" aria-hidden="true" tabindex="-1"></a>         <span class="st">"CLM_FREQ"</span>,</span>
+<span id="cb10-272"><a href="#cb10-272" aria-hidden="true" tabindex="-1"></a>         <span class="st">"MVR_PTS"</span>,</span>
+<span id="cb10-273"><a href="#cb10-273" aria-hidden="true" tabindex="-1"></a>         <span class="st">"income.values"</span>, </span>
+<span id="cb10-274"><a href="#cb10-274" aria-hidden="true" tabindex="-1"></a>         <span class="st">"home.values"</span>,</span>
+<span id="cb10-275"><a href="#cb10-275" aria-hidden="true" tabindex="-1"></a>         <span class="st">"bluebook.values"</span>,</span>
+<span id="cb10-276"><a href="#cb10-276" aria-hidden="true" tabindex="-1"></a>         <span class="st">"oldclaim.values"</span>,</span>
+<span id="cb10-277"><a href="#cb10-277" aria-hidden="true" tabindex="-1"></a>         <span class="st">"parent1"</span>, </span>
+<span id="cb10-278"><a href="#cb10-278" aria-hidden="true" tabindex="-1"></a>         <span class="st">"mstatus"</span>,</span>
+<span id="cb10-279"><a href="#cb10-279" aria-hidden="true" tabindex="-1"></a>         <span class="st">"sex"</span>,</span>
+<span id="cb10-280"><a href="#cb10-280" aria-hidden="true" tabindex="-1"></a>         <span class="st">"education"</span>,</span>
+<span id="cb10-281"><a href="#cb10-281" aria-hidden="true" tabindex="-1"></a>         <span class="st">"job"</span>,</span>
+<span id="cb10-282"><a href="#cb10-282" aria-hidden="true" tabindex="-1"></a>         <span class="st">"car_use"</span>,</span>
+<span id="cb10-283"><a href="#cb10-283" aria-hidden="true" tabindex="-1"></a>         <span class="st">"car_age"</span>,</span>
+<span id="cb10-284"><a href="#cb10-284" aria-hidden="true" tabindex="-1"></a>         <span class="st">"car_type"</span>,</span>
+<span id="cb10-285"><a href="#cb10-285" aria-hidden="true" tabindex="-1"></a>         <span class="st">"red_car"</span>, </span>
+<span id="cb10-286"><a href="#cb10-286" aria-hidden="true" tabindex="-1"></a>         <span class="st">"revoked"</span>,</span>
+<span id="cb10-287"><a href="#cb10-287" aria-hidden="true" tabindex="-1"></a>         <span class="st">"urbanicity"</span>)</span>
+<span id="cb10-288"><a href="#cb10-288" aria-hidden="true" tabindex="-1"></a><span class="co"># Check total variables present</span></span>
+<span id="cb10-289"><a href="#cb10-289" aria-hidden="true" tabindex="-1"></a><span class="co"># More imputation</span></span>
+<span id="cb10-290"><a href="#cb10-290" aria-hidden="true" tabindex="-1"></a>tdata<span class="sc">$</span>AGE[<span class="fu">is.na</span>(tdata<span class="sc">$</span>AGE)] <span class="ot">&lt;-</span></span>
+<span id="cb10-291"><a href="#cb10-291" aria-hidden="true" tabindex="-1"></a>  <span class="fu">median</span>(tdata<span class="sc">$</span>AGE, <span class="at">na.rm =</span> T)</span>
+<span id="cb10-292"><a href="#cb10-292" aria-hidden="true" tabindex="-1"></a>tdata<span class="sc">$</span>YOJ[<span class="fu">is.na</span>(tdata<span class="sc">$</span>YOJ)] <span class="ot">&lt;-</span></span>
+<span id="cb10-293"><a href="#cb10-293" aria-hidden="true" tabindex="-1"></a>  <span class="fu">median</span>(tdata<span class="sc">$</span>YOJ, <span class="at">na.rm =</span> T)</span>
+<span id="cb10-294"><a href="#cb10-294" aria-hidden="true" tabindex="-1"></a>tdata<span class="sc">$</span>car_age[<span class="fu">is.na</span>(tdata<span class="sc">$</span>car_age)] <span class="ot">&lt;-</span> </span>
+<span id="cb10-295"><a href="#cb10-295" aria-hidden="true" tabindex="-1"></a>  <span class="fu">median</span>(tdata<span class="sc">$</span>car_age, <span class="at">na.rm =</span> T)</span>
+<span id="cb10-296"><a href="#cb10-296" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(tdata))</span>
+<span id="cb10-297"><a href="#cb10-297" aria-hidden="true" tabindex="-1"></a>tdata <span class="ot">&lt;-</span> tdata <span class="sc">%&gt;%</span> </span>
+<span id="cb10-298"><a href="#cb10-298" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">city =</span> <span class="fu">ifelse</span>(urbanicity <span class="sc">==</span> <span class="st">"Highly Urban/ Urban"</span>, <span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-299"><a href="#cb10-299" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">young =</span> <span class="fu">ifelse</span>(AGE <span class="sc">&lt;</span> <span class="dv">25</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-300"><a href="#cb10-300" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">clean_rec =</span> <span class="fu">ifelse</span>(MVR_PTS <span class="sc">==</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-301"><a href="#cb10-301" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">previous_accident =</span> <span class="fu">ifelse</span>(CLM_FREQ <span class="sc">==</span> <span class="dv">0</span> <span class="sc">&amp;</span> oldclaim.values <span class="sc">==</span> <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-302"><a href="#cb10-302" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">educated =</span> <span class="fu">ifelse</span>(education <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Bachelors"</span>, <span class="st">"Masters"</span>, <span class="st">"PhD"</span>), <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-303"><a href="#cb10-303" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">avg_claim =</span> <span class="fu">ifelse</span>(CLM_FREQ <span class="sc">&gt;</span> <span class="dv">0</span>, oldclaim.values<span class="sc">/</span>CLM_FREQ, <span class="dv">0</span>))</span>
+<span id="cb10-304"><a href="#cb10-304" aria-hidden="true" tabindex="-1"></a>tdata<span class="sc">$</span>city <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tdata<span class="sc">$</span>city)</span>
+<span id="cb10-305"><a href="#cb10-305" aria-hidden="true" tabindex="-1"></a>tdata<span class="sc">$</span>young <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tdata<span class="sc">$</span>young)</span>
+<span id="cb10-306"><a href="#cb10-306" aria-hidden="true" tabindex="-1"></a>tdata<span class="sc">$</span>clean_rec <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tdata<span class="sc">$</span>clean_rec)</span>
+<span id="cb10-307"><a href="#cb10-307" aria-hidden="true" tabindex="-1"></a>tdata<span class="sc">$</span>previous_accident <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tdata<span class="sc">$</span>previous_accident)</span>
+<span id="cb10-308"><a href="#cb10-308" aria-hidden="true" tabindex="-1"></a>tdata<span class="sc">$</span>educated <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(tdata<span class="sc">$</span>educated)</span>
+<span id="cb10-309"><a href="#cb10-309" aria-hidden="true" tabindex="-1"></a><span class="co"># Produce recommended transformations</span></span>
+<span id="cb10-310"><a href="#cb10-310" aria-hidden="true" tabindex="-1"></a>bestNorms <span class="ot">&lt;-</span> tdata[<span class="dv">1</span><span class="sc">:</span><span class="dv">11</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">16</span>]</span>
+<span id="cb10-311"><a href="#cb10-311" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> tdata <span class="sc">%&gt;%</span> </span>
+<span id="cb10-312"><a href="#cb10-312" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_if</span>(is.numeric)</span>
+<span id="cb10-313"><a href="#cb10-313" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">colnames</span>(df)) {</span>
+<span id="cb10-314"><a href="#cb10-314" aria-hidden="true" tabindex="-1"></a>  bestNorms[[i]] <span class="ot">&lt;-</span> <span class="fu">bestNormalize</span>(df[[i]],</span>
+<span id="cb10-315"><a href="#cb10-315" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">allow_orderNorm =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb10-316"><a href="#cb10-316" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">out_of_sample =</span><span class="cn">FALSE</span>)</span>
+<span id="cb10-317"><a href="#cb10-317" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-318"><a href="#cb10-318" aria-hidden="true" tabindex="-1"></a><span class="co"># Continue focusing on realistic values</span></span>
+<span id="cb10-319"><a href="#cb10-319" aria-hidden="true" tabindex="-1"></a>accident_costs <span class="ot">&lt;-</span> tdata<span class="sc">$</span>TARGET_AMT[tdata<span class="sc">$</span>TARGET_AMT<span class="sc">&gt;</span>.<span class="dv">0</span>]</span>
+<span id="cb10-320"><a href="#cb10-320" aria-hidden="true" tabindex="-1"></a><span class="co"># Focus on selected variables </span></span>
+<span id="cb10-321"><a href="#cb10-321" aria-hidden="true" tabindex="-1"></a>bestNorms<span class="sc">$</span>target_amt<span class="sc">$</span>chosen_transform <span class="co"># review best transformation</span></span>
+<span id="cb10-322"><a href="#cb10-322" aria-hidden="true" tabindex="-1"></a>tdata<span class="sc">$</span>target_amt <span class="ot">&lt;-</span> <span class="fu">scale</span>(<span class="fu">log</span>(tdata<span class="sc">$</span>TARGET_AMT <span class="sc">+</span> <span class="dv">1</span>))</span>
+<span id="cb10-323"><a href="#cb10-323" aria-hidden="true" tabindex="-1"></a><span class="co"># Split 70-30 training test</span></span>
+<span id="cb10-324"><a href="#cb10-324" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1102</span>)</span>
+<span id="cb10-325"><a href="#cb10-325" aria-hidden="true" tabindex="-1"></a>tindex <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(tdata<span class="sc">$</span>TARGET_FLAG, <span class="at">p =</span> .<span class="dv">7</span>, <span class="at">list =</span> <span class="cn">FALSE</span>, <span class="at">times =</span> <span class="dv">1</span>)</span>
+<span id="cb10-326"><a href="#cb10-326" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> tdata[tindex,]</span>
+<span id="cb10-327"><a href="#cb10-327" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> tdata[<span class="sc">-</span>tindex,]</span>
+<span id="cb10-328"><a href="#cb10-328" aria-hidden="true" tabindex="-1"></a>rindex <span class="ot">&lt;-</span> tdata <span class="sc">%&gt;%</span></span>
+<span id="cb10-329"><a href="#cb10-329" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(TARGET_FLAG <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb10-330"><a href="#cb10-330" aria-hidden="true" tabindex="-1"></a>reg.tindex <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(rindex<span class="sc">$</span>TARGET_AMT, <span class="at">p =</span> .<span class="dv">7</span>, <span class="at">list =</span> <span class="cn">FALSE</span>, <span class="at">times =</span> <span class="dv">1</span>)</span>
+<span id="cb10-331"><a href="#cb10-331" aria-hidden="true" tabindex="-1"></a>reg.train <span class="ot">&lt;-</span> rindex[reg.tindex,]</span>
+<span id="cb10-332"><a href="#cb10-332" aria-hidden="true" tabindex="-1"></a>reg.test <span class="ot">&lt;-</span> rindex[<span class="sc">-</span>reg.tindex,]</span>
+<span id="cb10-333"><a href="#cb10-333" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-334"><a href="#cb10-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-335"><a href="#cb10-335" aria-hidden="true" tabindex="-1"></a><span class="fu">## Model Building</span></span>
+<span id="cb10-336"><a href="#cb10-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-337"><a href="#cb10-337" aria-hidden="true" tabindex="-1"></a>Our objective was to build multiple linear regression and binomial logistic regression models to predict the amount of auto insurance claim. We explored, analyzed, and prepared the data as best we could in an attempt to improve the predictive outcome. The manner in which these were built is detailed in the Caret Model code chunk.</span>
+<span id="cb10-338"><a href="#cb10-338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-341"><a href="#cb10-341" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-342"><a href="#cb10-342" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: model-builds</span></span>
+<span id="cb10-343"><a href="#cb10-343" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Caret Models"</span></span>
+<span id="cb10-344"><a href="#cb10-344" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 1: Establish Baseline</span></span>
+<span id="cb10-345"><a href="#cb10-345" aria-hidden="true" tabindex="-1"></a><span class="co"># This models uses only previous accident as a predictor</span></span>
+<span id="cb10-346"><a href="#cb10-346" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(TARGET_FLAG <span class="sc">~</span> previous_accident, </span>
+<span id="cb10-347"><a href="#cb10-347" aria-hidden="true" tabindex="-1"></a>              <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>), train)</span>
+<span id="cb10-348"><a href="#cb10-348" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 2: Experimentally Determine Best Features by Hand</span></span>
+<span id="cb10-349"><a href="#cb10-349" aria-hidden="true" tabindex="-1"></a><span class="co"># These features were selected by alpha level and intuition</span></span>
+<span id="cb10-350"><a href="#cb10-350" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(TARGET_FLAG <span class="sc">~</span> previous_accident <span class="sc">+</span> </span>
+<span id="cb10-351"><a href="#cb10-351" aria-hidden="true" tabindex="-1"></a>                city <span class="sc">+</span> young <span class="sc">+</span> clean_rec <span class="sc">+</span> </span>
+<span id="cb10-352"><a href="#cb10-352" aria-hidden="true" tabindex="-1"></a>                educated, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>), train)</span>
+<span id="cb10-353"><a href="#cb10-353" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 3: Add Recommended Risk Predictors from III</span></span>
+<span id="cb10-354"><a href="#cb10-354" aria-hidden="true" tabindex="-1"></a><span class="co"># This model takes another step towards improving accuracy </span></span>
+<span id="cb10-355"><a href="#cb10-355" aria-hidden="true" tabindex="-1"></a>model3 <span class="ot">&lt;-</span> <span class="fu">glm</span>(TARGET_FLAG <span class="sc">~</span> previous_accident <span class="sc">+</span> </span>
+<span id="cb10-356"><a href="#cb10-356" aria-hidden="true" tabindex="-1"></a>                city <span class="sc">+</span> mstatus <span class="sc">+</span> income.values <span class="sc">+</span> </span>
+<span id="cb10-357"><a href="#cb10-357" aria-hidden="true" tabindex="-1"></a>                sex <span class="sc">+</span> car_use <span class="sc">+</span> educated <span class="sc">+</span> KIDSDRIV <span class="sc">+</span> </span>
+<span id="cb10-358"><a href="#cb10-358" aria-hidden="true" tabindex="-1"></a>                revoked, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>), </span>
+<span id="cb10-359"><a href="#cb10-359" aria-hidden="true" tabindex="-1"></a>              train)</span>
+<span id="cb10-360"><a href="#cb10-360" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 4: All in One</span></span>
+<span id="cb10-361"><a href="#cb10-361" aria-hidden="true" tabindex="-1"></a><span class="co"># Examine results with all variables included, what worked?</span></span>
+<span id="cb10-362"><a href="#cb10-362" aria-hidden="true" tabindex="-1"></a>model4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(target_amt <span class="sc">~</span> ., train) </span>
+<span id="cb10-363"><a href="#cb10-363" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 5: Linear Regression with Dollar Estimators</span></span>
+<span id="cb10-364"><a href="#cb10-364" aria-hidden="true" tabindex="-1"></a><span class="co"># This model leans heavy on the variables with specific dollar figures</span></span>
+<span id="cb10-365"><a href="#cb10-365" aria-hidden="true" tabindex="-1"></a>model5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(target_amt <span class="sc">~</span> income.values <span class="sc">+</span></span>
+<span id="cb10-366"><a href="#cb10-366" aria-hidden="true" tabindex="-1"></a>               home.values <span class="sc">+</span> bluebook.values <span class="sc">+</span> </span>
+<span id="cb10-367"><a href="#cb10-367" aria-hidden="true" tabindex="-1"></a>               oldclaim.values <span class="sc">+</span> avg_claim, </span>
+<span id="cb10-368"><a href="#cb10-368" aria-hidden="true" tabindex="-1"></a>             train) </span>
+<span id="cb10-369"><a href="#cb10-369" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 6: Multidirectional StepAIC Regression</span></span>
+<span id="cb10-370"><a href="#cb10-370" aria-hidden="true" tabindex="-1"></a><span class="co"># This uses a Stepwise Akaike Information Criteria to evaluate </span></span>
+<span id="cb10-371"><a href="#cb10-371" aria-hidden="true" tabindex="-1"></a><span class="co"># and select predictors in the model with some special data prep</span></span>
+<span id="cb10-372"><a href="#cb10-372" aria-hidden="true" tabindex="-1"></a>model6 <span class="ot">&lt;-</span> <span class="fu">lm</span>(target_amt <span class="sc">~</span> . <span class="sc">-</span>TARGET_AMT <span class="sc">-</span>TARGET_FLAG, train) </span>
+<span id="cb10-373"><a href="#cb10-373" aria-hidden="true" tabindex="-1"></a>pm <span class="ot">&lt;-</span> <span class="fu">stepAIC</span>(model6, <span class="at">trace =</span> F, <span class="at">direction =</span> <span class="st">"both"</span>)</span>
+<span id="cb10-374"><a href="#cb10-374" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-375"><a href="#cb10-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-376"><a href="#cb10-376" aria-hidden="true" tabindex="-1"></a>Another model wherein everything but the kitchen sink was thrown at it (aptly known as the kitchen sink model), gave us insights into which variables were significant to use and what their effect on the model would probably be. Of course, with a model that contains over 30 variables, there is room for some complex interactions to occur. We rely on our exploration and analysis to guide us in the creation of additional models alongside the results from the kitchen sink model, historical model, and conventional wisdom from the auto insurance domain.</span>
+<span id="cb10-377"><a href="#cb10-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-378"><a href="#cb10-378" aria-hidden="true" tabindex="-1"></a>Since we humans tend to poorly judge relationships represented as mathematical operations, a stepwise AIC model was created to do a lot of work for us. This model performs a check by cycling through the variables both forwards and backwards to pick the variables that are most likely to improve the predictive capacity of the model. The AIC just stands for Akaike Information Criterion which is an estimator of prediction error. In this model, when stepping (or cycling) through variables, we are using this criterion to select variables that reduce the amount of error present in the model. Ideally, this will improve model quality and output.</span>
+<span id="cb10-379"><a href="#cb10-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-380"><a href="#cb10-380" aria-hidden="true" tabindex="-1"></a>We finish with some general predictions of each model type. We created a historical model, kitchen sink model, a multidirectional stepwiseAIC, backward stepwiseAIC, high risk predictor model, and a conventional wisdom model using information from the Insurance Information Institute (III). These will be put to the test in the model selection process. Which one do you think will perform best?</span>
+<span id="cb10-381"><a href="#cb10-381" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-384"><a href="#cb10-384" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-385"><a href="#cb10-385" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: model-predictions</span></span>
+<span id="cb10-386"><a href="#cb10-386" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Prediction"</span></span>
+<span id="cb10-387"><a href="#cb10-387" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb10-388"><a href="#cb10-388" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb10-389"><a href="#cb10-389" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb10-390"><a href="#cb10-390" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate predicted values</span></span>
+<span id="cb10-391"><a href="#cb10-391" aria-hidden="true" tabindex="-1"></a><span class="co"># Classifier Models</span></span>
+<span id="cb10-392"><a href="#cb10-392" aria-hidden="true" tabindex="-1"></a>mod1.pred <span class="ot">&lt;-</span> <span class="fu">predict.glm</span>(model1, test)</span>
+<span id="cb10-393"><a href="#cb10-393" aria-hidden="true" tabindex="-1"></a>mod2.pred <span class="ot">&lt;-</span> <span class="fu">predict.glm</span>(model2, test)</span>
+<span id="cb10-394"><a href="#cb10-394" aria-hidden="true" tabindex="-1"></a>mod3.pred <span class="ot">&lt;-</span> <span class="fu">predict.glm</span>(model3, test)</span>
+<span id="cb10-395"><a href="#cb10-395" aria-hidden="true" tabindex="-1"></a><span class="co"># Regression Models</span></span>
+<span id="cb10-396"><a href="#cb10-396" aria-hidden="true" tabindex="-1"></a>mod4.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(model4, test, <span class="at">interval =</span> <span class="st">"prediction"</span>)</span>
+<span id="cb10-397"><a href="#cb10-397" aria-hidden="true" tabindex="-1"></a>mod5.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(model5, test, <span class="at">interval =</span> <span class="st">"prediction"</span>)</span>
+<span id="cb10-398"><a href="#cb10-398" aria-hidden="true" tabindex="-1"></a>mod6.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(model6, test, <span class="at">interval =</span> <span class="st">"prediction"</span>)</span>
+<span id="cb10-399"><a href="#cb10-399" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-400"><a href="#cb10-400" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-401"><a href="#cb10-401" aria-hidden="true" tabindex="-1"></a><span class="fu">## Model Selection</span></span>
+<span id="cb10-402"><a href="#cb10-402" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-403"><a href="#cb10-403" aria-hidden="true" tabindex="-1"></a>To standardize the process of model selection, a function is created wherein all statistics are computed the same way. It begins by bringing in the holdout data we created in the data prep section. This is named the test data. With this we evaluate how accurately the model predicted the result. We then compute a confusion matrix which contains the rates of false positives, true positives, false negatives, and true negatives and estimate model specificity, sensitivity, precision, and recall with those values. These combined measures let us find the F1 score, and from them we can create a receiver operating characteristic (ROC) plot and find the area under the curve (AUC). These provide details about the accuracy and real-world effectiveness of a model.</span>
+<span id="cb10-404"><a href="#cb10-404" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-407"><a href="#cb10-407" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-408"><a href="#cb10-408" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: model-selection</span></span>
+<span id="cb10-409"><a href="#cb10-409" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Model Statistics Function"</span></span>
+<span id="cb10-410"><a href="#cb10-410" aria-hidden="true" tabindex="-1"></a><span class="co">#| include: false</span></span>
+<span id="cb10-411"><a href="#cb10-411" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb10-412"><a href="#cb10-412" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb10-413"><a href="#cb10-413" aria-hidden="true" tabindex="-1"></a>modstat <span class="ot">&lt;-</span> <span class="cf">function</span>(model, test, <span class="at">target =</span> <span class="st">"TARGET_FLAG"</span>, <span class="at">threshold =</span> <span class="fl">0.5</span>){</span>
+<span id="cb10-414"><a href="#cb10-414" aria-hidden="true" tabindex="-1"></a>  test<span class="sc">$</span>new <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">predict.glm</span>(model, test, <span class="st">"response"</span>) <span class="sc">&gt;=</span> threshold, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb10-415"><a href="#cb10-415" aria-hidden="true" tabindex="-1"></a>    cm <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(<span class="fu">factor</span>(test<span class="sc">$</span>new), <span class="fu">factor</span>(test[[target]]), <span class="st">"1"</span>)</span>
+<span id="cb10-416"><a href="#cb10-416" aria-hidden="true" tabindex="-1"></a>    df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">obs =</span> test<span class="sc">$</span>TARGET_FLAG, <span class="at">predicted =</span> test<span class="sc">$</span>new, <span class="at">probs =</span> <span class="fu">predict</span>(model, test))</span>
+<span id="cb10-417"><a href="#cb10-417" aria-hidden="true" tabindex="-1"></a>  Pscores <span class="ot">&lt;-</span> <span class="fu">prediction</span>(df<span class="sc">$</span>probs, df<span class="sc">$</span>obs)</span>
+<span id="cb10-418"><a href="#cb10-418" aria-hidden="true" tabindex="-1"></a>  AUC <span class="ot">&lt;-</span> <span class="fu">performance</span>(Pscores, <span class="at">measure =</span> <span class="st">"auc"</span>)<span class="sc">@</span>y.values[[<span class="dv">1</span>]]</span>
+<span id="cb10-419"><a href="#cb10-419" aria-hidden="true" tabindex="-1"></a>    pscores <span class="ot">&lt;-</span> <span class="fu">performance</span>(Pscores, <span class="st">"tpr"</span>, <span class="st">"fpr"</span>)</span>
+<span id="cb10-420"><a href="#cb10-420" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(pscores,<span class="at">main=</span><span class="st">"ROC Curve"</span>, <span class="at">sub =</span> <span class="fu">paste0</span>(<span class="st">"AUC: "</span>, <span class="fu">round</span>(AUC, <span class="dv">3</span>)))</span>
+<span id="cb10-421"><a href="#cb10-421" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">cat</span>(<span class="st">"F1 = "</span>, cm<span class="sc">$</span>byClass[<span class="dv">7</span>], <span class="st">" "</span>), cm)</span>
+<span id="cb10-422"><a href="#cb10-422" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
+<span id="cb10-423"><a href="#cb10-423" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-424"><a href="#cb10-424" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-425"><a href="#cb10-425" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-426"><a href="#cb10-426" aria-hidden="true" tabindex="-1"></a>As a quick reference, we show the results from one of the best models, that of the multidirectional stepwiseAIC. The receiver operating characteristic curve is plotted alongside text containing the accuracy, its bounds, how precise and sensitive it is as well as multiple significance values including McNemars p-value and an accuracy p-value. Each model went through this evaluation process.</span>
+<span id="cb10-427"><a href="#cb10-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-430"><a href="#cb10-430" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-431"><a href="#cb10-431" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: model-selection-model6-summary</span></span>
+<span id="cb10-432"><a href="#cb10-432" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Model Summary"</span></span>
+<span id="cb10-433"><a href="#cb10-433" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb10-434"><a href="#cb10-434" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb10-435"><a href="#cb10-435" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Function to Evaluate All Models</span></span>
+<span id="cb10-436"><a href="#cb10-436" aria-hidden="true" tabindex="-1"></a>modstat <span class="ot">&lt;-</span> <span class="cf">function</span>(model, test, </span>
+<span id="cb10-437"><a href="#cb10-437" aria-hidden="true" tabindex="-1"></a>                    <span class="at">target =</span> <span class="st">"TARGET_FLAG"</span>, <span class="at">threshold =</span> <span class="fl">0.5</span>){</span>
+<span id="cb10-438"><a href="#cb10-438" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-439"><a href="#cb10-439" aria-hidden="true" tabindex="-1"></a>  <span class="co"># test model using predictions with test data</span></span>
+<span id="cb10-440"><a href="#cb10-440" aria-hidden="true" tabindex="-1"></a>  test<span class="sc">$</span>new <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">predict.glm</span>(</span>
+<span id="cb10-441"><a href="#cb10-441" aria-hidden="true" tabindex="-1"></a>    model, test, <span class="st">"response"</span>) <span class="sc">&gt;=</span> threshold, <span class="dv">1</span>, <span class="dv">0</span>) </span>
+<span id="cb10-442"><a href="#cb10-442" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-443"><a href="#cb10-443" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create confusion matrix with stats</span></span>
+<span id="cb10-444"><a href="#cb10-444" aria-hidden="true" tabindex="-1"></a>    <span class="co"># shows true positive, false positive, and their inverse</span></span>
+<span id="cb10-445"><a href="#cb10-445" aria-hidden="true" tabindex="-1"></a>    cm <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(<span class="fu">factor</span>(test<span class="sc">$</span>new), </span>
+<span id="cb10-446"><a href="#cb10-446" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">factor</span>(test[[target]]), <span class="st">"1"</span>)</span>
+<span id="cb10-447"><a href="#cb10-447" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-448"><a href="#cb10-448" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Organize information into data frame</span></span>
+<span id="cb10-449"><a href="#cb10-449" aria-hidden="true" tabindex="-1"></a>    df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">obs =</span> test<span class="sc">$</span>TARGET_FLAG, </span>
+<span id="cb10-450"><a href="#cb10-450" aria-hidden="true" tabindex="-1"></a>                     <span class="at">predicted =</span> test<span class="sc">$</span>new, </span>
+<span id="cb10-451"><a href="#cb10-451" aria-hidden="true" tabindex="-1"></a>                     <span class="at">probs =</span> <span class="fu">predict</span>(model, test))</span>
+<span id="cb10-452"><a href="#cb10-452" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-453"><a href="#cb10-453" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate performance and significance values</span></span>
+<span id="cb10-454"><a href="#cb10-454" aria-hidden="true" tabindex="-1"></a>  Pscores <span class="ot">&lt;-</span> <span class="fu">prediction</span>(df<span class="sc">$</span>probs, </span>
+<span id="cb10-455"><a href="#cb10-455" aria-hidden="true" tabindex="-1"></a>                        df<span class="sc">$</span>obs)</span>
+<span id="cb10-456"><a href="#cb10-456" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-457"><a href="#cb10-457" aria-hidden="true" tabindex="-1"></a>  <span class="co"># AUC = "Area Under the Curve" </span></span>
+<span id="cb10-458"><a href="#cb10-458" aria-hidden="true" tabindex="-1"></a>  AUC <span class="ot">&lt;-</span> <span class="fu">performance</span>(Pscores, </span>
+<span id="cb10-459"><a href="#cb10-459" aria-hidden="true" tabindex="-1"></a>                     <span class="at">measure =</span> <span class="st">"auc"</span>)<span class="sc">@</span>y.values[[<span class="dv">1</span>]]</span>
+<span id="cb10-460"><a href="#cb10-460" aria-hidden="true" tabindex="-1"></a>    pscores <span class="ot">&lt;-</span> <span class="fu">performance</span>(Pscores, </span>
+<span id="cb10-461"><a href="#cb10-461" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"tpr"</span>, <span class="st">"fpr"</span>)</span>
+<span id="cb10-462"><a href="#cb10-462" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-463"><a href="#cb10-463" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plot the scores of true positive/ false positive</span></span>
+<span id="cb10-464"><a href="#cb10-464" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This is a receiver operating characteristic (ROC) curve </span></span>
+<span id="cb10-465"><a href="#cb10-465" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(pscores,<span class="at">main=</span><span class="st">"ROC Curve"</span>, </span>
+<span id="cb10-466"><a href="#cb10-466" aria-hidden="true" tabindex="-1"></a>       <span class="at">sub =</span> <span class="fu">paste0</span>(<span class="st">"AUC: "</span>, </span>
+<span id="cb10-467"><a href="#cb10-467" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">round</span>(AUC, <span class="dv">3</span>)))</span>
+<span id="cb10-468"><a href="#cb10-468" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-469"><a href="#cb10-469" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extract the F1 score </span></span>
+<span id="cb10-470"><a href="#cb10-470" aria-hidden="true" tabindex="-1"></a>    <span class="co"># place it below the plot for each model when run</span></span>
+<span id="cb10-471"><a href="#cb10-471" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">cat</span>(<span class="st">"F1 = "</span>, </span>
+<span id="cb10-472"><a href="#cb10-472" aria-hidden="true" tabindex="-1"></a>                       cm<span class="sc">$</span>byClass[<span class="dv">7</span>], <span class="st">" "</span>), cm)</span>
+<span id="cb10-473"><a href="#cb10-473" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb10-474"><a href="#cb10-474" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Output results with a ROC curve and all scores </span></span>
+<span id="cb10-475"><a href="#cb10-475" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
+<span id="cb10-476"><a href="#cb10-476" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-477"><a href="#cb10-477" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-478"><a href="#cb10-478" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate and show ONLY model 6 for quick reference</span></span>
+<span id="cb10-479"><a href="#cb10-479" aria-hidden="true" tabindex="-1"></a><span class="fu">modstat</span>(model6, test)</span>
+<span id="cb10-480"><a href="#cb10-480" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-481"><a href="#cb10-481" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-482"><a href="#cb10-482" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conclusion</span></span>
+<span id="cb10-483"><a href="#cb10-483" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-484"><a href="#cb10-484" aria-hidden="true" tabindex="-1"></a>Risk varies widely from customer to customer, and a deep understanding of different risk factors helps predict the likelihood and cost of insurance claims. Many factors contribute to the frequency and severity of car accidents including how, where and under what conditions people drive, as well as what they are driving. We developed 6 models. Half of these were multiple linear regression models and the other half were binomial logistic regression. Both have their benefits in the right context.</span>
+<span id="cb10-485"><a href="#cb10-485" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-488"><a href="#cb10-488" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb10-489"><a href="#cb10-489" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: conclusion-model-comparison</span></span>
+<span id="cb10-490"><a href="#cb10-490" aria-hidden="true" tabindex="-1"></a><span class="co">#| code-summary: "Comparison Table"</span></span>
+<span id="cb10-491"><a href="#cb10-491" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb10-492"><a href="#cb10-492" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb10-493"><a href="#cb10-493" aria-hidden="true" tabindex="-1"></a>mod.stats.table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(</span>
+<span id="cb10-494"><a href="#cb10-494" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Model 1"</span>, <span class="fl">0.722</span>, <span class="fl">0.757</span>, <span class="fl">0.5</span>, .<span class="dv">01</span>, </span>
+<span id="cb10-495"><a href="#cb10-495" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Model 2"</span>, <span class="fl">0.732</span>, <span class="fl">0.767</span>, <span class="fl">0.58</span>, <span class="fl">0.333</span>,</span>
+<span id="cb10-496"><a href="#cb10-496" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Model 3"</span>, <span class="fl">0.754</span>, <span class="fl">0.788</span>, <span class="fl">0.625</span>, <span class="fl">0.422</span>,</span>
+<span id="cb10-497"><a href="#cb10-497" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Model 4"</span>, <span class="fl">0.998</span>, <span class="fl">0.999</span>, <span class="fl">0.999</span>, <span class="fl">0.999</span>, </span>
+<span id="cb10-498"><a href="#cb10-498" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Model 5"</span>, <span class="fl">0.719</span>, <span class="fl">0.753</span>, <span class="fl">0.514</span>, .<span class="dv">090</span>,</span>
+<span id="cb10-499"><a href="#cb10-499" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Model 6"</span>, <span class="fl">0.775</span>, <span class="fl">0.808</span>, <span class="fl">0.657</span>, <span class="fl">0.484</span>),</span>
+<span id="cb10-500"><a href="#cb10-500" aria-hidden="true" tabindex="-1"></a>         <span class="at">nrow =</span> <span class="dv">6</span>, <span class="at">byrow =</span> T))</span>
+<span id="cb10-501"><a href="#cb10-501" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(mod.stats.table) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ID"</span>, <span class="st">"Lower Bound"</span>, <span class="st">"Upper Bound"</span>, </span>
+<span id="cb10-502"><a href="#cb10-502" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"Balanced Accuracy"</span>, <span class="st">"F1 Score"</span>)</span>
+<span id="cb10-503"><a href="#cb10-503" aria-hidden="true" tabindex="-1"></a>mod.stats.table</span>
+<span id="cb10-504"><a href="#cb10-504" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-505"><a href="#cb10-505" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-506"><a href="#cb10-506" aria-hidden="true" tabindex="-1"></a>With an accuracy between 78 - 81%, the multidirectional stepwiseAIC model wins the contest between these two model types. It was also the most useful real-world model with a balanced accuracy at 65.7%. Its F1 score was 0.484, indicating the relationship between precision (how well it predicts true positives) and recall (ratio of correct positives in the predictions) is better than any other method of modeling.</span>
+<span id="cb10-507"><a href="#cb10-507" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-508"><a href="#cb10-508" aria-hidden="true" tabindex="-1"></a>In this table we reviewed the model's lower and upper accuracy bounds, its balanced accuracy, and F1 scores. The results show Model 3, our other stepwiseAIC, is the runner up. Model 4 is the only model that appears to have been too effective, and is not realistic for a variety of reasons. Perhaps the most important being over-fitting.</span>
+<span id="cb10-509"><a href="#cb10-509" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-510"><a href="#cb10-510" aria-hidden="true" tabindex="-1"></a>Of these factors in prediction, balanced accuracy is likely the best criteria to judge the models on in this scenario. This is because it finds arithmetic mean of sensitivity and specificity which tends to represent imbalanced data better than accuracy alone. Since our data set was highly imbalanced and the target class of claim amount appeared much less than the non-target class, this accuracy estimate helps balance expectations.</span>
+<span id="cb10-511"><a href="#cb10-511" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-512"><a href="#cb10-512" aria-hidden="true" tabindex="-1"></a>Of course, these predictions could be improved. When building models, it may be a good idea to perform some feature engineering to better isolate the riskiest and least risky customers. Other model types may also offer new insights.</span>
+<span id="cb10-513"><a href="#cb10-513" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-514"><a href="#cb10-514" aria-hidden="true" tabindex="-1"></a>For more, view the <span class="co">[</span><span class="ot">full report</span><span class="co">](https://github.com/palmorezm/misc/blob/master/DS2_Share)</span> on my GitHub page.</span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+</body></html>

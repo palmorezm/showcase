@@ -5,14 +5,16 @@ project:
 website:
   title: "Zachary Palmore"
   navbar:
-    left:
+    right:
       - href: index.qmd
         text: Home
       - about.qmd
 
 format:
   html:
-    theme: flatly
+    theme: 
+      light: flatly
+      dark: darkly
     css: styles.css
     toc: true
 
