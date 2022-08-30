@@ -1,6 +1,6 @@
 ---
 title: "Loan Approval"
-subtitle: "A Credit Risk Assessment"
+subtitle: "A Credit Risk Assessment for Lenders"
 author: "Zach Palmore"
 date: "2022-08-28"
 categories: [predictive, modeling, data science]

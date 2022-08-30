@@ -30,6 +30,7 @@ A good forecast is a blessing while the wrong forecast could prove to be dangero
 Given an unknown data source with several groups, we attempt to predict the next 140 values of a times series data set based on 1622 entries provided on multiple events. Our predictions will be fine-tuned to reduce the mean absolute percentage error (MAPE) as much as possible. The packages we will be using and all associated code to produce the models can be found in the attached markdown file. The data with its first five rows, are shown below.  
 
 ```{r}
+#| include: false
 # Packages
 library(tidyverse)
 library(kableExtra)
@@ -47,6 +48,11 @@ library(urca)
 library(ROCR)
 library(TSstudio)
 library(stringr)
+```
+
+
+
+```{r}
 # Data source
 data <- read.csv("https://raw.githubusercontent.com/palmorezm/msds/main/Predictive%20Analytics/Projects/Project1/project1data.csv")
 # data <- data %>% 
@@ -182,6 +188,7 @@ S03_Var07<-S03_Var07[1:1625,]
 Statistical summaries, box plots, and histograms were run on each group to evaluate where the average value of each variable was, if its distribution was skewed, determine whether outliers were present, and provide other descriptors of the data. These informed us that the average value (mean) of the variables are similar but their range varies widely with Var05 at 186.01 while Var02 covers a range of 479 million. Our analysis solves this potential problem by focusing on variables of the same scales as the intended target.
 
 ```{r}
+#| include: false
 # library(imputeTS)
 # Summarize the subset data.
 
@@ -264,10 +271,20 @@ boxplot(ts_S03_Var07)
 ```
 
 
+```{r}
+summary(S01_Var01)
+par(mfrow = c(1,2))
+hist(ts_S01_Var01)
+boxplot(ts_S01_Var01)
+autoplot(ts_S01_Var01)
+```
+
+
 Additionally, all but group S03 of the histograms exhibited right skewness, and Var02 and Var03 had outliers. These were replaced using Friedman’s super smoothing method. Due to the randomness of these variables, determining outliers was difficult and there is a presence of additional overly influential points as determined using Cook's distance formula. We acknowledge the presence of these points but are unable to alter them as they are likely intentional based on the patterns in the data. For reference, the observations are shown in the scatter plot with color coding by each group. 
 
 
 ```{r}
+#| warning: false
 data[c(1:7)]%>%
   gather(variable, value, -SeriesInd, -group) %>%
   ggplot(., aes(value, SeriesInd, color = group)) + 
@@ -296,6 +313,7 @@ data[c(1:7)]%>%
 Seasonality was also considered. It is possible this data follows a weak seasonal trend that increases during summer months but there is not a lot of evidence to support regular fluctuations. Regular gaps were noticed in the time series on a weekly basis and several methods were used in attempts to fix this. However, the data appears randomly distributed and as such, acts randomly. For this reason, we left the gaps alone and any further adjustments made were minimal to avoid disturbing any existing patterns in the data. 
 
 ```{r}
+#| include: false
 ndiffs(ts_S01_Var01)
 ts_S01_Var01%>%diff()%>%ndiffs()
 # ndiffs test for ts_S01_Var02.
@@ -324,6 +342,7 @@ We determined that the best model type was an Auto Regressive Integrated Moving 
 ## Prediction
 
 ```{r}
+#| include: false
 train0101<-window(ts_S01_Var01, end=as.integer(length(ts_S01_Var01)*0.7))
 train0102<-window(ts_S01_Var02, end=as.integer(length(ts_S01_Var02)*0.7))
 train0202<-window(ts_S02_Var02, end=as.integer(length(ts_S02_Var02)*0.7))
@@ -409,4 +428,112 @@ csv <- data.frame(cbind(S0101_preds, S0102_preds, S0202_preds, S0203_preds,S0305
 # write.csv(csv, file = "C:/data/csv.csv")
 ```
 
+
+
+```{r}
+#| include: false
+extract <- fcast0101 %>% 
+  as.data.frame() %>%
+  mutate(Day = seq(1:length(`Hi 95`))) 
+extract[which(extract$Day == 10),]$`Hi 95`
+extract[which(extract$Day == 10),]$`Lo 95`
+extract[which(extract$Day == 10),]$`Point Forecast`
+txtx90 <- 88
+txtx80 <- 74
+b1 <- 15
+b2 <- 30
+b3 <- 60
+b4 <- 90
+extract[which(extract$Day == b1),]$`Hi 95`
+extract[which(extract$Day == 10),]$`Lo 95`
+?geom_segment
+```
+
+
+```{r}
+mape0101
+fcast0101
+fcast0101 %>%
+  as.data.frame() %>%
+  ggplot(aes(x = seq(1:length(`Hi 95`)))) + 
+  geom_ribbon(aes(ymin=`Lo 95`,ymax=`Hi 95`), fill="forest green", alpha=0.5) + 
+  geom_ribbon(aes(ymin=`Lo 80`,ymax=`Hi 80`), fill="dark green", alpha=0.5) +
+  geom_line(aes(y = `Hi 95`), color = "grey", size=2, alpha = .5) + 
+  geom_line(aes(y = `Point Forecast`), color = "#000000", size=1, lty = 1, alpha = .5) + 
+  geom_line(aes(y = `Lo 95`), color = "grey", size=2, alpha = .5) + 
+  geom_vline(xintercept = b1, lty = 3) +
+  geom_vline(xintercept = b2, lty = 3) +
+  geom_vline(xintercept = b3, lty = 3) +
+  geom_segment(aes(x = 0, y = extract[which(extract$Day == b1),]$`Hi 95`, 
+                   xend = b1, yend = extract[which(extract$Day == b1),]$`Hi 95`), lty = 3) +
+  geom_segment(aes(x = 0, y = extract[which(extract$Day == b1),]$`Lo 95`, 
+                   xend = b1, yend = extract[which(extract$Day == b1),]$`Lo 95`), lty = 3) +
+  geom_segment(aes(x = 0, y = extract[which(extract$Day == b2),]$`Hi 95`, 
+                   xend = b2, yend = extract[which(extract$Day == b2),]$`Hi 95`), lty = 3) +
+  geom_segment(aes(x = 0, y = extract[which(extract$Day == b2),]$`Lo 95`, 
+                   xend = b2, yend = extract[which(extract$Day == b2),]$`Lo 95`), lty = 3) +
+  geom_segment(aes(x = 0, y = extract[which(extract$Day == b3),]$`Hi 95`, 
+                   xend = b3, yend = extract[which(extract$Day == b3),]$`Hi 95`), lty = 3) +
+  geom_segment(aes(x = 0, y = extract[which(extract$Day == b3),]$`Lo 95`, 
+                   xend = b3, yend = extract[which(extract$Day == b3),]$`Lo 95`), lty = 3) +
+  geom_segment(aes(x = 0, y = extract[which(extract$Day == b4),]$`Hi 95`, 
+                   xend = b4, yend = extract[which(extract$Day == b4),]$`Hi 95`), lty = 3) +
+  geom_segment(aes(x = 0, y = extract[which(extract$Day == b4),]$`Lo 95`, 
+                   xend = b4, yend = extract[which(extract$Day == b4),]$`Lo 95`), lty = 3) +
+  scale_x_continuous(expand = c(0, 0), 
+                     limits=c(0,100), 
+                     breaks = c(0, b1, b2, b3, b4)) +
+  scale_y_continuous(expand = c(0, 0), 
+                     limits=c(min(fcast0101$lower), max(fcast0101$upper)), 
+                     breaks = c(round(fcast0101$mean[[1]], digits = 2),
+                                round(extract[which(extract$Day == b1),]$`Hi 95`, 2), 
+                                round(extract[which(extract$Day == b1),]$`Lo 95`, 2),
+                                round(extract[which(extract$Day == b2),]$`Hi 95`, 2),
+                                round(extract[which(extract$Day == b2),]$`Lo 95`, 2), 
+                                round(extract[which(extract$Day == b3),]$`Hi 95`, 2),
+                                round(extract[which(extract$Day == b3),]$`Lo 95`, 2), 
+                                round(extract[which(extract$Day == b4),]$`Hi 95`, 2),
+                                round(extract[which(extract$Day == b4),]$`Lo 95`, 2))) +
+  annotate("text", x = 7.5, y =53.9, label = paste0("MAPE =", signif(mape0101, 4))) +
+  annotate("label",x=txtx90,y=extract[which(extract$Day == txtx90),]$`Point Forecast` + 3.50, 
+           label = "95% Confidence" ) + 
+  annotate("segment", x = txtx90, y = mean(extract$`Point Forecast`) + 4.75, 
+           xend = txtx90, 
+           yend = extract[which(extract$Day == txtx90),]$`Hi 95`,
+         arrow = arrow(type = "closed", length = unit(0.02, "npc"))) +
+  annotate("segment", x = txtx90, y = mean(extract$`Point Forecast`) + 3, 
+           xend = txtx90, 
+           yend = extract[which(extract$Day == txtx90),]$`Lo 95`,
+         arrow = arrow(type = "closed", length = unit(0.02, "npc"))) + 
+  annotate("label",x=txtx80, y=extract[which(extract$Day == txtx90),]$`Point Forecast` - 3.01, 
+           label = "80% Confidence" ) +
+  annotate("segment", x = txtx80, y = mean(extract$`Point Forecast`) - 1.75, 
+           xend = txtx80, 
+           yend = extract[which(extract$Day == txtx80),]$`Hi 80`,
+         arrow = arrow(type = "closed", length = unit(0.02, "npc"))) +
+  annotate("segment", x = txtx80, y = mean(extract$`Point Forecast`) -3.5, 
+           xend = txtx80, 
+           yend = extract[which(extract$Day == txtx80),]$`Lo 80`,
+         arrow = arrow(type = "closed", length = unit(0.02, "npc"))) +
+  annotate("label",x=b1 - 7.05, y=mean(extract$`Point Forecast`) + 6, 
+           label = paste("Day 15:", signif(extract[which(extract$Day == b1),]$`Point Forecast`, 4))) +
+  annotate("segment", x = b1 - 7, y = mean(extract$`Point Forecast`) + 5, 
+           yend = extract[which(extract$Day == b1),]$`Point Forecast`,
+           xend = b1, 
+         arrow = arrow(type = "closed", length = unit(0.02, "npc")))  +
+  annotate("label",x=b2 - 5, y=mean(extract$`Point Forecast`) + 9, 
+           label = paste("Day 30:", signif(extract[which(extract$Day == b2),]$`Point Forecast`, 4))) +
+  annotate("segment", x = b2 - 4, y = mean(extract$`Point Forecast`) + 8.0, 
+           yend = extract[which(extract$Day == b2),]$`Point Forecast`,
+           xend = b2, 
+         arrow = arrow(type = "closed", length = unit(0.02, "npc")))  +
+  annotate("label",x=b3 - 10, y=mean(extract$`Point Forecast`) + 11, 
+           label = paste("Day 60:", signif(extract[which(extract$Day == b3),]$`Point Forecast`, 4))) +
+  annotate("segment", x = b3 - 10, y = mean(extract$`Point Forecast`) + 9.75, 
+           yend = extract[which(extract$Day == b3),]$`Point Forecast`,
+           xend = b3, 
+         arrow = arrow(type = "closed", length = unit(0.02, "npc")))  
+  theme_minimal()
+?scale_fill_continuous
+```
 
