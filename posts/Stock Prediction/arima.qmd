@@ -445,14 +445,11 @@ b2 <- 30
 b3 <- 60
 b4 <- 90
 extract[which(extract$Day == b1),]$`Hi 95`
-extract[which(extract$Day == 10),]$`Lo 95`
-?geom_segment
 ```
 
 
 ```{r}
-mape0101
-fcast0101
+#| warning: false
 fcast0101 %>%
   as.data.frame() %>%
   ggplot(aes(x = seq(1:length(`Hi 95`)))) + 
@@ -532,8 +529,11 @@ fcast0101 %>%
   annotate("segment", x = b3 - 10, y = mean(extract$`Point Forecast`) + 9.75, 
            yend = extract[which(extract$Day == b3),]$`Point Forecast`,
            xend = b3, 
-         arrow = arrow(type = "closed", length = unit(0.02, "npc")))  
-  theme_minimal()
-?scale_fill_continuous
+         arrow = arrow(type = "closed", length = unit(0.02, "npc"))) +
+  labs(x = "Day", y = "Value", 
+       title = "Value Estimation is Less Certain with Time", 
+       subtitle = "Stock Market Day-Value Pairs over 100 Days Shows Growth of Uncertainty") + 
+  theme_minimal() + theme(plot.title = element_text(hjust = 0.5), 
+                          plot.subtitle = element_text(hjust = 0.5))
 ```
 

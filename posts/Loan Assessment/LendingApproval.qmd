@@ -126,7 +126,7 @@ For exploratory purposes, we visualize the proportions to see just how skewed an
 
 
 ```{r, cat-bar, fig.length =20, fig.width=10}
-
+#| warning: false
 # select categorical columns
 cat_cols = c()
 j <- 1
