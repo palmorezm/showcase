@@ -403,3 +403,5 @@ Given the LDa has the highest accuracy, kappa, and nearly the highest balanced a
 # Conclusion
 
 After reviewing the results of 4 different models (LDA, KNN, Decision Tree, and Random Forest), we found that LDA is the most accurate by numerous metrics and should be considered the best model for this data. However, the metrics for these 4 models was very close and it did not leave us with no choice but to pick the LDA. If presenting this to stakeholders we would recommend the LDA model with the caveat they further testing and verification may be needed to ensure the LDA is the most accurate model of other iterations of the split of training and testing data.
+
+To see the full report and source code, [visit my Github site](https://github.com/palmorezm/showcase/tree/master/posts/Loan%20Assessment).
