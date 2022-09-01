@@ -1303,27 +1303,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb54-21"><a href="#cb54-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-22"><a href="#cb54-22" aria-hidden="true" tabindex="-1"></a>------------------------------------------------------------------------</span>
 <span id="cb54-23"><a href="#cb54-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-24"><a href="#cb54-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-25"><a href="#cb54-25" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE}</span></span>
-<span id="cb54-26"><a href="#cb54-26" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">error=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">fig.align=</span><span class="st">"center"</span>, <span class="at">fig.width =</span> <span class="dv">10</span>)</span>
-<span id="cb54-27"><a href="#cb54-27" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-28"><a href="#cb54-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-29"><a href="#cb54-29" aria-hidden="true" tabindex="-1"></a>The main source of income of lenders stems from their credit line. Can it be improved?</span>
-<span id="cb54-30"><a href="#cb54-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-24"><a href="#cb54-24" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include=FALSE}</span></span>
+<span id="cb54-25"><a href="#cb54-25" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo=</span><span class="cn">FALSE</span>, <span class="at">error=</span><span class="cn">FALSE</span>, <span class="at">warning=</span><span class="cn">FALSE</span>, <span class="at">message=</span><span class="cn">FALSE</span>, <span class="at">fig.align=</span><span class="st">"center"</span>, <span class="at">fig.width =</span> <span class="dv">10</span>)</span>
+<span id="cb54-26"><a href="#cb54-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-27"><a href="#cb54-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-28"><a href="#cb54-28" aria-hidden="true" tabindex="-1"></a>The main source of income of lenders stems from their credit line. Can it be improved?</span>
+<span id="cb54-29"><a href="#cb54-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-30"><a href="#cb54-30" aria-hidden="true" tabindex="-1"></a>To see the full report and source code, <span class="co">[</span><span class="ot">visit my Github site</span><span class="co">](https://github.com/palmorezm/showcase/tree/master/posts/Loan%20Assessment)</span>.</span>
 <span id="cb54-31"><a href="#cb54-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-32"><a href="#cb54-32" aria-hidden="true" tabindex="-1"></a><span class="fu"># Challenge</span></span>
-<span id="cb54-33"><a href="#cb54-33" aria-hidden="true" tabindex="-1"></a>When applying for a loan, banks and lenders use an individual's credit and other factors to determine the probability of repayment. Here, a predictive model is developed with study data that details how complex factors interact to determine the approval outcome for each individual. This method could be applied to any banks or lenders looking to lower the risk of default and loss in their portfolio to improve their institutional line of credit. </span>
-<span id="cb54-34"><a href="#cb54-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-35"><a href="#cb54-35" aria-hidden="true" tabindex="-1"></a>In this challenge we will develop models that allow us to predict whether a loan is approved given certain indicators. Models will include linear discriminant analysis, K-nearest neighbor, decision trees, and random forest algorithms and we will assess which performs best at predicting loan approval status through performance statistics. </span>
-<span id="cb54-36"><a href="#cb54-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-33"><a href="#cb54-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-34"><a href="#cb54-34" aria-hidden="true" tabindex="-1"></a>When applying for a loan, banks and lenders use an individual's credit and other factors to determine the probability of repayment. Here, a predictive model is developed with study data that details how complex factors interact to determine the approval outcome for each individual. This method could be applied to any banks or lenders looking to lower the risk of default and loss in their portfolio to improve their institutional line of credit.</span>
+<span id="cb54-35"><a href="#cb54-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-36"><a href="#cb54-36" aria-hidden="true" tabindex="-1"></a>In this challenge we will develop models that allow us to predict whether a loan is approved given certain indicators. Models will include linear discriminant analysis, K-nearest neighbor, decision trees, and random forest algorithms and we will assess which performs best at predicting loan approval status through performance statistics.</span>
 <span id="cb54-37"><a href="#cb54-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-38"><a href="#cb54-38" aria-hidden="true" tabindex="-1"></a><span class="fu"># Approach</span></span>
-<span id="cb54-39"><a href="#cb54-39" aria-hidden="true" tabindex="-1"></a>For this challenge, we begin with data exploration to understand the relationships our target variable ‘Loan_Status’ will have with our indicator variables and the variables’ relationships to each other.  This allows us to determine the steps necessary to set up for model development. Once we have an understanding of these variables we use that knowledge to prepare the data. We handle missing values, subset, train and split the data 75/25 so that we may better extract information when modeling. Then, we build the models and predict with the testing dataset. </span>
-<span id="cb54-40"><a href="#cb54-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-41"><a href="#cb54-41" aria-hidden="true" tabindex="-1"></a>We focus on prediction accuracy when assessing the models but consider a host of performance statistics and real-world applications to determine which model is best. </span>
-<span id="cb54-42"><a href="#cb54-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-43"><a href="#cb54-43" aria-hidden="true" tabindex="-1"></a>We will use ‘r’ for data modeling. All packages used for data exploration, visualization, preparation and modeling are listed in Code Appendix. </span>
-<span id="cb54-44"><a href="#cb54-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-39"><a href="#cb54-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-40"><a href="#cb54-40" aria-hidden="true" tabindex="-1"></a>For this challenge, we begin with data exploration to understand the relationships our target variable 'Loan_Status' will have with our indicator variables and the variables' relationships to each other. This allows us to determine the steps necessary to set up for model development. Once we have an understanding of these variables we use that knowledge to prepare the data. We handle missing values, subset, train and split the data 75/25 so that we may better extract information when modeling. Then, we build the models and predict with the testing dataset.</span>
+<span id="cb54-41"><a href="#cb54-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-42"><a href="#cb54-42" aria-hidden="true" tabindex="-1"></a>We focus on prediction accuracy when assessing the models but consider a host of performance statistics and real-world applications to determine which model is best.</span>
+<span id="cb54-43"><a href="#cb54-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-44"><a href="#cb54-44" aria-hidden="true" tabindex="-1"></a>We will use 'r' for data modeling. All packages used for data exploration, visualization, preparation and modeling are listed in Code Appendix.</span>
 <span id="cb54-45"><a href="#cb54-45" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-46"><a href="#cb54-46" aria-hidden="true" tabindex="-1"></a><span class="in">```{r libraries, include=FALSE, warning=FALSE, message=FALSE}</span></span>
 <span id="cb54-47"><a href="#cb54-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Libraries</span></span>
@@ -1343,379 +1343,347 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb54-61"><a href="#cb54-61" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb54-62"><a href="#cb54-62" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-63"><a href="#cb54-63" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data Exploration</span></span>
-<span id="cb54-64"><a href="#cb54-64" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Characteristics</span></span>
-<span id="cb54-65"><a href="#cb54-65" aria-hidden="true" tabindex="-1"></a>There are 614 observations of 12 variables. Each observation is an applicant’s application for a loan with its corresponding variables of interest. Below is the description of the variables of interest in the data set. </span>
+<span id="cb54-64"><a href="#cb54-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-65"><a href="#cb54-65" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data Characteristics</span></span>
 <span id="cb54-66"><a href="#cb54-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-67"><a href="#cb54-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-68"><a href="#cb54-68" aria-hidden="true" tabindex="-1"></a>|VARIABLE NAME|DESCRIPTION|</span>
-<span id="cb54-69"><a href="#cb54-69" aria-hidden="true" tabindex="-1"></a>|--|----|</span>
-<span id="cb54-70"><a href="#cb54-70" aria-hidden="true" tabindex="-1"></a>|Loan_ID|Unique Loan ID|</span>
-<span id="cb54-71"><a href="#cb54-71" aria-hidden="true" tabindex="-1"></a>|Gender|Male/ Female|</span>
-<span id="cb54-72"><a href="#cb54-72" aria-hidden="true" tabindex="-1"></a>|Married|Applicant married (Y/N)|</span>
-<span id="cb54-73"><a href="#cb54-73" aria-hidden="true" tabindex="-1"></a>|Dependents|Number of dependents|</span>
-<span id="cb54-74"><a href="#cb54-74" aria-hidden="true" tabindex="-1"></a>|Education|Applicant Education (Graduate/ Undergraduate)|</span>
-<span id="cb54-75"><a href="#cb54-75" aria-hidden="true" tabindex="-1"></a>|Self_Employed|Self employed (Y/N)|</span>
-<span id="cb54-76"><a href="#cb54-76" aria-hidden="true" tabindex="-1"></a>|ApplicantIncome|Applicant income|</span>
-<span id="cb54-77"><a href="#cb54-77" aria-hidden="true" tabindex="-1"></a>|CoapplicantIncome|Coapplicant income|</span>
-<span id="cb54-78"><a href="#cb54-78" aria-hidden="true" tabindex="-1"></a>|LoanAmount|Loan amount in thousands|</span>
-<span id="cb54-79"><a href="#cb54-79" aria-hidden="true" tabindex="-1"></a>|Loan_Amount_Term|Term of loan in months|</span>
-<span id="cb54-80"><a href="#cb54-80" aria-hidden="true" tabindex="-1"></a>|Credit_History|credit history meets guidelines|</span>
-<span id="cb54-81"><a href="#cb54-81" aria-hidden="true" tabindex="-1"></a>|Property_Area|Urban/ Semi Urban/ Rural|</span>
-<span id="cb54-82"><a href="#cb54-82" aria-hidden="true" tabindex="-1"></a>|Loan_Status|Loan approved (Y/N)|</span>
-<span id="cb54-83"><a href="#cb54-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-67"><a href="#cb54-67" aria-hidden="true" tabindex="-1"></a>There are 614 observations of 12 variables. Each observation is an applicant's application for a loan with its corresponding variables of interest. Below is the description of the variables of interest in the data set.</span>
+<span id="cb54-68"><a href="#cb54-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-69"><a href="#cb54-69" aria-hidden="true" tabindex="-1"></a>| VARIABLE NAME     | DESCRIPTION                                   |</span>
+<span id="cb54-70"><a href="#cb54-70" aria-hidden="true" tabindex="-1"></a>|-------------------|-----------------------------------------------|</span>
+<span id="cb54-71"><a href="#cb54-71" aria-hidden="true" tabindex="-1"></a>| Loan_ID           | Unique Loan ID                                |</span>
+<span id="cb54-72"><a href="#cb54-72" aria-hidden="true" tabindex="-1"></a>| Gender            | Male/ Female                                  |</span>
+<span id="cb54-73"><a href="#cb54-73" aria-hidden="true" tabindex="-1"></a>| Married           | Applicant married (Y/N)                       |</span>
+<span id="cb54-74"><a href="#cb54-74" aria-hidden="true" tabindex="-1"></a>| Dependents        | Number of dependents                          |</span>
+<span id="cb54-75"><a href="#cb54-75" aria-hidden="true" tabindex="-1"></a>| Education         | Applicant Education (Graduate/ Undergraduate) |</span>
+<span id="cb54-76"><a href="#cb54-76" aria-hidden="true" tabindex="-1"></a>| Self_Employed     | Self employed (Y/N)                           |</span>
+<span id="cb54-77"><a href="#cb54-77" aria-hidden="true" tabindex="-1"></a>| ApplicantIncome   | Applicant income                              |</span>
+<span id="cb54-78"><a href="#cb54-78" aria-hidden="true" tabindex="-1"></a>| CoapplicantIncome | Coapplicant income                            |</span>
+<span id="cb54-79"><a href="#cb54-79" aria-hidden="true" tabindex="-1"></a>| LoanAmount        | Loan amount in thousands                      |</span>
+<span id="cb54-80"><a href="#cb54-80" aria-hidden="true" tabindex="-1"></a>| Loan_Amount_Term  | Term of loan in months                        |</span>
+<span id="cb54-81"><a href="#cb54-81" aria-hidden="true" tabindex="-1"></a>| Credit_History    | credit history meets guidelines               |</span>
+<span id="cb54-82"><a href="#cb54-82" aria-hidden="true" tabindex="-1"></a>| Property_Area     | Urban/ Semi Urban/ Rural                      |</span>
+<span id="cb54-83"><a href="#cb54-83" aria-hidden="true" tabindex="-1"></a>| Loan_Status       | Loan approved (Y/N)                           |</span>
 <span id="cb54-84"><a href="#cb54-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-85"><a href="#cb54-85" aria-hidden="true" tabindex="-1"></a>There are four numeric variables represented by loan amount, loan amount term, applicant and co-applicant income. Several of these variables appear to be factors with specific levels but are not coded as such. For example, Gender, Married, Dependents, Education, Self_Employed, Property_Area, Credit_History, and Loan_Status are character strings. We will need to fix this if we are to make use of them. </span>
+<span id="cb54-85"><a href="#cb54-85" aria-hidden="true" tabindex="-1"></a>There are four numeric variables represented by loan amount, loan amount term, applicant and co-applicant income. Several of these variables appear to be factors with specific levels but are not coded as such. For example, Gender, Married, Dependents, Education, Self_Employed, Property_Area, Credit_History, and Loan_Status are character strings. We will need to fix this if we are to make use of them.</span>
 <span id="cb54-86"><a href="#cb54-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-87"><a href="#cb54-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-88"><a href="#cb54-88" aria-hidden="true" tabindex="-1"></a><span class="in">```{r data}</span></span>
-<span id="cb54-89"><a href="#cb54-89" aria-hidden="true" tabindex="-1"></a><span class="co"># read data, change blank to NA and and remove loan_id</span></span>
-<span id="cb54-90"><a href="#cb54-90" aria-hidden="true" tabindex="-1"></a>loan_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/amit-kapoor/Data622Group2/main/Loan_approval.csv'</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb54-91"><a href="#cb54-91" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na_if</span>(<span class="st">""</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb54-92"><a href="#cb54-92" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb54-93"><a href="#cb54-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-94"><a href="#cb54-94" aria-hidden="true" tabindex="-1"></a><span class="co"># categorical columns as factors</span></span>
-<span id="cb54-95"><a href="#cb54-95" aria-hidden="true" tabindex="-1"></a>loan_data <span class="ot">&lt;-</span> loan_data <span class="sc">%&gt;%</span> </span>
-<span id="cb54-96"><a href="#cb54-96" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Gender=</span><span class="fu">as.factor</span>(Gender),</span>
-<span id="cb54-97"><a href="#cb54-97" aria-hidden="true" tabindex="-1"></a>         <span class="at">Married=</span><span class="fu">as.factor</span>(Married),</span>
-<span id="cb54-98"><a href="#cb54-98" aria-hidden="true" tabindex="-1"></a>         <span class="at">Dependents=</span><span class="fu">as.factor</span>(Dependents),</span>
-<span id="cb54-99"><a href="#cb54-99" aria-hidden="true" tabindex="-1"></a>         <span class="at">Education=</span><span class="fu">as.factor</span>(Education),</span>
-<span id="cb54-100"><a href="#cb54-100" aria-hidden="true" tabindex="-1"></a>         <span class="at">Self_Employed=</span><span class="fu">as.factor</span>(Self_Employed),</span>
-<span id="cb54-101"><a href="#cb54-101" aria-hidden="true" tabindex="-1"></a>         <span class="at">Property_Area=</span><span class="fu">as.factor</span>(Property_Area),</span>
-<span id="cb54-102"><a href="#cb54-102" aria-hidden="true" tabindex="-1"></a>         <span class="at">Credit_History=</span><span class="fu">as.factor</span>(Credit_History),</span>
-<span id="cb54-103"><a href="#cb54-103" aria-hidden="true" tabindex="-1"></a>         <span class="at">Loan_Status=</span><span class="fu">as.factor</span>(Loan_Status))</span>
-<span id="cb54-104"><a href="#cb54-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-105"><a href="#cb54-105" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-106"><a href="#cb54-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-87"><a href="#cb54-87" aria-hidden="true" tabindex="-1"></a><span class="in">```{r data}</span></span>
+<span id="cb54-88"><a href="#cb54-88" aria-hidden="true" tabindex="-1"></a><span class="co"># read data, change blank to NA and and remove loan_id</span></span>
+<span id="cb54-89"><a href="#cb54-89" aria-hidden="true" tabindex="-1"></a>loan_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/amit-kapoor/Data622Group2/main/Loan_approval.csv'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb54-90"><a href="#cb54-90" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na_if</span>(<span class="st">""</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb54-91"><a href="#cb54-91" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb54-92"><a href="#cb54-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-93"><a href="#cb54-93" aria-hidden="true" tabindex="-1"></a><span class="co"># categorical columns as factors</span></span>
+<span id="cb54-94"><a href="#cb54-94" aria-hidden="true" tabindex="-1"></a>loan_data <span class="ot">&lt;-</span> loan_data <span class="sc">%&gt;%</span> </span>
+<span id="cb54-95"><a href="#cb54-95" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Gender=</span><span class="fu">as.factor</span>(Gender),</span>
+<span id="cb54-96"><a href="#cb54-96" aria-hidden="true" tabindex="-1"></a>         <span class="at">Married=</span><span class="fu">as.factor</span>(Married),</span>
+<span id="cb54-97"><a href="#cb54-97" aria-hidden="true" tabindex="-1"></a>         <span class="at">Dependents=</span><span class="fu">as.factor</span>(Dependents),</span>
+<span id="cb54-98"><a href="#cb54-98" aria-hidden="true" tabindex="-1"></a>         <span class="at">Education=</span><span class="fu">as.factor</span>(Education),</span>
+<span id="cb54-99"><a href="#cb54-99" aria-hidden="true" tabindex="-1"></a>         <span class="at">Self_Employed=</span><span class="fu">as.factor</span>(Self_Employed),</span>
+<span id="cb54-100"><a href="#cb54-100" aria-hidden="true" tabindex="-1"></a>         <span class="at">Property_Area=</span><span class="fu">as.factor</span>(Property_Area),</span>
+<span id="cb54-101"><a href="#cb54-101" aria-hidden="true" tabindex="-1"></a>         <span class="at">Credit_History=</span><span class="fu">as.factor</span>(Credit_History),</span>
+<span id="cb54-102"><a href="#cb54-102" aria-hidden="true" tabindex="-1"></a>         <span class="at">Loan_Status=</span><span class="fu">as.factor</span>(Loan_Status))</span>
+<span id="cb54-103"><a href="#cb54-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-104"><a href="#cb54-104" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-105"><a href="#cb54-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-106"><a href="#cb54-106" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data summary</span></span>
 <span id="cb54-107"><a href="#cb54-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-108"><a href="#cb54-108" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data summary</span></span>
-<span id="cb54-109"><a href="#cb54-109" aria-hidden="true" tabindex="-1"></a>Below is a summary of the loan approval dataset. For this process we have already adjusted the data types to their proper forms. This summarizing function quantifies each variable in a manner consistent with their types. We notice the levels of each factor in the ‘Stats/Values’ column, the frequency of valid (non-missing) observations per level of our factors, and the quantity and percent missing alongside them. We review these statistics to identify any issues with each variable.</span>
-<span id="cb54-110"><a href="#cb54-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-111"><a href="#cb54-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-112"><a href="#cb54-112" aria-hidden="true" tabindex="-1"></a><span class="in">```{r loan_data_summary}</span></span>
-<span id="cb54-113"><a href="#cb54-113" aria-hidden="true" tabindex="-1"></a><span class="fu">dfSummary</span>(loan_data, <span class="at">style =</span> <span class="st">'grid'</span>, <span class="at">graph.col =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb54-114"><a href="#cb54-114" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-108"><a href="#cb54-108" aria-hidden="true" tabindex="-1"></a>Below is a summary of the loan approval dataset. For this process we have already adjusted the data types to their proper forms. This summarizing function quantifies each variable in a manner consistent with their types. We notice the levels of each factor in the 'Stats/Values' column, the frequency of valid (non-missing) observations per level of our factors, and the quantity and percent missing alongside them. We review these statistics to identify any issues with each variable.</span>
+<span id="cb54-109"><a href="#cb54-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-110"><a href="#cb54-110" aria-hidden="true" tabindex="-1"></a><span class="in">```{r loan_data_summary}</span></span>
+<span id="cb54-111"><a href="#cb54-111" aria-hidden="true" tabindex="-1"></a><span class="fu">dfSummary</span>(loan_data, <span class="at">style =</span> <span class="st">'grid'</span>, <span class="at">graph.col =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb54-112"><a href="#cb54-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-113"><a href="#cb54-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-114"><a href="#cb54-114" aria-hidden="true" tabindex="-1"></a>There are 7 columns that have missing values. The proportion of values for several columns shows significant differences and skew. For example, 97.9% of this dataset contains males applicants based on observations of the Gender variable, 99.5% of applicants are married people given the Married variable, and over 90% of our observations have longer Credit_History. Due to the disproportionate levels within the variables we should expect the data is not representative of a larger population unless that population happens to have similar proportions.</span>
 <span id="cb54-115"><a href="#cb54-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-116"><a href="#cb54-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-117"><a href="#cb54-117" aria-hidden="true" tabindex="-1"></a>There are 7 columns that have missing values. The proportion of values for several columns shows significant differences and skew. For example, 97.9% of this dataset contains males applicants based on observations of the Gender variable, 99.5% of applicants are married people given the Married variable, and over 90% of our observations have longer Credit_History. Due to the disproportionate levels within the variables we should expect the data is not representative of a larger population unless that population happens to have similar proportions. </span>
-<span id="cb54-118"><a href="#cb54-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-119"><a href="#cb54-119" aria-hidden="true" tabindex="-1"></a>Our numeric incomes variables show significant signs of skew through the differences in their mean and medians as well as their ranges. The lowest applicant income was 150, while the highest was 81000. A similar problem exists with our co-applicant income data having had individuals with 0 income on the lowest end of the range and 41667 on the highest. </span>
-<span id="cb54-120"><a href="#cb54-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-121"><a href="#cb54-121" aria-hidden="true" tabindex="-1"></a>However, all of the observations contained an applicant and co-applicant income. Since some applicants may not have used a co-applicant on their applications, part of this skew could be caused by the data collection process. Additionally, we are only missing 3.6% of the observations of loan amount and 2.3% for loan terms. </span>
-<span id="cb54-122"><a href="#cb54-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-123"><a href="#cb54-123" aria-hidden="true" tabindex="-1"></a>There are regular intervals and commonality in the loan term amounts which indicates we may have been able to factorize their data types. We chose instead to leave it as a discrete numeric value since it represents the term length which could be any number of days or months. We note that 85.3% percent of these applicants applied for a loan term of 360 but we are unsure if that is due to the lending institutions standard practice or if applicants requested this specific term. </span>
-<span id="cb54-124"><a href="#cb54-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-125"><a href="#cb54-125" aria-hidden="true" tabindex="-1"></a>For exploratory purposes, we visualize the proportions to see just how skewed and disproportionate this dataset is. We include missing values to demonstrate their influence on the dataset as well. The chart below shows the distribution of all categorical variables, which includes the factors mentioned previously. </span>
-<span id="cb54-126"><a href="#cb54-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-127"><a href="#cb54-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-128"><a href="#cb54-128" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, cat-bar, fig.length =20, fig.width=10}</span></span>
-<span id="cb54-129"><a href="#cb54-129" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb54-130"><a href="#cb54-130" aria-hidden="true" tabindex="-1"></a><span class="co"># select categorical columns</span></span>
-<span id="cb54-131"><a href="#cb54-131" aria-hidden="true" tabindex="-1"></a>cat_cols <span class="ot">=</span> <span class="fu">c</span>()</span>
-<span id="cb54-132"><a href="#cb54-132" aria-hidden="true" tabindex="-1"></a>j <span class="ot">&lt;-</span> <span class="dv">1</span></span>
-<span id="cb54-133"><a href="#cb54-133" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(loan_data)) {</span>
-<span id="cb54-134"><a href="#cb54-134" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">class</span>((loan_data[,i])) <span class="sc">==</span> <span class="st">'factor'</span>) {</span>
-<span id="cb54-135"><a href="#cb54-135" aria-hidden="true" tabindex="-1"></a>      cat_cols[j]<span class="ot">=</span><span class="fu">names</span>(loan_data[i])</span>
-<span id="cb54-136"><a href="#cb54-136" aria-hidden="true" tabindex="-1"></a>      j <span class="ot">&lt;-</span> j<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb54-137"><a href="#cb54-137" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb54-138"><a href="#cb54-138" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb54-116"><a href="#cb54-116" aria-hidden="true" tabindex="-1"></a>Our numeric incomes variables show significant signs of skew through the differences in their mean and medians as well as their ranges. The lowest applicant income was 150, while the highest was 81000. A similar problem exists with our co-applicant income data having had individuals with 0 income on the lowest end of the range and 41667 on the highest.</span>
+<span id="cb54-117"><a href="#cb54-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-118"><a href="#cb54-118" aria-hidden="true" tabindex="-1"></a>However, all of the observations contained an applicant and co-applicant income. Since some applicants may not have used a co-applicant on their applications, part of this skew could be caused by the data collection process. Additionally, we are only missing 3.6% of the observations of loan amount and 2.3% for loan terms.</span>
+<span id="cb54-119"><a href="#cb54-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-120"><a href="#cb54-120" aria-hidden="true" tabindex="-1"></a>There are regular intervals and commonality in the loan term amounts which indicates we may have been able to factorize their data types. We chose instead to leave it as a discrete numeric value since it represents the term length which could be any number of days or months. We note that 85.3% percent of these applicants applied for a loan term of 360 but we are unsure if that is due to the lending institutions standard practice or if applicants requested this specific term.</span>
+<span id="cb54-121"><a href="#cb54-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-122"><a href="#cb54-122" aria-hidden="true" tabindex="-1"></a>For exploratory purposes, we visualize the proportions to see just how skewed and disproportionate this dataset is. We include missing values to demonstrate their influence on the dataset as well. The chart below shows the distribution of all categorical variables, which includes the factors mentioned previously.</span>
+<span id="cb54-123"><a href="#cb54-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-124"><a href="#cb54-124" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, cat-bar, fig.length =20, fig.width=10}</span></span>
+<span id="cb54-125"><a href="#cb54-125" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb54-126"><a href="#cb54-126" aria-hidden="true" tabindex="-1"></a><span class="co"># select categorical columns</span></span>
+<span id="cb54-127"><a href="#cb54-127" aria-hidden="true" tabindex="-1"></a>cat_cols <span class="ot">=</span> <span class="fu">c</span>()</span>
+<span id="cb54-128"><a href="#cb54-128" aria-hidden="true" tabindex="-1"></a>j <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb54-129"><a href="#cb54-129" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(loan_data)) {</span>
+<span id="cb54-130"><a href="#cb54-130" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">class</span>((loan_data[,i])) <span class="sc">==</span> <span class="st">'factor'</span>) {</span>
+<span id="cb54-131"><a href="#cb54-131" aria-hidden="true" tabindex="-1"></a>      cat_cols[j]<span class="ot">=</span><span class="fu">names</span>(loan_data[i])</span>
+<span id="cb54-132"><a href="#cb54-132" aria-hidden="true" tabindex="-1"></a>      j <span class="ot">&lt;-</span> j<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb54-133"><a href="#cb54-133" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb54-134"><a href="#cb54-134" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb54-135"><a href="#cb54-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-136"><a href="#cb54-136" aria-hidden="true" tabindex="-1"></a>loan_fact <span class="ot">&lt;-</span>  loan_data[cat_cols]</span>
+<span id="cb54-137"><a href="#cb54-137" aria-hidden="true" tabindex="-1"></a><span class="co"># long format</span></span>
+<span id="cb54-138"><a href="#cb54-138" aria-hidden="true" tabindex="-1"></a>loan_factm <span class="ot">&lt;-</span> <span class="fu">melt</span>(loan_fact, <span class="at">measure.vars =</span> cat_cols, <span class="at">variable.name =</span> <span class="st">'metric'</span>, <span class="at">value.name =</span> <span class="st">'value'</span>)</span>
 <span id="cb54-139"><a href="#cb54-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-140"><a href="#cb54-140" aria-hidden="true" tabindex="-1"></a>loan_fact <span class="ot">&lt;-</span>  loan_data[cat_cols]</span>
-<span id="cb54-141"><a href="#cb54-141" aria-hidden="true" tabindex="-1"></a><span class="co"># long format</span></span>
-<span id="cb54-142"><a href="#cb54-142" aria-hidden="true" tabindex="-1"></a>loan_factm <span class="ot">&lt;-</span> <span class="fu">melt</span>(loan_fact, <span class="at">measure.vars =</span> cat_cols, <span class="at">variable.name =</span> <span class="st">'metric'</span>, <span class="at">value.name =</span> <span class="st">'value'</span>)</span>
-<span id="cb54-143"><a href="#cb54-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-144"><a href="#cb54-144" aria-hidden="true" tabindex="-1"></a><span class="co"># plot categorical columns</span></span>
-<span id="cb54-145"><a href="#cb54-145" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(loan_factm, <span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span> </span>
-<span id="cb54-146"><a href="#cb54-146" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
-<span id="cb54-147"><a href="#cb54-147" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set1"</span>) <span class="sc">+</span> </span>
-<span id="cb54-148"><a href="#cb54-148" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> metric, <span class="at">nrow =</span> 5L, <span class="at">scales =</span> <span class="st">'free'</span>) <span class="sc">+</span> <span class="fu">coord_flip</span>()</span>
-<span id="cb54-149"><a href="#cb54-149" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-140"><a href="#cb54-140" aria-hidden="true" tabindex="-1"></a><span class="co"># plot categorical columns</span></span>
+<span id="cb54-141"><a href="#cb54-141" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(loan_factm, <span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span> </span>
+<span id="cb54-142"><a href="#cb54-142" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
+<span id="cb54-143"><a href="#cb54-143" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set1"</span>) <span class="sc">+</span> </span>
+<span id="cb54-144"><a href="#cb54-144" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> metric, <span class="at">nrow =</span> 5L, <span class="at">scales =</span> <span class="st">'free'</span>) <span class="sc">+</span> <span class="fu">coord_flip</span>()</span>
+<span id="cb54-145"><a href="#cb54-145" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-146"><a href="#cb54-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-147"><a href="#cb54-147" aria-hidden="true" tabindex="-1"></a>From this chart, it is very clear we have a dataset with mostly married male graduates with no dependents, a long credit history, and who are not self-employed. There is a relatively even mix of urban, suburban, and rural applicants and a small number of missing values. Applicants tend to be accepted more often than not and there are no missing observations for our target variable 'Loan_Status' nor the applicant's property area or education. These are all of our categorical variables.</span>
+<span id="cb54-148"><a href="#cb54-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-149"><a href="#cb54-149" aria-hidden="true" tabindex="-1"></a>We also generate histograms with the count of each observation to assess our numeric variable distributions. This will let us know more about the skewness, average values, and where potential outliers may be found for our numeric variables. The graph below shows their distributions.</span>
 <span id="cb54-150"><a href="#cb54-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-151"><a href="#cb54-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-152"><a href="#cb54-152" aria-hidden="true" tabindex="-1"></a>From this chart, it is very clear we have a dataset with mostly married male graduates with no dependents, a long credit history, and who are not self-employed. There is a relatively even mix of urban, suburban, and rural applicants and a small number of missing values. Applicants tend to be accepted more often than not and there are no missing observations for our target variable ‘Loan_Status’ nor the applicant's property area or education. These are all of our categorical variables. </span>
-<span id="cb54-153"><a href="#cb54-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-154"><a href="#cb54-154" aria-hidden="true" tabindex="-1"></a>We also generate histograms with the count of each observation to assess our numeric variable distributions. This will let us know more about the skewness, average values, and where potential outliers may be found for our numeric variables. The graph below shows their distributions.</span>
-<span id="cb54-155"><a href="#cb54-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-151"><a href="#cb54-151" aria-hidden="true" tabindex="-1"></a><span class="in">```{r plot_num}</span></span>
+<span id="cb54-152"><a href="#cb54-152" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_histogram</span>(loan_data, <span class="at">geom_histogram_args =</span> <span class="fu">list</span>(<span class="st">"fill"</span> <span class="ot">=</span> <span class="st">"tomato4"</span>))</span>
+<span id="cb54-153"><a href="#cb54-153" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-154"><a href="#cb54-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-155"><a href="#cb54-155" aria-hidden="true" tabindex="-1"></a>The applicant income and co-applicant income variables are highly right skewed with a smaller number of individual applicants stretching the distribution towards higher incomes. For analysis purposes, we must keep in mind that only a handful of applicants had higher incomes while the bulk of applicants were concentrated at the lower end of the income distribution. The loan amount term has one spike at 360. Meanwhile, the loan amount is the closest to normal. These results are consistent with our summary table.</span>
 <span id="cb54-156"><a href="#cb54-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-157"><a href="#cb54-157" aria-hidden="true" tabindex="-1"></a><span class="in">```{r plot_num}</span></span>
-<span id="cb54-158"><a href="#cb54-158" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_histogram</span>(loan_data, <span class="at">geom_histogram_args =</span> <span class="fu">list</span>(<span class="st">"fill"</span> <span class="ot">=</span> <span class="st">"tomato4"</span>))</span>
-<span id="cb54-159"><a href="#cb54-159" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-160"><a href="#cb54-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-161"><a href="#cb54-161" aria-hidden="true" tabindex="-1"></a>The applicant income and co-applicant income variables are highly right skewed with a smaller number of individual applicants stretching the distribution towards higher incomes. For analysis purposes, we must keep in mind that only a handful of applicants had higher incomes while the bulk of applicants were concentrated at the lower end of the income distribution. The loan amount term has one spike at 360. Meanwhile, the loan amount is the closest to normal. These results are consistent with our summary table. </span>
-<span id="cb54-162"><a href="#cb54-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-163"><a href="#cb54-163" aria-hidden="true" tabindex="-1"></a>Next we will review the impact of the categorical variables’ proportions on loan approval in more detail by isolating the factor levels individually. Here again, we visualize the proportions as a bar chart without missing values and expand the size of the chart to see the nuances of each. These are placed alongside each variable's frequency table by level to visualize their proportions. The results are as follows:</span>
+<span id="cb54-157"><a href="#cb54-157" aria-hidden="true" tabindex="-1"></a>Next we will review the impact of the categorical variables' proportions on loan approval in more detail by isolating the factor levels individually. Here again, we visualize the proportions as a bar chart without missing values and expand the size of the chart to see the nuances of each. These are placed alongside each variable's frequency table by level to visualize their proportions. The results are as follows:</span>
+<span id="cb54-158"><a href="#cb54-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-161"><a href="#cb54-161" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb54-162"><a href="#cb54-162" aria-hidden="true" tabindex="-1"></a>loan_ch <span class="ot">&lt;-</span> <span class="fu">with</span>(loan_data, <span class="fu">table</span>(Credit_History, Loan_Status)) <span class="sc">%&gt;%</span> </span>
+<span id="cb54-163"><a href="#cb54-163" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prop.table</span>(<span class="at">margin =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Loan_Status <span class="sc">==</span> <span class="st">'Y'</span>)</span>
 <span id="cb54-164"><a href="#cb54-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-167"><a href="#cb54-167" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-168"><a href="#cb54-168" aria-hidden="true" tabindex="-1"></a>loan_ch <span class="ot">&lt;-</span> <span class="fu">with</span>(loan_data, <span class="fu">table</span>(Credit_History, Loan_Status)) <span class="sc">%&gt;%</span> </span>
-<span id="cb54-169"><a href="#cb54-169" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prop.table</span>(<span class="at">margin =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Loan_Status <span class="sc">==</span> <span class="st">'Y'</span>)</span>
-<span id="cb54-170"><a href="#cb54-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-171"><a href="#cb54-171" aria-hidden="true" tabindex="-1"></a>loan_ch</span>
+<span id="cb54-165"><a href="#cb54-165" aria-hidden="true" tabindex="-1"></a>loan_ch</span>
+<span id="cb54-166"><a href="#cb54-166" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-167"><a href="#cb54-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-170"><a href="#cb54-170" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb54-171"><a href="#cb54-171" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(loan_ch, <span class="fu">aes</span>(<span class="at">x=</span>Credit_History, <span class="at">y=</span>Freq, <span class="at">fill=</span>Credit_History)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">'identity'</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Approved Loans by Credit History'</span>, <span class="at">y =</span> <span class="st">"Percentage"</span>, <span class="at">x =</span> <span class="st">"Credit History"</span>)</span>
 <span id="cb54-172"><a href="#cb54-172" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb54-173"><a href="#cb54-173" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-176"><a href="#cb54-176" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-177"><a href="#cb54-177" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(loan_ch, <span class="fu">aes</span>(<span class="at">x=</span>Credit_History, <span class="at">y=</span>Freq, <span class="at">fill=</span>Credit_History)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">'identity'</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Approved Loans by Credit History'</span>, <span class="at">y =</span> <span class="st">"Percentage"</span>, <span class="at">x =</span> <span class="st">"Credit History"</span>)</span>
-<span id="cb54-178"><a href="#cb54-178" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-177"><a href="#cb54-177" aria-hidden="true" tabindex="-1"></a>loan_gen <span class="ot">&lt;-</span> <span class="fu">with</span>(loan_data, <span class="fu">table</span>(Gender, Loan_Status)) <span class="sc">%&gt;%</span> </span>
+<span id="cb54-178"><a href="#cb54-178" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prop.table</span>(<span class="at">margin =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Loan_Status <span class="sc">==</span> <span class="st">'Y'</span>)</span>
 <span id="cb54-179"><a href="#cb54-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-182"><a href="#cb54-182" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-183"><a href="#cb54-183" aria-hidden="true" tabindex="-1"></a>loan_gen <span class="ot">&lt;-</span> <span class="fu">with</span>(loan_data, <span class="fu">table</span>(Gender, Loan_Status)) <span class="sc">%&gt;%</span> </span>
-<span id="cb54-184"><a href="#cb54-184" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prop.table</span>(<span class="at">margin =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Loan_Status <span class="sc">==</span> <span class="st">'Y'</span>)</span>
-<span id="cb54-185"><a href="#cb54-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-186"><a href="#cb54-186" aria-hidden="true" tabindex="-1"></a>loan_gen</span>
+<span id="cb54-180"><a href="#cb54-180" aria-hidden="true" tabindex="-1"></a>loan_gen</span>
+<span id="cb54-181"><a href="#cb54-181" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-182"><a href="#cb54-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-185"><a href="#cb54-185" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb54-186"><a href="#cb54-186" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(loan_gen, <span class="fu">aes</span>(<span class="at">x=</span>Gender, <span class="at">y=</span>Freq, <span class="at">fill=</span>Gender)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">'identity'</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Approved Loans by Gender'</span>, <span class="at">y =</span> <span class="st">"Percentage"</span>, <span class="at">x =</span> <span class="st">"Gender"</span>)</span>
 <span id="cb54-187"><a href="#cb54-187" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb54-188"><a href="#cb54-188" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-191"><a href="#cb54-191" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-192"><a href="#cb54-192" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(loan_gen, <span class="fu">aes</span>(<span class="at">x=</span>Gender, <span class="at">y=</span>Freq, <span class="at">fill=</span>Gender)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">'identity'</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Approved Loans by Gender'</span>, <span class="at">y =</span> <span class="st">"Percentage"</span>, <span class="at">x =</span> <span class="st">"Gender"</span>)</span>
-<span id="cb54-193"><a href="#cb54-193" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-192"><a href="#cb54-192" aria-hidden="true" tabindex="-1"></a>loan_ed <span class="ot">&lt;-</span> <span class="fu">with</span>(loan_data, <span class="fu">table</span>(Education, Loan_Status)) <span class="sc">%&gt;%</span> </span>
+<span id="cb54-193"><a href="#cb54-193" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prop.table</span>(<span class="at">margin =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Loan_Status <span class="sc">==</span> <span class="st">'Y'</span>)</span>
 <span id="cb54-194"><a href="#cb54-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-197"><a href="#cb54-197" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-198"><a href="#cb54-198" aria-hidden="true" tabindex="-1"></a>loan_ed <span class="ot">&lt;-</span> <span class="fu">with</span>(loan_data, <span class="fu">table</span>(Education, Loan_Status)) <span class="sc">%&gt;%</span> </span>
-<span id="cb54-199"><a href="#cb54-199" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prop.table</span>(<span class="at">margin =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Loan_Status <span class="sc">==</span> <span class="st">'Y'</span>)</span>
-<span id="cb54-200"><a href="#cb54-200" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-201"><a href="#cb54-201" aria-hidden="true" tabindex="-1"></a>loan_ed</span>
+<span id="cb54-195"><a href="#cb54-195" aria-hidden="true" tabindex="-1"></a>loan_ed</span>
+<span id="cb54-196"><a href="#cb54-196" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-197"><a href="#cb54-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-200"><a href="#cb54-200" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb54-201"><a href="#cb54-201" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(loan_ed, <span class="fu">aes</span>(<span class="at">x=</span>Education, <span class="at">y=</span>Freq, <span class="at">fill=</span>Education)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">'identity'</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Approved Loans by Education'</span>, <span class="at">y =</span> <span class="st">"Percentage"</span>, <span class="at">x =</span> <span class="st">"Education"</span>)</span>
 <span id="cb54-202"><a href="#cb54-202" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb54-203"><a href="#cb54-203" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-206"><a href="#cb54-206" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-207"><a href="#cb54-207" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(loan_ed, <span class="fu">aes</span>(<span class="at">x=</span>Education, <span class="at">y=</span>Freq, <span class="at">fill=</span>Education)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">'identity'</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Approved Loans by Education'</span>, <span class="at">y =</span> <span class="st">"Percentage"</span>, <span class="at">x =</span> <span class="st">"Education"</span>)</span>
-<span id="cb54-208"><a href="#cb54-208" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-207"><a href="#cb54-207" aria-hidden="true" tabindex="-1"></a>loan_mar <span class="ot">&lt;-</span> <span class="fu">with</span>(loan_data, <span class="fu">table</span>(Married, Loan_Status)) <span class="sc">%&gt;%</span> </span>
+<span id="cb54-208"><a href="#cb54-208" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prop.table</span>(<span class="at">margin =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Loan_Status <span class="sc">==</span> <span class="st">'Y'</span>)</span>
 <span id="cb54-209"><a href="#cb54-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-210"><a href="#cb54-210" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-213"><a href="#cb54-213" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-214"><a href="#cb54-214" aria-hidden="true" tabindex="-1"></a>loan_mar <span class="ot">&lt;-</span> <span class="fu">with</span>(loan_data, <span class="fu">table</span>(Married, Loan_Status)) <span class="sc">%&gt;%</span> </span>
-<span id="cb54-215"><a href="#cb54-215" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prop.table</span>(<span class="at">margin =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Loan_Status <span class="sc">==</span> <span class="st">'Y'</span>)</span>
-<span id="cb54-216"><a href="#cb54-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-217"><a href="#cb54-217" aria-hidden="true" tabindex="-1"></a>loan_mar</span>
-<span id="cb54-218"><a href="#cb54-218" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-219"><a href="#cb54-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-222"><a href="#cb54-222" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-223"><a href="#cb54-223" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(loan_mar, <span class="fu">aes</span>(<span class="at">x=</span>Married, <span class="at">y=</span>Freq, <span class="at">fill=</span>Married)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">'identity'</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Approved Loans by Married'</span>, <span class="at">y =</span> <span class="st">"Percentage"</span>, <span class="at">x =</span> <span class="st">"Married"</span>)</span>
-<span id="cb54-224"><a href="#cb54-224" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-225"><a href="#cb54-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-226"><a href="#cb54-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-229"><a href="#cb54-229" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-230"><a href="#cb54-230" aria-hidden="true" tabindex="-1"></a>loan_dep <span class="ot">&lt;-</span> <span class="fu">with</span>(loan_data, <span class="fu">table</span>(Dependents, Loan_Status)) <span class="sc">%&gt;%</span> </span>
-<span id="cb54-231"><a href="#cb54-231" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prop.table</span>(<span class="at">margin =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Loan_Status <span class="sc">==</span> <span class="st">'Y'</span>)</span>
-<span id="cb54-232"><a href="#cb54-232" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-233"><a href="#cb54-233" aria-hidden="true" tabindex="-1"></a>loan_dep</span>
-<span id="cb54-234"><a href="#cb54-234" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-210"><a href="#cb54-210" aria-hidden="true" tabindex="-1"></a>loan_mar</span>
+<span id="cb54-211"><a href="#cb54-211" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-212"><a href="#cb54-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-215"><a href="#cb54-215" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb54-216"><a href="#cb54-216" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(loan_mar, <span class="fu">aes</span>(<span class="at">x=</span>Married, <span class="at">y=</span>Freq, <span class="at">fill=</span>Married)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">'identity'</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Approved Loans by Married'</span>, <span class="at">y =</span> <span class="st">"Percentage"</span>, <span class="at">x =</span> <span class="st">"Married"</span>)</span>
+<span id="cb54-217"><a href="#cb54-217" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-218"><a href="#cb54-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-221"><a href="#cb54-221" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb54-222"><a href="#cb54-222" aria-hidden="true" tabindex="-1"></a>loan_dep <span class="ot">&lt;-</span> <span class="fu">with</span>(loan_data, <span class="fu">table</span>(Dependents, Loan_Status)) <span class="sc">%&gt;%</span> </span>
+<span id="cb54-223"><a href="#cb54-223" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prop.table</span>(<span class="at">margin =</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Loan_Status <span class="sc">==</span> <span class="st">'Y'</span>)</span>
+<span id="cb54-224"><a href="#cb54-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-225"><a href="#cb54-225" aria-hidden="true" tabindex="-1"></a>loan_dep</span>
+<span id="cb54-226"><a href="#cb54-226" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-227"><a href="#cb54-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-230"><a href="#cb54-230" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb54-231"><a href="#cb54-231" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(loan_dep, <span class="fu">aes</span>(<span class="at">x=</span>Dependents, <span class="at">y=</span>Freq, <span class="at">fill=</span>Dependents)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">'identity'</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Approved Loans by Dependents'</span>, <span class="at">y =</span> <span class="st">"Percentage"</span>, <span class="at">x =</span> <span class="st">"Dependents"</span>)</span>
+<span id="cb54-232"><a href="#cb54-232" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-233"><a href="#cb54-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-234"><a href="#cb54-234" aria-hidden="true" tabindex="-1"></a>These bar charts confirm our thoughts about the dataset's disproportionalities. Missing values have little effect on the overall proportions and so they can be removed. It remains male dominated with applicants who are married, have no dependents, are highly educated, and have a long credit history.</span>
 <span id="cb54-235"><a href="#cb54-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-238"><a href="#cb54-238" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-239"><a href="#cb54-239" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(loan_dep, <span class="fu">aes</span>(<span class="at">x=</span>Dependents, <span class="at">y=</span>Freq, <span class="at">fill=</span>Dependents)) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">'identity'</span>) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">'Approved Loans by Dependents'</span>, <span class="at">y =</span> <span class="st">"Percentage"</span>, <span class="at">x =</span> <span class="st">"Dependents"</span>)</span>
-<span id="cb54-240"><a href="#cb54-240" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-241"><a href="#cb54-241" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-242"><a href="#cb54-242" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-243"><a href="#cb54-243" aria-hidden="true" tabindex="-1"></a>These bar charts confirm our thoughts about the dataset’s disproportionalities. Missing values have little effect on the overall proportions and so they can be removed. It remains male dominated with applicants who are married, have no dependents, are highly educated, and have a long credit history.</span>
-<span id="cb54-244"><a href="#cb54-244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-245"><a href="#cb54-245" aria-hidden="true" tabindex="-1"></a><span class="fu">## Correlations</span></span>
-<span id="cb54-246"><a href="#cb54-246" aria-hidden="true" tabindex="-1"></a>To determine how well each variable is correlated with our target variable and with one another, we construct a correlation plot. This plot contains the values of all correlation between variables represented by colors and numbers. The row we review the most is our target variable, ‘Loan_Status.’</span>
-<span id="cb54-247"><a href="#cb54-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-236"><a href="#cb54-236" aria-hidden="true" tabindex="-1"></a><span class="fu">## Correlations</span></span>
+<span id="cb54-237"><a href="#cb54-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-238"><a href="#cb54-238" aria-hidden="true" tabindex="-1"></a>To determine how well each variable is correlated with our target variable and with one another, we construct a correlation plot. This plot contains the values of all correlation between variables represented by colors and numbers. The row we review the most is our target variable, 'Loan_Status.'</span>
+<span id="cb54-239"><a href="#cb54-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-242"><a href="#cb54-242" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb54-243"><a href="#cb54-243" aria-hidden="true" tabindex="-1"></a>G <span class="ot">=</span> <span class="fu">cor</span>(loan_data[<span class="dv">6</span><span class="sc">:</span>(<span class="fu">length</span>(loan_data)<span class="sc">-</span><span class="dv">3</span>)])</span>
+<span id="cb54-244"><a href="#cb54-244" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(G, <span class="at">method =</span> <span class="st">'number'</span>) <span class="co"># colorful number</span></span>
+<span id="cb54-245"><a href="#cb54-245" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-246"><a href="#cb54-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-247"><a href="#cb54-247" aria-hidden="true" tabindex="-1"></a>The numeric features do not seem to be strongly correlated with another so that is a factor that does not have to be dealt with.</span>
 <span id="cb54-248"><a href="#cb54-248" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-251"><a href="#cb54-251" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb54-252"><a href="#cb54-252" aria-hidden="true" tabindex="-1"></a>G <span class="ot">=</span> <span class="fu">cor</span>(loan_data[<span class="dv">6</span><span class="sc">:</span>(<span class="fu">length</span>(loan_data)<span class="sc">-</span><span class="dv">3</span>)])</span>
 <span id="cb54-253"><a href="#cb54-253" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(G, <span class="at">method =</span> <span class="st">'number'</span>) <span class="co"># colorful number</span></span>
 <span id="cb54-254"><a href="#cb54-254" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb54-255"><a href="#cb54-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-256"><a href="#cb54-256" aria-hidden="true" tabindex="-1"></a>The numeric features do not seem to be strongly correlated with another so that is a factor that does not have to be dealt with.</span>
+<span id="cb54-256"><a href="#cb54-256" aria-hidden="true" tabindex="-1"></a>Given that our numeric features have correlation values near 0, they do not seem to be strongly correlated with our target. They also do not seem to have any correlation with one another so this is a factor that does not have to be dealt with.</span>
 <span id="cb54-257"><a href="#cb54-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-260"><a href="#cb54-260" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-261"><a href="#cb54-261" aria-hidden="true" tabindex="-1"></a>G <span class="ot">=</span> <span class="fu">cor</span>(loan_data[<span class="dv">6</span><span class="sc">:</span>(<span class="fu">length</span>(loan_data)<span class="sc">-</span><span class="dv">3</span>)])</span>
-<span id="cb54-262"><a href="#cb54-262" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(G, <span class="at">method =</span> <span class="st">'number'</span>) <span class="co"># colorful number</span></span>
-<span id="cb54-263"><a href="#cb54-263" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-264"><a href="#cb54-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-265"><a href="#cb54-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-266"><a href="#cb54-266" aria-hidden="true" tabindex="-1"></a>Given that our numeric features have correlation values near 0, they do not seem to be strongly correlated with our target. They also do not seem to have any correlation with one another so this is a factor that does not have to be dealt with. </span>
-<span id="cb54-267"><a href="#cb54-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-258"><a href="#cb54-258" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data Preparation</span></span>
+<span id="cb54-259"><a href="#cb54-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-260"><a href="#cb54-260" aria-hidden="true" tabindex="-1"></a><span class="fu">## Handling missing values</span></span>
+<span id="cb54-261"><a href="#cb54-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-264"><a href="#cb54-264" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb54-265"><a href="#cb54-265" aria-hidden="true" tabindex="-1"></a><span class="co"># plot missing values</span></span>
+<span id="cb54-266"><a href="#cb54-266" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_missing</span>(loan_data)</span>
+<span id="cb54-267"><a href="#cb54-267" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb54-268"><a href="#cb54-268" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-269"><a href="#cb54-269" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data Preparation</span></span>
+<span id="cb54-269"><a href="#cb54-269" aria-hidden="true" tabindex="-1"></a>We can see above credit_history contributes to 8% of missing data along with self_employed that accounts for more than 5% of missing data. All records having missing categorical predictors will be removed. Next we will impute numeric values using MICE (Multivariate Imputation by Chained Equations).</span>
 <span id="cb54-270"><a href="#cb54-270" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-271"><a href="#cb54-271" aria-hidden="true" tabindex="-1"></a><span class="fu">## Handling missing values</span></span>
-<span id="cb54-272"><a href="#cb54-272" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-275"><a href="#cb54-275" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-276"><a href="#cb54-276" aria-hidden="true" tabindex="-1"></a><span class="co"># plot missing values</span></span>
-<span id="cb54-277"><a href="#cb54-277" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_missing</span>(loan_data)</span>
+<span id="cb54-271"><a href="#cb54-271" aria-hidden="true" tabindex="-1"></a><span class="in">```{r cat-missing}</span></span>
+<span id="cb54-272"><a href="#cb54-272" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out the data which has missing categorical predictors</span></span>
+<span id="cb54-273"><a href="#cb54-273" aria-hidden="true" tabindex="-1"></a>loan_data <span class="ot">&lt;-</span> loan_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Credit_History) <span class="sc">&amp;</span></span>
+<span id="cb54-274"><a href="#cb54-274" aria-hidden="true" tabindex="-1"></a>                                  <span class="sc">!</span><span class="fu">is.na</span>(Self_Employed) <span class="sc">&amp;</span>  </span>
+<span id="cb54-275"><a href="#cb54-275" aria-hidden="true" tabindex="-1"></a>                                  <span class="sc">!</span><span class="fu">is.na</span>(Dependents) <span class="sc">&amp;</span> </span>
+<span id="cb54-276"><a href="#cb54-276" aria-hidden="true" tabindex="-1"></a>                                  <span class="sc">!</span><span class="fu">is.na</span>(Gender) <span class="sc">&amp;</span> </span>
+<span id="cb54-277"><a href="#cb54-277" aria-hidden="true" tabindex="-1"></a>                                  <span class="sc">!</span><span class="fu">is.na</span>(Married))</span>
 <span id="cb54-278"><a href="#cb54-278" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb54-279"><a href="#cb54-279" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-280"><a href="#cb54-280" aria-hidden="true" tabindex="-1"></a>We can see above credit_history contributes to 8% of missing data along with self_employed that accounts for more than 5% of missing data. All records having missing categorical predictors will be removed. Next we will impute numeric values using MICE (Multivariate Imputation by Chained Equations).</span>
-<span id="cb54-281"><a href="#cb54-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-282"><a href="#cb54-282" aria-hidden="true" tabindex="-1"></a><span class="in">```{r cat-missing}</span></span>
-<span id="cb54-283"><a href="#cb54-283" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out the data which has missing categorical predictors</span></span>
-<span id="cb54-284"><a href="#cb54-284" aria-hidden="true" tabindex="-1"></a>loan_data <span class="ot">&lt;-</span> loan_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Credit_History) <span class="sc">&amp;</span></span>
-<span id="cb54-285"><a href="#cb54-285" aria-hidden="true" tabindex="-1"></a>                                  <span class="sc">!</span><span class="fu">is.na</span>(Self_Employed) <span class="sc">&amp;</span>  </span>
-<span id="cb54-286"><a href="#cb54-286" aria-hidden="true" tabindex="-1"></a>                                  <span class="sc">!</span><span class="fu">is.na</span>(Dependents) <span class="sc">&amp;</span> </span>
-<span id="cb54-287"><a href="#cb54-287" aria-hidden="true" tabindex="-1"></a>                                  <span class="sc">!</span><span class="fu">is.na</span>(Gender) <span class="sc">&amp;</span> </span>
-<span id="cb54-288"><a href="#cb54-288" aria-hidden="true" tabindex="-1"></a>                                  <span class="sc">!</span><span class="fu">is.na</span>(Married))</span>
+<span id="cb54-280"><a href="#cb54-280" aria-hidden="true" tabindex="-1"></a><span class="in">```{r num-missing}</span></span>
+<span id="cb54-281"><a href="#cb54-281" aria-hidden="true" tabindex="-1"></a><span class="co"># impute numeric predictors using mice</span></span>
+<span id="cb54-282"><a href="#cb54-282" aria-hidden="true" tabindex="-1"></a>loan_data <span class="ot">&lt;-</span> <span class="fu">complete</span>(<span class="fu">mice</span>(<span class="at">data=</span>loan_data, <span class="at">method=</span><span class="st">"pmm"</span>, <span class="at">print=</span><span class="cn">FALSE</span>))</span>
+<span id="cb54-283"><a href="#cb54-283" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-284"><a href="#cb54-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-287"><a href="#cb54-287" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb54-288"><a href="#cb54-288" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(loan_data)</span>
 <span id="cb54-289"><a href="#cb54-289" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb54-290"><a href="#cb54-290" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-291"><a href="#cb54-291" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-291"><a href="#cb54-291" aria-hidden="true" tabindex="-1"></a>Finally our clean dataset contains 511 rows and 12 columns.</span>
 <span id="cb54-292"><a href="#cb54-292" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-293"><a href="#cb54-293" aria-hidden="true" tabindex="-1"></a><span class="in">```{r num-missing}</span></span>
-<span id="cb54-294"><a href="#cb54-294" aria-hidden="true" tabindex="-1"></a><span class="co"># impute numeric predictors using mice</span></span>
-<span id="cb54-295"><a href="#cb54-295" aria-hidden="true" tabindex="-1"></a>loan_data <span class="ot">&lt;-</span> <span class="fu">complete</span>(<span class="fu">mice</span>(<span class="at">data=</span>loan_data, <span class="at">method=</span><span class="st">"pmm"</span>, <span class="at">print=</span><span class="cn">FALSE</span>))</span>
-<span id="cb54-296"><a href="#cb54-296" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-297"><a href="#cb54-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-298"><a href="#cb54-298" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-301"><a href="#cb54-301" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-302"><a href="#cb54-302" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(loan_data)</span>
-<span id="cb54-303"><a href="#cb54-303" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-304"><a href="#cb54-304" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-305"><a href="#cb54-305" aria-hidden="true" tabindex="-1"></a>Finally our clean dataset contains 511 rows and 12 columns.</span>
-<span id="cb54-306"><a href="#cb54-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-293"><a href="#cb54-293" aria-hidden="true" tabindex="-1"></a><span class="fu">## Preprocess using transformation</span></span>
+<span id="cb54-294"><a href="#cb54-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-295"><a href="#cb54-295" aria-hidden="true" tabindex="-1"></a>We have seen above that numeric features are right skewed so in this step we will use caret <span class="in">`preprocess`</span> method using box cox, center and scale transformation.</span>
+<span id="cb54-296"><a href="#cb54-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-297"><a href="#cb54-297" aria-hidden="true" tabindex="-1"></a><span class="in">```{r transform-train}</span></span>
+<span id="cb54-298"><a href="#cb54-298" aria-hidden="true" tabindex="-1"></a><span class="co"># library(e1071) - where this was used</span></span>
+<span id="cb54-299"><a href="#cb54-299" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">622</span>)</span>
+<span id="cb54-300"><a href="#cb54-300" aria-hidden="true" tabindex="-1"></a>loan_data <span class="ot">&lt;-</span> loan_data <span class="sc">%&gt;%</span> </span>
+<span id="cb54-301"><a href="#cb54-301" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">c</span>(<span class="st">"ApplicantIncome"</span>, <span class="st">"CoapplicantIncome"</span>, <span class="st">"LoanAmount"</span>, <span class="st">"Loan_Amount_Term"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb54-302"><a href="#cb54-302" aria-hidden="true" tabindex="-1"></a>  <span class="fu">preProcess</span>(<span class="at">method =</span> <span class="fu">c</span>(<span class="st">"BoxCox"</span>,<span class="st">"center"</span>,<span class="st">"scale"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb54-303"><a href="#cb54-303" aria-hidden="true" tabindex="-1"></a>  <span class="fu">predict</span>(loan_data)</span>
+<span id="cb54-304"><a href="#cb54-304" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-305"><a href="#cb54-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-306"><a href="#cb54-306" aria-hidden="true" tabindex="-1"></a><span class="fu">## Training and Test Partition</span></span>
 <span id="cb54-307"><a href="#cb54-307" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-308"><a href="#cb54-308" aria-hidden="true" tabindex="-1"></a><span class="fu">## Preprocess using transformation</span></span>
+<span id="cb54-308"><a href="#cb54-308" aria-hidden="true" tabindex="-1"></a>In this step for data preparation we will partition the training dataset in training and validation sets using <span class="in">`createDataPartition`</span> method from <span class="in">`caret`</span> package. We will reserve 75% for training and rest 25% for validation purpose.</span>
 <span id="cb54-309"><a href="#cb54-309" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-310"><a href="#cb54-310" aria-hidden="true" tabindex="-1"></a>We have seen above that numeric features are right skewed so in this step we will use caret <span class="in">`preprocess`</span> method using box cox, center and scale transformation.</span>
-<span id="cb54-311"><a href="#cb54-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-312"><a href="#cb54-312" aria-hidden="true" tabindex="-1"></a><span class="in">```{r transform-train}</span></span>
-<span id="cb54-313"><a href="#cb54-313" aria-hidden="true" tabindex="-1"></a><span class="co"># library(e1071) - where this was used</span></span>
-<span id="cb54-314"><a href="#cb54-314" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">622</span>)</span>
-<span id="cb54-315"><a href="#cb54-315" aria-hidden="true" tabindex="-1"></a>loan_data <span class="ot">&lt;-</span> loan_data <span class="sc">%&gt;%</span> </span>
-<span id="cb54-316"><a href="#cb54-316" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="fu">c</span>(<span class="st">"ApplicantIncome"</span>, <span class="st">"CoapplicantIncome"</span>, <span class="st">"LoanAmount"</span>, <span class="st">"Loan_Amount_Term"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb54-317"><a href="#cb54-317" aria-hidden="true" tabindex="-1"></a>  <span class="fu">preProcess</span>(<span class="at">method =</span> <span class="fu">c</span>(<span class="st">"BoxCox"</span>,<span class="st">"center"</span>,<span class="st">"scale"</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb54-318"><a href="#cb54-318" aria-hidden="true" tabindex="-1"></a>  <span class="fu">predict</span>(loan_data)</span>
-<span id="cb54-319"><a href="#cb54-319" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-310"><a href="#cb54-310" aria-hidden="true" tabindex="-1"></a><span class="in">```{r partition}</span></span>
+<span id="cb54-311"><a href="#cb54-311" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">622</span>)</span>
+<span id="cb54-312"><a href="#cb54-312" aria-hidden="true" tabindex="-1"></a>partition <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(loan_data<span class="sc">$</span>Loan_Status, <span class="at">p=</span><span class="fl">0.75</span>, <span class="at">list =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb54-313"><a href="#cb54-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-314"><a href="#cb54-314" aria-hidden="true" tabindex="-1"></a>training <span class="ot">&lt;-</span> loan_data[partition,]</span>
+<span id="cb54-315"><a href="#cb54-315" aria-hidden="true" tabindex="-1"></a>testing <span class="ot">&lt;-</span> loan_data[<span class="sc">-</span>partition,]</span>
+<span id="cb54-316"><a href="#cb54-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-317"><a href="#cb54-317" aria-hidden="true" tabindex="-1"></a><span class="co"># training/validation partition for independent variables</span></span>
+<span id="cb54-318"><a href="#cb54-318" aria-hidden="true" tabindex="-1"></a><span class="co">#X.train &lt;- ld.clean[partition, ] %&gt;% dplyr::select(-Loan_Status)</span></span>
+<span id="cb54-319"><a href="#cb54-319" aria-hidden="true" tabindex="-1"></a><span class="co">#X.test &lt;- ld.clean[-partition, ] %&gt;% dplyr::select(-Loan_Status)</span></span>
 <span id="cb54-320"><a href="#cb54-320" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-321"><a href="#cb54-321" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-322"><a href="#cb54-322" aria-hidden="true" tabindex="-1"></a><span class="fu">## Training and Test Partition</span></span>
-<span id="cb54-323"><a href="#cb54-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-324"><a href="#cb54-324" aria-hidden="true" tabindex="-1"></a>In this step for data preparation we will partition the training dataset in training and validation sets using <span class="in">`createDataPartition`</span> method from <span class="in">`caret`</span> package. We will reserve 75% for training and rest 25% for validation purpose.</span>
+<span id="cb54-321"><a href="#cb54-321" aria-hidden="true" tabindex="-1"></a><span class="co"># training/validation partition for dependent variable Loan_Status</span></span>
+<span id="cb54-322"><a href="#cb54-322" aria-hidden="true" tabindex="-1"></a><span class="co">#y.train &lt;- ld.clean$Loan_Status[partition]</span></span>
+<span id="cb54-323"><a href="#cb54-323" aria-hidden="true" tabindex="-1"></a><span class="co">#y.test &lt;- ld.clean$Loan_Status[-partition]</span></span>
+<span id="cb54-324"><a href="#cb54-324" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb54-325"><a href="#cb54-325" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-326"><a href="#cb54-326" aria-hidden="true" tabindex="-1"></a><span class="in">```{r partition}</span></span>
-<span id="cb54-327"><a href="#cb54-327" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">622</span>)</span>
-<span id="cb54-328"><a href="#cb54-328" aria-hidden="true" tabindex="-1"></a>partition <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(loan_data<span class="sc">$</span>Loan_Status, <span class="at">p=</span><span class="fl">0.75</span>, <span class="at">list =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb54-326"><a href="#cb54-326" aria-hidden="true" tabindex="-1"></a><span class="fu"># Build Models</span></span>
+<span id="cb54-327"><a href="#cb54-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-328"><a href="#cb54-328" aria-hidden="true" tabindex="-1"></a><span class="fu">## Linear Discriminant Analysis (LDA)</span></span>
 <span id="cb54-329"><a href="#cb54-329" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-330"><a href="#cb54-330" aria-hidden="true" tabindex="-1"></a>training <span class="ot">&lt;-</span> loan_data[partition,]</span>
-<span id="cb54-331"><a href="#cb54-331" aria-hidden="true" tabindex="-1"></a>testing <span class="ot">&lt;-</span> loan_data[<span class="sc">-</span>partition,]</span>
-<span id="cb54-332"><a href="#cb54-332" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-333"><a href="#cb54-333" aria-hidden="true" tabindex="-1"></a><span class="co"># training/validation partition for independent variables</span></span>
-<span id="cb54-334"><a href="#cb54-334" aria-hidden="true" tabindex="-1"></a><span class="co">#X.train &lt;- ld.clean[partition, ] %&gt;% dplyr::select(-Loan_Status)</span></span>
-<span id="cb54-335"><a href="#cb54-335" aria-hidden="true" tabindex="-1"></a><span class="co">#X.test &lt;- ld.clean[-partition, ] %&gt;% dplyr::select(-Loan_Status)</span></span>
-<span id="cb54-336"><a href="#cb54-336" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-337"><a href="#cb54-337" aria-hidden="true" tabindex="-1"></a><span class="co"># training/validation partition for dependent variable Loan_Status</span></span>
-<span id="cb54-338"><a href="#cb54-338" aria-hidden="true" tabindex="-1"></a><span class="co">#y.train &lt;- ld.clean$Loan_Status[partition]</span></span>
-<span id="cb54-339"><a href="#cb54-339" aria-hidden="true" tabindex="-1"></a><span class="co">#y.test &lt;- ld.clean$Loan_Status[-partition]</span></span>
-<span id="cb54-340"><a href="#cb54-340" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-341"><a href="#cb54-341" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-342"><a href="#cb54-342" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-343"><a href="#cb54-343" aria-hidden="true" tabindex="-1"></a><span class="fu"># Build Models</span></span>
-<span id="cb54-344"><a href="#cb54-344" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-345"><a href="#cb54-345" aria-hidden="true" tabindex="-1"></a><span class="fu">## Linear Discriminant Analysis (LDA)</span></span>
-<span id="cb54-346"><a href="#cb54-346" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-347"><a href="#cb54-347" aria-hidden="true" tabindex="-1"></a><span class="in">```{r lda}</span></span>
-<span id="cb54-348"><a href="#cb54-348" aria-hidden="true" tabindex="-1"></a><span class="co"># LDA model</span></span>
-<span id="cb54-349"><a href="#cb54-349" aria-hidden="true" tabindex="-1"></a>lda_model <span class="ot">&lt;-</span> <span class="fu">lda</span>(Loan_Status<span class="sc">~</span>., <span class="at">data =</span> loan_data)</span>
-<span id="cb54-350"><a href="#cb54-350" aria-hidden="true" tabindex="-1"></a>lda_model</span>
-<span id="cb54-351"><a href="#cb54-351" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-352"><a href="#cb54-352" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-355"><a href="#cb54-355" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-356"><a href="#cb54-356" aria-hidden="true" tabindex="-1"></a><span class="co"># prediction from lda model</span></span>
-<span id="cb54-357"><a href="#cb54-357" aria-hidden="true" tabindex="-1"></a>lda_predict <span class="ot">&lt;-</span> lda_model <span class="sc">%&gt;%</span> </span>
-<span id="cb54-358"><a href="#cb54-358" aria-hidden="true" tabindex="-1"></a>  <span class="fu">predict</span>(testing)</span>
-<span id="cb54-359"><a href="#cb54-359" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-360"><a href="#cb54-360" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-361"><a href="#cb54-361" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-362"><a href="#cb54-362" aria-hidden="true" tabindex="-1"></a><span class="in">```{r lda-accuracy}</span></span>
-<span id="cb54-363"><a href="#cb54-363" aria-hidden="true" tabindex="-1"></a><span class="co"># accuracy</span></span>
-<span id="cb54-364"><a href="#cb54-364" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(lda_predict<span class="sc">$</span>class<span class="sc">==</span>testing<span class="sc">$</span>Loan_Status)</span>
-<span id="cb54-365"><a href="#cb54-365" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(lda_predict<span class="sc">$</span>class, testing<span class="sc">$</span>Loan_Status)</span>
-<span id="cb54-366"><a href="#cb54-366" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-367"><a href="#cb54-367" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-368"><a href="#cb54-368" aria-hidden="true" tabindex="-1"></a>LDA model accuracy comes out as ~81%</span>
-<span id="cb54-369"><a href="#cb54-369" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-370"><a href="#cb54-370" aria-hidden="true" tabindex="-1"></a><span class="fu">## K-nearest neighbor (KNN)</span></span>
-<span id="cb54-371"><a href="#cb54-371" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-372"><a href="#cb54-372" aria-hidden="true" tabindex="-1"></a><span class="in">```{r knn}</span></span>
-<span id="cb54-373"><a href="#cb54-373" aria-hidden="true" tabindex="-1"></a><span class="co"># KNN model</span></span>
-<span id="cb54-374"><a href="#cb54-374" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">622</span>)</span>
-<span id="cb54-375"><a href="#cb54-375" aria-hidden="true" tabindex="-1"></a>train.knn <span class="ot">&lt;-</span> training[, <span class="fu">names</span>(training) <span class="sc">!=</span> <span class="st">"Direction"</span>]</span>
-<span id="cb54-376"><a href="#cb54-376" aria-hidden="true" tabindex="-1"></a>prep <span class="ot">&lt;-</span> <span class="fu">preProcess</span>(<span class="at">x =</span> train.knn, <span class="at">method =</span> <span class="fu">c</span>(<span class="st">"center"</span>, <span class="st">"scale"</span>))</span>
-<span id="cb54-377"><a href="#cb54-377" aria-hidden="true" tabindex="-1"></a>prep</span>
-<span id="cb54-378"><a href="#cb54-378" aria-hidden="true" tabindex="-1"></a>cl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method=</span><span class="st">"repeatedcv"</span>, <span class="at">repeats =</span> <span class="dv">5</span>) </span>
-<span id="cb54-379"><a href="#cb54-379" aria-hidden="true" tabindex="-1"></a>knn_model <span class="ot">&lt;-</span> <span class="fu">train</span>(Loan_Status <span class="sc">~</span> ., <span class="at">data =</span> training, </span>
-<span id="cb54-380"><a href="#cb54-380" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> <span class="st">"knn"</span>, </span>
-<span id="cb54-381"><a href="#cb54-381" aria-hidden="true" tabindex="-1"></a>                <span class="at">trControl =</span> cl, </span>
-<span id="cb54-382"><a href="#cb54-382" aria-hidden="true" tabindex="-1"></a>                <span class="at">preProcess =</span> <span class="fu">c</span>(<span class="st">"center"</span>,<span class="st">"scale"</span>), </span>
-<span id="cb54-383"><a href="#cb54-383" aria-hidden="true" tabindex="-1"></a>                <span class="at">tuneLength =</span> <span class="dv">20</span>)</span>
-<span id="cb54-384"><a href="#cb54-384" aria-hidden="true" tabindex="-1"></a>knn_model </span>
-<span id="cb54-385"><a href="#cb54-385" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-386"><a href="#cb54-386" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-387"><a href="#cb54-387" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-388"><a href="#cb54-388" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-391"><a href="#cb54-391" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-392"><a href="#cb54-392" aria-hidden="true" tabindex="-1"></a><span class="co"># prediction from knn model</span></span>
-<span id="cb54-393"><a href="#cb54-393" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(knn_model)</span>
-<span id="cb54-394"><a href="#cb54-394" aria-hidden="true" tabindex="-1"></a>knn_predict <span class="ot">&lt;-</span> <span class="fu">predict</span>(knn_model,<span class="at">newdata =</span> testing)</span>
-<span id="cb54-395"><a href="#cb54-395" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(knn_predict <span class="sc">==</span> testing<span class="sc">$</span>Loan_Status) <span class="co"># accuracy</span></span>
-<span id="cb54-396"><a href="#cb54-396" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(knn_predict, testing<span class="sc">$</span>Loan_Status)</span>
-<span id="cb54-397"><a href="#cb54-397" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-398"><a href="#cb54-398" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-399"><a href="#cb54-399" aria-hidden="true" tabindex="-1"></a>KNN model accuracy comes out as ~80%</span>
+<span id="cb54-330"><a href="#cb54-330" aria-hidden="true" tabindex="-1"></a><span class="in">```{r lda}</span></span>
+<span id="cb54-331"><a href="#cb54-331" aria-hidden="true" tabindex="-1"></a><span class="co"># LDA model</span></span>
+<span id="cb54-332"><a href="#cb54-332" aria-hidden="true" tabindex="-1"></a>lda_model <span class="ot">&lt;-</span> <span class="fu">lda</span>(Loan_Status<span class="sc">~</span>., <span class="at">data =</span> loan_data)</span>
+<span id="cb54-333"><a href="#cb54-333" aria-hidden="true" tabindex="-1"></a>lda_model</span>
+<span id="cb54-334"><a href="#cb54-334" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-335"><a href="#cb54-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-338"><a href="#cb54-338" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb54-339"><a href="#cb54-339" aria-hidden="true" tabindex="-1"></a><span class="co"># prediction from lda model</span></span>
+<span id="cb54-340"><a href="#cb54-340" aria-hidden="true" tabindex="-1"></a>lda_predict <span class="ot">&lt;-</span> lda_model <span class="sc">%&gt;%</span> </span>
+<span id="cb54-341"><a href="#cb54-341" aria-hidden="true" tabindex="-1"></a>  <span class="fu">predict</span>(testing)</span>
+<span id="cb54-342"><a href="#cb54-342" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-343"><a href="#cb54-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-344"><a href="#cb54-344" aria-hidden="true" tabindex="-1"></a><span class="in">```{r lda-accuracy}</span></span>
+<span id="cb54-345"><a href="#cb54-345" aria-hidden="true" tabindex="-1"></a><span class="co"># accuracy</span></span>
+<span id="cb54-346"><a href="#cb54-346" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(lda_predict<span class="sc">$</span>class<span class="sc">==</span>testing<span class="sc">$</span>Loan_Status)</span>
+<span id="cb54-347"><a href="#cb54-347" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(lda_predict<span class="sc">$</span>class, testing<span class="sc">$</span>Loan_Status)</span>
+<span id="cb54-348"><a href="#cb54-348" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-349"><a href="#cb54-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-350"><a href="#cb54-350" aria-hidden="true" tabindex="-1"></a>LDA model accuracy comes out as \~81%</span>
+<span id="cb54-351"><a href="#cb54-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-352"><a href="#cb54-352" aria-hidden="true" tabindex="-1"></a><span class="fu">## K-nearest neighbor (KNN)</span></span>
+<span id="cb54-353"><a href="#cb54-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-354"><a href="#cb54-354" aria-hidden="true" tabindex="-1"></a><span class="in">```{r knn}</span></span>
+<span id="cb54-355"><a href="#cb54-355" aria-hidden="true" tabindex="-1"></a><span class="co"># KNN model</span></span>
+<span id="cb54-356"><a href="#cb54-356" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">622</span>)</span>
+<span id="cb54-357"><a href="#cb54-357" aria-hidden="true" tabindex="-1"></a>train.knn <span class="ot">&lt;-</span> training[, <span class="fu">names</span>(training) <span class="sc">!=</span> <span class="st">"Direction"</span>]</span>
+<span id="cb54-358"><a href="#cb54-358" aria-hidden="true" tabindex="-1"></a>prep <span class="ot">&lt;-</span> <span class="fu">preProcess</span>(<span class="at">x =</span> train.knn, <span class="at">method =</span> <span class="fu">c</span>(<span class="st">"center"</span>, <span class="st">"scale"</span>))</span>
+<span id="cb54-359"><a href="#cb54-359" aria-hidden="true" tabindex="-1"></a>prep</span>
+<span id="cb54-360"><a href="#cb54-360" aria-hidden="true" tabindex="-1"></a>cl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method=</span><span class="st">"repeatedcv"</span>, <span class="at">repeats =</span> <span class="dv">5</span>) </span>
+<span id="cb54-361"><a href="#cb54-361" aria-hidden="true" tabindex="-1"></a>knn_model <span class="ot">&lt;-</span> <span class="fu">train</span>(Loan_Status <span class="sc">~</span> ., <span class="at">data =</span> training, </span>
+<span id="cb54-362"><a href="#cb54-362" aria-hidden="true" tabindex="-1"></a>                <span class="at">method =</span> <span class="st">"knn"</span>, </span>
+<span id="cb54-363"><a href="#cb54-363" aria-hidden="true" tabindex="-1"></a>                <span class="at">trControl =</span> cl, </span>
+<span id="cb54-364"><a href="#cb54-364" aria-hidden="true" tabindex="-1"></a>                <span class="at">preProcess =</span> <span class="fu">c</span>(<span class="st">"center"</span>,<span class="st">"scale"</span>), </span>
+<span id="cb54-365"><a href="#cb54-365" aria-hidden="true" tabindex="-1"></a>                <span class="at">tuneLength =</span> <span class="dv">20</span>)</span>
+<span id="cb54-366"><a href="#cb54-366" aria-hidden="true" tabindex="-1"></a>knn_model </span>
+<span id="cb54-367"><a href="#cb54-367" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-368"><a href="#cb54-368" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-371"><a href="#cb54-371" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb54-372"><a href="#cb54-372" aria-hidden="true" tabindex="-1"></a><span class="co"># prediction from knn model</span></span>
+<span id="cb54-373"><a href="#cb54-373" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(knn_model)</span>
+<span id="cb54-374"><a href="#cb54-374" aria-hidden="true" tabindex="-1"></a>knn_predict <span class="ot">&lt;-</span> <span class="fu">predict</span>(knn_model,<span class="at">newdata =</span> testing)</span>
+<span id="cb54-375"><a href="#cb54-375" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(knn_predict <span class="sc">==</span> testing<span class="sc">$</span>Loan_Status) <span class="co"># accuracy</span></span>
+<span id="cb54-376"><a href="#cb54-376" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(knn_predict, testing<span class="sc">$</span>Loan_Status)</span>
+<span id="cb54-377"><a href="#cb54-377" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-378"><a href="#cb54-378" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-379"><a href="#cb54-379" aria-hidden="true" tabindex="-1"></a>KNN model accuracy comes out as \~80%</span>
+<span id="cb54-380"><a href="#cb54-380" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-381"><a href="#cb54-381" aria-hidden="true" tabindex="-1"></a><span class="fu">## Decision Trees</span></span>
+<span id="cb54-382"><a href="#cb54-382" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-383"><a href="#cb54-383" aria-hidden="true" tabindex="-1"></a><span class="in">```{r Decision}</span></span>
+<span id="cb54-384"><a href="#cb54-384" aria-hidden="true" tabindex="-1"></a><span class="co"># Decision Trees model</span></span>
+<span id="cb54-385"><a href="#cb54-385" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">622</span>)</span>
+<span id="cb54-386"><a href="#cb54-386" aria-hidden="true" tabindex="-1"></a>tree.loans <span class="ot">=</span> <span class="fu">tree</span>(Loan_Status<span class="sc">~</span>., <span class="at">data=</span>training)</span>
+<span id="cb54-387"><a href="#cb54-387" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tree.loans)</span>
+<span id="cb54-388"><a href="#cb54-388" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tree.loans)</span>
+<span id="cb54-389"><a href="#cb54-389" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(tree.loans, <span class="at">pretty =</span> <span class="dv">0</span>)</span>
+<span id="cb54-390"><a href="#cb54-390" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-391"><a href="#cb54-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-394"><a href="#cb54-394" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb54-395"><a href="#cb54-395" aria-hidden="true" tabindex="-1"></a><span class="co"># prediction from decision tree model</span></span>
+<span id="cb54-396"><a href="#cb54-396" aria-hidden="true" tabindex="-1"></a>tree.predict<span class="ot">&lt;-</span><span class="fu">predict</span>(tree.loans, testing, <span class="at">type =</span> <span class="st">'class'</span>)</span>
+<span id="cb54-397"><a href="#cb54-397" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(tree.predict <span class="sc">==</span> testing<span class="sc">$</span>Loan_Status) <span class="co"># accuracy</span></span>
+<span id="cb54-398"><a href="#cb54-398" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(tree.predict, testing<span class="sc">$</span>Loan_Status)</span>
+<span id="cb54-399"><a href="#cb54-399" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb54-400"><a href="#cb54-400" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-401"><a href="#cb54-401" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-402"><a href="#cb54-402" aria-hidden="true" tabindex="-1"></a><span class="fu">## Decision Trees</span></span>
-<span id="cb54-403"><a href="#cb54-403" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-404"><a href="#cb54-404" aria-hidden="true" tabindex="-1"></a><span class="in">```{r Decision}</span></span>
-<span id="cb54-405"><a href="#cb54-405" aria-hidden="true" tabindex="-1"></a><span class="co"># Decision Trees model</span></span>
+<span id="cb54-401"><a href="#cb54-401" aria-hidden="true" tabindex="-1"></a>Decision Tree model accuracy comes out as \~80%</span>
+<span id="cb54-402"><a href="#cb54-402" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-403"><a href="#cb54-403" aria-hidden="true" tabindex="-1"></a><span class="fu">## Random Forests</span></span>
+<span id="cb54-404"><a href="#cb54-404" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-405"><a href="#cb54-405" aria-hidden="true" tabindex="-1"></a><span class="in">```{r rf}</span></span>
 <span id="cb54-406"><a href="#cb54-406" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">622</span>)</span>
-<span id="cb54-407"><a href="#cb54-407" aria-hidden="true" tabindex="-1"></a>tree.loans <span class="ot">=</span> <span class="fu">tree</span>(Loan_Status<span class="sc">~</span>., <span class="at">data=</span>training)</span>
-<span id="cb54-408"><a href="#cb54-408" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tree.loans)</span>
-<span id="cb54-409"><a href="#cb54-409" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tree.loans)</span>
-<span id="cb54-410"><a href="#cb54-410" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(tree.loans, <span class="at">pretty =</span> <span class="dv">0</span>)</span>
+<span id="cb54-407"><a href="#cb54-407" aria-hidden="true" tabindex="-1"></a><span class="co"># Random Forest model</span></span>
+<span id="cb54-408"><a href="#cb54-408" aria-hidden="true" tabindex="-1"></a>rf.loans <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(Loan_Status<span class="sc">~</span>., <span class="at">data =</span> training)</span>
+<span id="cb54-409"><a href="#cb54-409" aria-hidden="true" tabindex="-1"></a>rf.loans</span>
+<span id="cb54-410"><a href="#cb54-410" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-411"><a href="#cb54-411" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb54-412"><a href="#cb54-412" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb54-415"><a href="#cb54-415" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-416"><a href="#cb54-416" aria-hidden="true" tabindex="-1"></a><span class="co"># prediction from decision tree model</span></span>
-<span id="cb54-417"><a href="#cb54-417" aria-hidden="true" tabindex="-1"></a>tree.predict<span class="ot">&lt;-</span><span class="fu">predict</span>(tree.loans, testing, <span class="at">type =</span> <span class="st">'class'</span>)</span>
-<span id="cb54-418"><a href="#cb54-418" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(tree.predict <span class="sc">==</span> testing<span class="sc">$</span>Loan_Status) <span class="co"># accuracy</span></span>
-<span id="cb54-419"><a href="#cb54-419" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(tree.predict, testing<span class="sc">$</span>Loan_Status)</span>
+<span id="cb54-416"><a href="#cb54-416" aria-hidden="true" tabindex="-1"></a><span class="co"># prediction from random forest model</span></span>
+<span id="cb54-417"><a href="#cb54-417" aria-hidden="true" tabindex="-1"></a>rf.predict <span class="ot">&lt;-</span> <span class="fu">predict</span>(rf.loans, testing,<span class="at">type=</span><span class="st">'class'</span>)</span>
+<span id="cb54-418"><a href="#cb54-418" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(rf.predict <span class="sc">==</span> testing<span class="sc">$</span>Loan_Status) <span class="co"># accuracy</span></span>
+<span id="cb54-419"><a href="#cb54-419" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(rf.predict, testing<span class="sc">$</span>Loan_Status)</span>
 <span id="cb54-420"><a href="#cb54-420" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb54-421"><a href="#cb54-421" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-422"><a href="#cb54-422" aria-hidden="true" tabindex="-1"></a>Decision Tree model accuracy comes out as ~80%</span>
+<span id="cb54-422"><a href="#cb54-422" aria-hidden="true" tabindex="-1"></a>Random Forest model accuracy comes out as \~80%</span>
 <span id="cb54-423"><a href="#cb54-423" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-424"><a href="#cb54-424" aria-hidden="true" tabindex="-1"></a><span class="fu">## Random Forests</span></span>
+<span id="cb54-424"><a href="#cb54-424" aria-hidden="true" tabindex="-1"></a><span class="fu"># Model Performance</span></span>
 <span id="cb54-425"><a href="#cb54-425" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-426"><a href="#cb54-426" aria-hidden="true" tabindex="-1"></a><span class="in">```{r rf}</span></span>
-<span id="cb54-427"><a href="#cb54-427" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">622</span>)</span>
-<span id="cb54-428"><a href="#cb54-428" aria-hidden="true" tabindex="-1"></a><span class="co"># Random Forest model</span></span>
-<span id="cb54-429"><a href="#cb54-429" aria-hidden="true" tabindex="-1"></a>rf.loans <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(Loan_Status<span class="sc">~</span>., <span class="at">data =</span> training)</span>
-<span id="cb54-430"><a href="#cb54-430" aria-hidden="true" tabindex="-1"></a>rf.loans</span>
+<span id="cb54-426"><a href="#cb54-426" aria-hidden="true" tabindex="-1"></a>All 4 of the models we built above have an accuracy rate of around 80% with the LDA model getting the light edge in accuracy (81.1% to 79.5% for the other 3).</span>
+<span id="cb54-427"><a href="#cb54-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-428"><a href="#cb54-428" aria-hidden="true" tabindex="-1"></a>Next we will look at some more detailed accuracy metrics produced from the predict function.</span>
+<span id="cb54-429"><a href="#cb54-429" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-430"><a href="#cb54-430" aria-hidden="true" tabindex="-1"></a>In this particular case, since the accuracy results are so similar it is wise to examine which models are most often leading to type 1 or type 2 errors. Assuming a null hypothesis is not giving a loan a type 1 error is giving someone a loan when they should not have gotten one and a type 2 error is not giving someone a loan when they should have gotten one. This correlates to the sensitivity and specificity respectively. The balanced accuracy metric takes the mean of sensitivity and specificity in order to diagnose if a model appears to be accurate but is really only predicting the positive or negative case correctly. In this case the random forest model has a slight edge over the LDA in balanced accuracy (0.7212 to 0.7201).</span>
 <span id="cb54-431"><a href="#cb54-431" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-432"><a href="#cb54-432" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb54-432"><a href="#cb54-432" aria-hidden="true" tabindex="-1"></a>Although the LDA has the smallest p-value it is still <span class="sc">\&lt;</span>0.0025 for all models so they can all be used so this does not help us decide which model to choose. The same can be said for the Mcnemar's p-value.</span>
 <span id="cb54-433"><a href="#cb54-433" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-436"><a href="#cb54-436" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb54-437"><a href="#cb54-437" aria-hidden="true" tabindex="-1"></a><span class="co"># prediction from random forest model</span></span>
-<span id="cb54-438"><a href="#cb54-438" aria-hidden="true" tabindex="-1"></a>rf.predict <span class="ot">&lt;-</span> <span class="fu">predict</span>(rf.loans, testing,<span class="at">type=</span><span class="st">'class'</span>)</span>
-<span id="cb54-439"><a href="#cb54-439" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(rf.predict <span class="sc">==</span> testing<span class="sc">$</span>Loan_Status) <span class="co"># accuracy</span></span>
-<span id="cb54-440"><a href="#cb54-440" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(rf.predict, testing<span class="sc">$</span>Loan_Status)</span>
-<span id="cb54-441"><a href="#cb54-441" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb54-442"><a href="#cb54-442" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-443"><a href="#cb54-443" aria-hidden="true" tabindex="-1"></a>Random Forest model accuracy comes out as ~80%</span>
-<span id="cb54-444"><a href="#cb54-444" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-445"><a href="#cb54-445" aria-hidden="true" tabindex="-1"></a><span class="fu"># Model Performance</span></span>
-<span id="cb54-446"><a href="#cb54-446" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-447"><a href="#cb54-447" aria-hidden="true" tabindex="-1"></a>All 4 of the models we built above have an accuracy rate of around 80% with the LDA model getting the light edge in accuracy (81.1% to 79.5% for the other 3). </span>
-<span id="cb54-448"><a href="#cb54-448" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-449"><a href="#cb54-449" aria-hidden="true" tabindex="-1"></a>Next we will look at some more detailed accuracy metrics produced from the predict function. </span>
-<span id="cb54-450"><a href="#cb54-450" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-451"><a href="#cb54-451" aria-hidden="true" tabindex="-1"></a>In this particular case, since the accuracy results are so similar it is wise to examine which models are most often leading to type 1 or type 2 errors. Assuming a null hypothesis is not giving a loan a type 1 error is giving someone a loan when they should not have gotten one and a type 2 error is not giving someone a loan when they should have gotten one. This correlates to the sensitivity and specificity respectively. The balanced accuracy metric takes the mean of sensitivity and specificity in order to diagnose if a model appears to be accurate but is really only predicting the positive or negative case correctly. In this case the random forest model has a slight edge over the LDA in balanced accuracy (0.7212 to 0.7201).</span>
-<span id="cb54-452"><a href="#cb54-452" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-453"><a href="#cb54-453" aria-hidden="true" tabindex="-1"></a>Although the LDA has the smallest p-value it is still &lt;0.0025 for all models so they can all be used so this does not help us decide which model to choose. The same can be said for the Mcnemar's p-value.</span>
-<span id="cb54-454"><a href="#cb54-454" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-455"><a href="#cb54-455" aria-hidden="true" tabindex="-1"></a>The LDA also has the best Kappa score of 0.5046. The Kappa score can be a much more accurate indicator of accuracy then the standard accuracy rate. The kappa score takes into account the expected accuracy of a model given the instances of each class. This helps a lot with unbalanced class numbers in the dataset. It is encouraging to see the LDA Kappa is also the highest which corresponds with it having the highest accuracy. Although the accuracy score is high a Kappa score around 0.5046 only indicates a moderately good model.</span>
-<span id="cb54-456"><a href="#cb54-456" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-457"><a href="#cb54-457" aria-hidden="true" tabindex="-1"></a>Given the LDa has the highest accuracy, kappa, and nearly the highest balanced accuracy, the LDA is the model that we would use going forward.</span>
-<span id="cb54-458"><a href="#cb54-458" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-459"><a href="#cb54-459" aria-hidden="true" tabindex="-1"></a><span class="fu"># Conclusion</span></span>
-<span id="cb54-460"><a href="#cb54-460" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-461"><a href="#cb54-461" aria-hidden="true" tabindex="-1"></a>After reviewing the results of 4 different models (LDA, KNN, Decision Tree, and Random Forest), we found that LDA is the most accurate by numerous metrics and should be considered the best model for this data. However, the metrics for these 4 models was very close and it did not leave us with no choice but to pick the LDA. If presenting this to stakeholders we would recommend the LDA model with the caveat they further testing and verification may be needed to ensure the LDA is the most accurate model of other iterations of the split of training and testing data.</span>
-<span id="cb54-462"><a href="#cb54-462" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-463"><a href="#cb54-463" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-464"><a href="#cb54-464" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-465"><a href="#cb54-465" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-466"><a href="#cb54-466" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-467"><a href="#cb54-467" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-468"><a href="#cb54-468" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-469"><a href="#cb54-469" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-470"><a href="#cb54-470" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-471"><a href="#cb54-471" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-472"><a href="#cb54-472" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-434"><a href="#cb54-434" aria-hidden="true" tabindex="-1"></a>The LDA also has the best Kappa score of 0.5046. The Kappa score can be a much more accurate indicator of accuracy then the standard accuracy rate. The kappa score takes into account the expected accuracy of a model given the instances of each class. This helps a lot with unbalanced class numbers in the dataset. It is encouraging to see the LDA Kappa is also the highest which corresponds with it having the highest accuracy. Although the accuracy score is high a Kappa score around 0.5046 only indicates a moderately good model.</span>
+<span id="cb54-435"><a href="#cb54-435" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-436"><a href="#cb54-436" aria-hidden="true" tabindex="-1"></a>Given the LDa has the highest accuracy, kappa, and nearly the highest balanced accuracy, the LDA is the model that we would use going forward.</span>
+<span id="cb54-437"><a href="#cb54-437" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-438"><a href="#cb54-438" aria-hidden="true" tabindex="-1"></a><span class="fu"># Conclusion</span></span>
+<span id="cb54-439"><a href="#cb54-439" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-440"><a href="#cb54-440" aria-hidden="true" tabindex="-1"></a>After reviewing the results of 4 different models (LDA, KNN, Decision Tree, and Random Forest), we found that LDA is the most accurate by numerous metrics and should be considered the best model for this data. However, the metrics for these 4 models was very close and it did not leave us with no choice but to pick the LDA. If presenting this to stakeholders we would recommend the LDA model with the caveat they further testing and verification may be needed to ensure the LDA is the most accurate model of other iterations of the split of training and testing data.</span>
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

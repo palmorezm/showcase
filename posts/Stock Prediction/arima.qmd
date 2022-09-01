@@ -1,6 +1,6 @@
 ---
 title: "Time Series Analysis"
-subtitle: "Predicting Value of Unknown Variables"
+subtitle: "Predicting Value of Uncertain Variables"
 author: "Zach Palmore"
 date: "2022-08-28"
 categories: [predictive, modeling, data science]
@@ -25,9 +25,11 @@ knitr::opts_chunk$set(include=T, echo = F, warning=F, message=F)
 
 A good forecast is a blessing while the wrong forecast could prove to be dangerous
 
-## Introduction
+View the full [source code on GitHub](https://github.com/palmorezm/showcase/tree/master/posts/Stock%20Prediction).
 
-Given an unknown data source with several groups, we attempt to predict the next 140 values of a times series data set based on 1622 entries provided on multiple events. Our predictions will be fine-tuned to reduce the mean absolute percentage error (MAPE) as much as possible. The packages we will be using and all associated code to produce the models can be found in the attached markdown file. The data with its first five rows, are shown below.  
+## Challenge
+
+Given stock value data source with several groups, we attempt to predict the next 140 values of a times series data set based on 1622 entries provided on multiple events. Our predictions will be fine-tuned to reduce the mean absolute percentage error (MAPE) as much as possible. The packages we will be using and all associated code to produce the models can be found in the attached markdown file. The data with its first five rows, are shown below.
 
 ```{r}
 #| include: false
@@ -50,8 +52,6 @@ library(TSstudio)
 library(stringr)
 ```
 
-
-
 ```{r}
 # Data source
 data <- read.csv("https://raw.githubusercontent.com/palmorezm/msds/main/Predictive%20Analytics/Projects/Project1/project1data.csv")
@@ -60,7 +60,7 @@ data <- read.csv("https://raw.githubusercontent.com/palmorezm/msds/main/Predicti
 head(data, 5)
 ```
 
-We create forecasts for two preselected variables within each of six predetermined groups. These groups are denoted S01, S02, S03, S04, S05, and S06 respectively. There are five variables within each group that we have to work with. They are Var01, Var02, Var03, Var05, and Var07 respectively. Our date variable ‘SeriesInd,’ is displayed in its numeric serial number form calculated with Excel. Although we do not know what the variables stand for, we can develop models to try and forecast their behavior. This chart contains a breakdown of which variables are forecast in each group.
+We create forecasts for two preselected variables within each of six predetermined groups. These groups are denoted S01, S02, S03, S04, S05, and S06 respectively. There are five variables within each group that we have to work with. They are Var01, Var02, Var03, Var05, and Var07 respectively. Our date variable 'SeriesInd,' is displayed in its numeric serial number form calculated with Excel. Although we do not know what the variables stand for, we can develop models to try and forecast their behavior. This chart contains a breakdown of which variables are forecast in each group.
 
 ```{r}
 # Chart
@@ -131,11 +131,11 @@ for (i in colnames(S06)){
 }
 ```
 
-Before we begin, the data is filtered to extract each time series by group. This isolates the Var01, Var02, Var03, Var05, and Var07 variables associated with groups S01, S02, and so on. Then, with each group and its respective variables’ behavior isolated, we clean and adjust the data to make use of it in the analysis. Once we determine the most appropriate models to forecast the proper variable in each group, we evaluate the results of our predictions. Our final forecasts are captured in the excel spreadsheet attached. 
+Before we begin, the data is filtered to extract each time series by group. This isolates the Var01, Var02, Var03, Var05, and Var07 variables associated with groups S01, S02, and so on. Then, with each group and its respective variables' behavior isolated, we clean and adjust the data to make use of it in the analysis. Once we determine the most appropriate models to forecast the proper variable in each group, we evaluate the results of our predictions. Our final forecasts are captured in the excel spreadsheet attached.
 
 ## Analysis
 
-We began by addressing missing values. Given 10,572 observations, about 8% of each variable was missing. Several methods were tried to address this but the best were Kalman smoothing and simple imputation by the median of each ‘Var0X’ variable to fill in where appropriate. The ‘SeriesInd’ numeric date was also converted from its serial number form to a common date-time series. We then examined each group’s variables separately.
+We began by addressing missing values. Given 10,572 observations, about 8% of each variable was missing. Several methods were tried to address this but the best were Kalman smoothing and simple imputation by the median of each 'Var0X' variable to fill in where appropriate. The 'SeriesInd' numeric date was also converted from its serial number form to a common date-time series. We then examined each group's variables separately.
 
 ```{r}
 # library(fpp2)
@@ -182,8 +182,6 @@ S03_Var05<-S03_Var05[1:1625,]
 S03_Var07<-S03 %>%select(Var07)
 S03_Var07<-S03_Var07[1:1625,]
 ```
-
-
 
 Statistical summaries, box plots, and histograms were run on each group to evaluate where the average value of each variable was, if its distribution was skewed, determine whether outliers were present, and provide other descriptors of the data. These informed us that the average value (mean) of the variables are similar but their range varies widely with Var05 at 186.01 while Var02 covers a range of 479 million. Our analysis solves this potential problem by focusing on variables of the same scales as the intended target.
 
@@ -270,7 +268,6 @@ hist(ts_S03_Var07)
 boxplot(ts_S03_Var07)
 ```
 
-
 ```{r}
 summary(S01_Var01)
 par(mfrow = c(1,2))
@@ -279,9 +276,7 @@ boxplot(ts_S01_Var01)
 autoplot(ts_S01_Var01)
 ```
 
-
-Additionally, all but group S03 of the histograms exhibited right skewness, and Var02 and Var03 had outliers. These were replaced using Friedman’s super smoothing method. Due to the randomness of these variables, determining outliers was difficult and there is a presence of additional overly influential points as determined using Cook's distance formula. We acknowledge the presence of these points but are unable to alter them as they are likely intentional based on the patterns in the data. For reference, the observations are shown in the scatter plot with color coding by each group. 
-
+Additionally, all but group S03 of the histograms exhibited right skewness, and Var02 and Var03 had outliers. These were replaced using Friedman's super smoothing method. Due to the randomness of these variables, determining outliers was difficult and there is a presence of additional overly influential points as determined using Cook's distance formula. We acknowledge the presence of these points but are unable to alter them as they are likely intentional based on the patterns in the data. For reference, the observations are shown in the scatter plot with color coding by each group.
 
 ```{r}
 #| warning: false
@@ -310,7 +305,7 @@ data[c(1:7)]%>%
         )
 ```
 
-Seasonality was also considered. It is possible this data follows a weak seasonal trend that increases during summer months but there is not a lot of evidence to support regular fluctuations. Regular gaps were noticed in the time series on a weekly basis and several methods were used in attempts to fix this. However, the data appears randomly distributed and as such, acts randomly. For this reason, we left the gaps alone and any further adjustments made were minimal to avoid disturbing any existing patterns in the data. 
+Seasonality was also considered. It is possible this data follows a weak seasonal trend that increases during summer months but there is not a lot of evidence to support regular fluctuations. Regular gaps were noticed in the time series on a weekly basis and several methods were used in attempts to fix this. However, the data appears randomly distributed and as such, acts randomly. For this reason, we left the gaps alone and any further adjustments made were minimal to avoid disturbing any existing patterns in the data.
 
 ```{r}
 #| include: false
@@ -334,12 +329,11 @@ ts_S03_Var07%>%diff()%>%ndiffs()
 # According to the ndiffs test, all the variables above require difference.
 ```
 
-
 We determined that the best model type was an Auto Regressive Integrated Moving Average (ARIMA) with drift. Unfortunately, all variables required differencing to achieve stationarity. This indicates that any predictions made with these variables may be unrealistic because of inherent random changes in statistics like the mean and variance of these variables over time. We transform the data in our attempts to achieve stationarity but it should be noted that our review of stationarity is only a rough estimate using the aforementioned summary statistics so that we may apply this ARIMA method. Otherwise, we would have to conclude this data is inherently unpredictable and as such, render model forecasts useless. Rather, we focus on forecasting each variable individually and try to keep it simple.
 
-
-
 ## Prediction
+
+When predicting stock values over time, we know that there is a great deal of uncertainty in the outcome. However, our results perform better than expected when individual stock values are isolated and modeled over time with greater weight given to recent historical data. Using our Auto Regressive Integrated Moving Average (ARIMA) with drift, the first set of stock values are show with a cone of uncertainty to note 95% and 80% confidence intervals the interval of time.
 
 ```{r}
 #| include: false
@@ -428,7 +422,16 @@ csv <- data.frame(cbind(S0101_preds, S0102_preds, S0202_preds, S0203_preds,S0305
 # write.csv(csv, file = "C:/data/csv.csv")
 ```
 
+```{r}
+plot(fcast0101)
+```
 
+These forecasts demonstrate how difficult it is to predict stocks values using day-value pairing. However, they also provide a clear estimation of the highest and lowest value points at a given day which can be an invaluable asset. These bounds around the estimated blue line show we should not expect values to go very far above 70 but they also are not likely to drop below 50 anytime soon. Of course, uncertainty grows the farther out our predictions are. Thus, the model must account for the growth in uncertainty over time to manage our risk. This trend is show in the chart below.
+
+```{r}
+#| include: false
+# This is an empty chunk
+```
 
 ```{r}
 #| include: false
@@ -446,7 +449,6 @@ b3 <- 60
 b4 <- 90
 extract[which(extract$Day == b1),]$`Hi 95`
 ```
-
 
 ```{r}
 #| warning: false
@@ -537,3 +539,4 @@ fcast0101 %>%
                           plot.subtitle = element_text(hjust = 0.5))
 ```
 
+View the full [source code on GitHub](https://github.com/palmorezm/showcase/tree/master/posts/Stock%20Prediction).
