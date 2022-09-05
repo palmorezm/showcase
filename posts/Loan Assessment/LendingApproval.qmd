@@ -388,20 +388,66 @@ Random Forest model accuracy comes out as \~80%
 
 # Model Performance
 
-All 4 of the models we built above have an accuracy rate of around 80% with the LDA model getting the light edge in accuracy (81.1% to 79.5% for the other 3).
+All 4 of the models we built above have an accuracy rate of around 80% with the Random Forest and LDA model getting the light edge in accuracy (81.1% to 79.5%)
 
-Next we will look at some more detailed accuracy metrics produced from the predict function.
+We will look at some more detailed accuracy metrics produced from the predict function.
 
-In this particular case, since the accuracy results are so similar it is wise to examine which models are most often leading to type 1 or type 2 errors. Assuming a null hypothesis is not giving a loan a type 1 error is giving someone a loan when they should not have gotten one and a type 2 error is not giving someone a loan when they should have gotten one. This correlates to the sensitivity and specificity respectively. The balanced accuracy metric takes the mean of sensitivity and specificity in order to diagnose if a model appears to be accurate but is really only predicting the positive or negative case correctly. In this case the random forest model has a slight edge over the LDA in balanced accuracy (0.7212 to 0.7201).
+```{r}
+#| label: model-performance
+#| code-summary: "Model Performance"
+#| warning: false
+#| message: false
+model_performance_table <- data.frame(matrix(c(
+         "Linear Discriminant Analysis (LDA)", 
+         0.732, 0.875, (0.875-0.732), 
+         0.811, 0.720, 0.463, 0.977,
+         0.505, 0.905, 0.001,
+         "K-Nearest Neighbor (KNN)", 
+         0.715, 0.862, (0.862-0.715),
+         0.795, 0.696, 0.415, 0.977,
+         0.455, 0.895, 0.002,
+         "Decision Trees (DTs)", 
+         0.715, 0.862, (0.862-0.715),
+         0.795, 0.709, 0.463, 0.954,
+         0.471, 0.826, 0.001, 
+         "Random Forests (RFs)", 
+         0.732, 0.875, (0.875-0.732),
+         0.811, 0.739, 0.537, 0.942,
+         0.525, 0.815, 0.001),
+         nrow = 4, byrow = T))
+colnames(model_performance_table) <- c("ID", 
+                               "Lower", 
+                               "Upper", 
+                               "Range & Variation",
+                               "Accuracy",
+                              "Sensitivity", 
+                              "Specificity",
+                              "Balanced Accuracy",
+                              "Kappa", 
+                              "True Positives", 
+                              "P-value")
+model_performance_table
+```
 
-Although the LDA has the smallest p-value it is still \<0.0025 for all models so they can all be used so this does not help us decide which model to choose. The same can be said for the Mcnemar's p-value.
+In this particular case, since the accuracy results are so similar it is wise to examine which models are most often leading to type 1 or type 2 errors. Assuming a null hypothesis is not giving a loan, a type 1 error is giving someone a loan when they should not have gotten one and a type 2 error is not giving someone a loan when they should have gotten one. This correlates to the sensitivity and specificity respectively.
 
-The LDA also has the best Kappa score of 0.5046. The Kappa score can be a much more accurate indicator of accuracy then the standard accuracy rate. The kappa score takes into account the expected accuracy of a model given the instances of each class. This helps a lot with unbalanced class numbers in the dataset. It is encouraging to see the LDA Kappa is also the highest which corresponds with it having the highest accuracy. Although the accuracy score is high a Kappa score around 0.5046 only indicates a moderately good model.
+The balanced accuracy metric takes the mean of sensitivity and specificity in order to diagnose if a model appears to be accurate but is really only predicting the positive or negative case correctly. In this case the random forest model has a slight edge over the LDA in balanced accuracy (0.739 to 0.7201). This metric should be considered most impactful in our decision-making process since it directly contributes to the type of risk that will have to be managed in a portfolio.
 
-Given the LDa has the highest accuracy, kappa, and nearly the highest balanced accuracy, the LDA is the model that we would use going forward.
+Although the LDA has the smallest p-value it is still \<0.0025 for all models. They can all be used so this does not help us decide which model to choose. The same can be said for the Mcnemar's p-value.
+
+The random forest also has the best Kappa score of 0.525. The Kappa score can be a much more accurate indicator of accuracy then the standard accuracy rate. The kappa score takes into account the expected accuracy of a model given the instances of each class. This helps a lot with unbalanced class numbers in the dataset. It is encouraging to see that our random forest model's Kappa is also the highest because this corresponds with it having the highest expected accuracy of our models in production.
+
+Given that our random forest and LDA models have nearly equal accuracy, the same low-amount of variations present in their predictions, and reasonable kappa scores, either could be used with similar results. However, it is also important to consider context. The priority for business is to ensure loans are paid and lower the risk of loss or credit damage. For this reason, it may be beneficial to focus on the type 1 error rate, if we do not care how many people do not get loans when they should have. Otherwise, the more holistic metric of balanced accuracy ensures that more people get approved for loans when needed. 
+
+It is also important to consider our data assets. The LDA model requires fewer inputs to produce an output with nearly identical accuracy as the random forest model. If we were in a highly competitive market for data assets then a reduction in input for equally accurate predictive results could be more important than any performance score. Therefore, in resource competitive environments, the LDA would be the preferred model method since it can produce the highest balanced accuracy. 
+
 
 # Conclusion
 
-After reviewing the results of 4 different models (LDA, KNN, Decision Tree, and Random Forest), we found that LDA is the most accurate by numerous metrics and should be considered the best model for this data. However, the metrics for these 4 models was very close and it did not leave us with no choice but to pick the LDA. If presenting this to stakeholders we would recommend the LDA model with the caveat they further testing and verification may be needed to ensure the LDA is the most accurate model of other iterations of the split of training and testing data.
+After reviewing the results of 4 different models (LDA, KNN, Decision Tree, and Random Forest), we found that LDA is the most accurate by balanced accuracy and should be considered the best model in competitive resource limited environments. However, the performance metrics for these 4 models were very close. Depending on the stakeholders, it may be wise to recommend the random forest model with the caveat that greater resources would need to be devoted to it to produce slightly higher sensitivity scores. 
+
+When attempting to minimize risk as much as possible and avoid purchasing data assets, the LDA model provides the best insights. If the lender is willing to provide more loans at a greater level of risk, then, based on this data set, the random forest would be better suited for this task.
+
+To improve upon these metrics and gain better predictive power we should consider feature engineering and exploring new model types. Some models may be able to produce the same results with fewer features and if data collection resources are of concern, such a model would be essential to avoid paying for new features or data sets. There may also be undiscovered relationships between variables that can be used to better estimate likelihood of repayment and provide new insights.
 
 To see the full report and source code, [visit my Github site](https://github.com/palmorezm/showcase/tree/master/posts/Loan%20Assessment).
