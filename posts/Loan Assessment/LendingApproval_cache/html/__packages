@@ -18,3 +18,7 @@ e1071
 tree
 randomForest
 corrplot
+htmlwidgets
+robservable
+shiny
+shinyjs

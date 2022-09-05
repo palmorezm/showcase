@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.0.38">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Zach Palmore">
 <meta name="dcterms.date" content="2022-08-14">
-
 <title>Zachary Palmore - Claim Estimation</title>
 <style>
 code{white-space: pre-wrap;}
@@ -82,7 +79,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -100,8 +96,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -119,23 +114,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit"
   }
-}</script>
-
-<script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+}</script><script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script><link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
-<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
-
-
-<link rel="stylesheet" href="../../styles.css">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script><link rel="stylesheet" href="../../styles.css">
 </head>
-
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Zachary Palmore</span>
   </a>
@@ -144,24 +130,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html">Home</a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../about.html">About</a>
   </li>  
 </ul>
-              <div class="quarto-toggle-container">
+<div class="quarto-toggle-container">
                   <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
               </div>
               <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <div class="quarto-title-block"><div><h1 class="title">Claim Estimation</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
             <p class="subtitle lead">An Auto Insurance Example</p>
@@ -197,108 +179,89 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-challenge" id="toc-the-challenge" class="nav-link active" data-scroll-target="#the-challenge">The Challenge</a></li>
+<li><a href="#the-challenge" id="toc-the-challenge" class="nav-link active" data-scroll-target="#the-challenge">The Challenge</a></li>
   <li><a href="#data-prep" id="toc-data-prep" class="nav-link" data-scroll-target="#data-prep">Data Prep</a></li>
   <li><a href="#model-building" id="toc-model-building" class="nav-link" data-scroll-target="#model-building">Model Building</a></li>
   <li><a href="#model-selection" id="toc-model-selection" class="nav-link" data-scroll-target="#model-selection">Model Selection</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
-  </ul>
-</nav>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
-
-
-
-
-<hr>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><hr>
 <div class="cell" data-hash="index_cache/html/load-pkgs_52e43ed26d7d86859723d6a32eef76a5">
 
 </div>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
+<section id="the-challenge" class="level2"><h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
 <p>A key part of insurance is charging each customer the appropriate price for the risk they represent.</p>
 <p>The challenge is knowing what is most likely to happen before it occurs. If we have confidence in what could occur, then we may better manage our risk. Data science offers a solution to this challenge. Developing advanced computational models with the capacity to crunch high volume data allows us to calculate probabilities of risk for many individuals at scale.</p>
 <p>The business need is to predict the probability that a person will submit a claim and then estimate that claim amount. Multiple linear regression and binary logistic regression models were built to answer these questions. We explore, analyze and model with a data set containing records of customer behavior at an auto insurance company. A table with a selection of five variables that represent behavioral characteristics from customer records is shown below with a brief description of each for reference.</p>
 <div class="cell" data-hash="index_cache/html/unnamed-chunk-1_45e82e2b3157b51263de1396a977a208">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># short descriptions of variables as table from matrix</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>vardesc <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="st">'TARGET_FLAG'</span>,  <span class="st">'Was a claim submitted? 1 = Yes, 0 = No'</span>,</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="st">'TARGET_AMT'</span>,   <span class="st">'Estimated amount of claim'</span>,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="st">'CLM_FREQ'</span>, <span class="st">'Number of claims filed in past five years'</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="st">'MVR_PTS'</span>,  <span class="st">'Motor vehicle inspection points'</span>,</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="st">'TRAVETIME'</span>,    <span class="st">'Distance to work in minutes'</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>),  <span class="at">byrow =</span> <span class="cn">TRUE</span>, <span class="at">ncol =</span> <span class="dv">2</span>))</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(vardesc) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Variable'</span>, <span class="st">'Description'</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">kbl</span>(vardesc, <span class="at">booktabs =</span> T, <span class="at">caption =</span> <span class="st">"Variable Descriptions"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"HOLD_position"</span>), <span class="at">full_width =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
+<details><summary>Code</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># short descriptions of variables as table from matrix</span></span>
+<span><span class="va">vardesc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span><span class="st">'TARGET_FLAG'</span>,  <span class="st">'Was a claim submitted? 1 = Yes, 0 = No'</span>,</span>
+<span><span class="st">'TARGET_AMT'</span>,   <span class="st">'Estimated amount of claim'</span>,</span>
+<span><span class="st">'CLM_FREQ'</span>, <span class="st">'Number of claims filed in past five years'</span>,</span>
+<span><span class="st">'MVR_PTS'</span>,  <span class="st">'Motor vehicle inspection points'</span>,</span>
+<span><span class="st">'TRAVETIME'</span>,    <span class="st">'Distance to work in minutes'</span></span>
+<span><span class="op">)</span>,  byrow <span class="op">=</span> <span class="cn">TRUE</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">vardesc</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'Variable'</span>, <span class="st">'Description'</span><span class="op">)</span></span>
+<span><span class="fu">kbl</span><span class="op">(</span><span class="va">vardesc</span>, booktabs <span class="op">=</span> <span class="cn">T</span>, caption <span class="op">=</span> <span class="st">"Variable Descriptions"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">kable_styling</span><span class="op">(</span>latex_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"striped"</span>, <span class="st">"HOLD_position"</span><span class="op">)</span>, full_width <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
 
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>Variable Descriptions</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> Variable </th>
+ <thead><tr>
+<th style="text-align:left;"> Variable </th>
    <th style="text-align:left;"> Description </th>
-  </tr>
- </thead>
+  </tr></thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> TARGET_FLAG </td>
+<tr>
+<td style="text-align:left;"> TARGET_FLAG </td>
    <td style="text-align:left;"> Was a claim submitted? 1 = Yes, 0 = No </td>
   </tr>
-  <tr>
-   <td style="text-align:left;"> TARGET_AMT </td>
+<tr>
+<td style="text-align:left;"> TARGET_AMT </td>
    <td style="text-align:left;"> Estimated amount of claim </td>
   </tr>
-  <tr>
-   <td style="text-align:left;"> CLM_FREQ </td>
+<tr>
+<td style="text-align:left;"> CLM_FREQ </td>
    <td style="text-align:left;"> Number of claims filed in past five years </td>
   </tr>
-  <tr>
-   <td style="text-align:left;"> MVR_PTS </td>
+<tr>
+<td style="text-align:left;"> MVR_PTS </td>
    <td style="text-align:left;"> Motor vehicle inspection points </td>
   </tr>
-  <tr>
-   <td style="text-align:left;"> TRAVETIME </td>
+<tr>
+<td style="text-align:left;"> TRAVETIME </td>
    <td style="text-align:left;"> Distance to work in minutes </td>
   </tr>
 </tbody>
 </table>
-
 </div>
 </div>
-</section>
-<section id="data-prep" class="level2">
-<h2 class="anchored" data-anchor-id="data-prep">Data Prep</h2>
+</section><section id="data-prep" class="level2"><h2 class="anchored" data-anchor-id="data-prep">Data Prep</h2>
 <p>There are over 8000 records in this data set, with 26 variables in each record. We begin by loading in the data and exploring.</p>
 <p>When exploring we look for missing values and abnormalities and try to find patterns in the records. We calculate some descriptive and inferential statistics that show the characteristics present in the data. These statistics inform us if imputations, transformations, or other adjustments are needed. For example, this violin plot with a box plot inlay, provides a wealth of information.</p>
 <div class="cell" data-hash="index_cache/html/explore-violin-plot_1466e4ab1bc5bf47217cccb6104a6f0d">
-<details>
-<summary>Kernel Density Estimation &amp; Outliers</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>tdata <span class="sc">%&gt;%</span> </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_if</span>(is.numeric) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(value, key)) <span class="sc">+</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> key, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="fu">aes</span>(<span class="at">color =</span> key, <span class="at">alpha =</span> <span class="dv">1</span>)) <span class="sc">+</span> </span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">fill =</span> key, <span class="at">alpha =</span> .<span class="dv">5</span>), <span class="at">notch =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> .<span class="dv">1</span>, <span class="at">lty =</span> <span class="dv">3</span>) <span class="sc">+</span>  </span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(<span class="at">fun.y =</span> mean, <span class="at">geom =</span> <span class="st">"point"</span>,</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">shape =</span> <span class="dv">8</span>, <span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">"#000000"</span>) <span class="sc">+</span> </span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">"none"</span>, <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)) <span class="sc">+</span> </span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Kernel Density Estimation &amp; Outliers"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
+<details><summary>Kernel Density Estimation &amp; Outliers</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tdata</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">select_if</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">gather</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">value</span>, <span class="va">key</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">key</span>, scales <span class="op">=</span> <span class="st">"free"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_violin</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">key</span>, alpha <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">key</span>, alpha <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span>, notch <span class="op">=</span> <span class="cn">TRUE</span>, size <span class="op">=</span> <span class="fl">.1</span>, lty <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu">stat_summary</span><span class="op">(</span>fun.y <span class="op">=</span> <span class="va">mean</span>, geom <span class="op">=</span> <span class="st">"point"</span>,</span>
+<span>               shape <span class="op">=</span> <span class="fl">8</span>, size <span class="op">=</span> <span class="fl">1.5</span>, color <span class="op">=</span> <span class="st">"#000000"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">theme</span><span class="op">(</span>axis.text <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>, </span>
+<span>        axis.title <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>, </span>
+<span>        legend.position <span class="op">=</span> <span class="st">"none"</span>, plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Kernel Density Estimation &amp; Outliers"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
 <p><img src="index_files/figure-html/explore-violin-plot-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
@@ -306,91 +269,83 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In this plot the asterisk near the center of each boxplot is the median of the distribution for all records that contain the variable named, however, what exactly the median is less important than where it lies within the distribution. The top and bottom edges (the curvy colored lines) of the violin plot use the non-parametric method kernel density estimation (KDE) to smoothly estimate the probability of a value occurring anywhere along its range. Here again, we already notice problems with our target amount. Although not every variable follows this pattern. For these reasons, we need to be careful about how we handle this data before making any predictions.</p>
 <p>Another method used to explore and prepare the data is a correlation plot. These examine the strength of relationships between variables, whether they are positive or negative, and how they compare to one another. We take a look at some selected variables in hopes that they confirm some expectations.</p>
 <div class="cell" data-hash="index_cache/html/explore-correlation-plot_b740cf143a382e2c6ff88c02f903ed0f">
-<details>
-<summary>Correlation Plot</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tdata <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select_if</span>(is.numeric) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggcorrplot</span>(<span class="at">method =</span> <span class="st">"circle"</span>, <span class="at">type=</span><span class="st">"upper"</span>, </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">ggtheme =</span> ggplot2<span class="sc">::</span>theme_minimal, <span class="at">legend.title =</span> <span class="st">"Influence"</span>) <span class="sc">+</span> <span class="fu">coord_flip</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
+<details><summary>Correlation Plot</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tdata</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">select_if</span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">ggcorrplot</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"circle"</span>, type<span class="op">=</span><span class="st">"upper"</span>, </span>
+<span>             ggtheme <span class="op">=</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="va"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span>, legend.title <span class="op">=</span> <span class="st">"Influence"</span><span class="op">)</span> <span class="op">+</span> <span class="fu">coord_flip</span><span class="op">(</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
 <p><img src="index_files/figure-html/explore-correlation-plot-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>If we are trying to predict the amount of a claim and we have a true or false variable indicating the presence or absences of claim submission (TARGET_FLAG) and the claim amount (TARGET_AMT), shouldn’t we expect the two to be correlated? I would hope so, given that, when an individual does not file a claim, the resultant claim amount is 0. We notice this in the big red circle towards the bottom left of the screen. This shows a strong positive correlation between the amount of a claim and presence of a claim. From this correlation plot we start to confirm these expectations and validate some conventional auto insurance knowledge.</p>
 <p>These demonstrate only two ways to look at data before model building. However, to ensure that a model functions in the real world, a multitude of exploratory methods should be used to fully understand the data. To keep it brief, the data is split 70-30 into training and testing data sets, then cleaned up with using the multiple imputation by chained equations (MICE) method, perform a Yeo-Johnson transformation, and adjust other points as necessary to make the non-normal predictor appear normal enough for prediction. A quick look at the imputed summary statistics is shown for four numeric variables as a reference.</p>
 <div class="cell" data-hash="index_cache/html/prep-imputed-statistics-table_ff5c2f71fb8a1689d623b4bf60d91387">
-<details>
-<summary>Imputed Summary Statistics</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>imputed.stats.table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">29707</span>,<span class="dv">54028</span>,<span class="dv">61469</span>,<span class="dv">83304</span>,<span class="dv">367030</span>, </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>         <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">161160</span>,<span class="dv">155225</span>,<span class="dv">233352</span>,<span class="dv">885282</span>,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>         <span class="dv">1500</span>,<span class="dv">9280</span>,<span class="dv">14440</span>,<span class="dv">15710</span>,<span class="dv">20850</span>,<span class="dv">69740</span>,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>         <span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">4037</span>,<span class="dv">4636</span>,<span class="dv">57037</span>), <span class="at">ncol =</span> <span class="dv">4</span>, <span class="at">byrow =</span> F)) </span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(imputed.stats.table) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Income"</span>, <span class="st">"Home Value"</span>, </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"Bluebook Value"</span>, <span class="st">"Old Claims"</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>imputed.stats.table <span class="ot">&lt;-</span> imputed.stats.table <span class="sc">%&gt;%</span> </span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Statistic =</span> <span class="fu">c</span>(<span class="st">"Min"</span>, <span class="st">"1st Quartile"</span>, <span class="st">"Median"</span>, </span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"Mean"</span>, <span class="st">"3rd Qartile"</span>, <span class="st">"Max"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="st">"Statistic"</span>, <span class="st">"Income"</span>, <span class="st">"Home Value"</span>, </span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                <span class="st">"Bluebook Value"</span>, <span class="st">"Old Claims"</span>)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">kbl</span>(imputed.stats.table,</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">booktabs =</span> T,</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Imputed Summary Statistics"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"hold_position"</span>),</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">full_width =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
+<details><summary>Imputed Summary Statistics</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">imputed.stats.table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">29707</span>,<span class="fl">54028</span>,<span class="fl">61469</span>,<span class="fl">83304</span>,<span class="fl">367030</span>, </span>
+<span>         <span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">161160</span>,<span class="fl">155225</span>,<span class="fl">233352</span>,<span class="fl">885282</span>,</span>
+<span>         <span class="fl">1500</span>,<span class="fl">9280</span>,<span class="fl">14440</span>,<span class="fl">15710</span>,<span class="fl">20850</span>,<span class="fl">69740</span>,</span>
+<span>         <span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">0</span>,<span class="fl">4037</span>,<span class="fl">4636</span>,<span class="fl">57037</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">4</span>, byrow <span class="op">=</span> <span class="cn">F</span><span class="op">)</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">imputed.stats.table</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Income"</span>, <span class="st">"Home Value"</span>, </span>
+<span>                                <span class="st">"Bluebook Value"</span>, <span class="st">"Old Claims"</span><span class="op">)</span></span>
+<span><span class="va">imputed.stats.table</span> <span class="op">&lt;-</span> <span class="va">imputed.stats.table</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>Statistic <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Min"</span>, <span class="st">"1st Quartile"</span>, <span class="st">"Median"</span>, </span>
+<span>                       <span class="st">"Mean"</span>, <span class="st">"3rd Qartile"</span>, <span class="st">"Max"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="st">"Statistic"</span>, <span class="st">"Income"</span>, <span class="st">"Home Value"</span>, </span>
+<span>                <span class="st">"Bluebook Value"</span>, <span class="st">"Old Claims"</span><span class="op">)</span></span>
+<span><span class="fu">kbl</span><span class="op">(</span><span class="va">imputed.stats.table</span>,</span>
+<span>    booktabs <span class="op">=</span> <span class="cn">T</span>,</span>
+<span>    caption <span class="op">=</span> <span class="st">"Imputed Summary Statistics"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">kable_styling</span><span class="op">(</span>latex_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"striped"</span>, <span class="st">"hold_position"</span><span class="op">)</span>,</span>
+<span>                full_width <span class="op">=</span> <span class="cn">F</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
 
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>Imputed Summary Statistics</caption>
- <thead>
-  <tr>
-   <th style="text-align:left;"> Statistic </th>
+ <thead><tr>
+<th style="text-align:left;"> Statistic </th>
    <th style="text-align:right;"> Income </th>
    <th style="text-align:right;"> Home Value </th>
    <th style="text-align:right;"> Bluebook Value </th>
    <th style="text-align:right;"> Old Claims </th>
-  </tr>
- </thead>
+  </tr></thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> Min </td>
+<tr>
+<td style="text-align:left;"> Min </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 1500 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
-  <tr>
-   <td style="text-align:left;"> 1st Quartile </td>
+<tr>
+<td style="text-align:left;"> 1st Quartile </td>
    <td style="text-align:right;"> 29707 </td>
    <td style="text-align:right;"> 0 </td>
    <td style="text-align:right;"> 9280 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
-  <tr>
-   <td style="text-align:left;"> Median </td>
+<tr>
+<td style="text-align:left;"> Median </td>
    <td style="text-align:right;"> 54028 </td>
    <td style="text-align:right;"> 161160 </td>
    <td style="text-align:right;"> 14440 </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
-  <tr>
-   <td style="text-align:left;"> Mean </td>
+<tr>
+<td style="text-align:left;"> Mean </td>
    <td style="text-align:right;"> 61469 </td>
    <td style="text-align:right;"> 155225 </td>
    <td style="text-align:right;"> 15710 </td>
    <td style="text-align:right;"> 4037 </td>
   </tr>
-  <tr>
-   <td style="text-align:left;"> 3rd Qartile </td>
+<tr>
+<td style="text-align:left;"> 3rd Qartile </td>
    <td style="text-align:right;"> 83304 </td>
    <td style="text-align:right;"> 233352 </td>
    <td style="text-align:right;"> 20850 </td>
    <td style="text-align:right;"> 4636 </td>
   </tr>
-  <tr>
-   <td style="text-align:left;"> Max </td>
+<tr>
+<td style="text-align:left;"> Max </td>
    <td style="text-align:right;"> 367030 </td>
    <td style="text-align:right;"> 885282 </td>
    <td style="text-align:right;"> 69740 </td>
@@ -398,106 +353,96 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </tr>
 </tbody>
 </table>
-
 </div>
 </div>
-</section>
-<section id="model-building" class="level2">
-<h2 class="anchored" data-anchor-id="model-building">Model Building</h2>
+</section><section id="model-building" class="level2"><h2 class="anchored" data-anchor-id="model-building">Model Building</h2>
 <p>Our objective was to build multiple linear regression and binomial logistic regression models to predict the amount of auto insurance claim. We explored, analyzed, and prepared the data as best we could in an attempt to improve the predictive outcome. The manner in which these were built is detailed in the Caret Model code chunk.</p>
 <div class="cell" data-hash="index_cache/html/model-builds_9cd48fd09a1354965688ce130262b173">
-<details>
-<summary>Caret Models</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 1: Establish Baseline</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This models uses only previous accident as a predictor</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(TARGET_FLAG <span class="sc">~</span> previous_accident, </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>), train)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 2: Experimentally Determine Best Features by Hand</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># These features were selected by alpha level and intuition</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(TARGET_FLAG <span class="sc">~</span> previous_accident <span class="sc">+</span> </span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                city <span class="sc">+</span> young <span class="sc">+</span> clean_rec <span class="sc">+</span> </span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                educated, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>), train)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 3: Add Recommended Risk Predictors from III</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># This model takes another step towards improving accuracy </span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>model3 <span class="ot">&lt;-</span> <span class="fu">glm</span>(TARGET_FLAG <span class="sc">~</span> previous_accident <span class="sc">+</span> </span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                city <span class="sc">+</span> mstatus <span class="sc">+</span> income.values <span class="sc">+</span> </span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                sex <span class="sc">+</span> car_use <span class="sc">+</span> educated <span class="sc">+</span> KIDSDRIV <span class="sc">+</span> </span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                revoked, <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"logit"</span>), </span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>              train)</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 4: All in One</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Examine results with all variables included, what worked?</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>model4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(target_amt <span class="sc">~</span> ., train) </span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 5: Linear Regression with Dollar Estimators</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co"># This model leans heavy on the variables with specific dollar figures</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>model5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(target_amt <span class="sc">~</span> income.values <span class="sc">+</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>               home.values <span class="sc">+</span> bluebook.values <span class="sc">+</span> </span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>               oldclaim.values <span class="sc">+</span> avg_claim, </span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>             train) </span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Model 6: Multidirectional StepAIC Regression</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="co"># This uses a Stepwise Akaike Information Criteria to evaluate </span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="co"># and select predictors in the model with some special data prep</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>model6 <span class="ot">&lt;-</span> <span class="fu">lm</span>(target_amt <span class="sc">~</span> . <span class="sc">-</span>TARGET_AMT <span class="sc">-</span>TARGET_FLAG, train) </span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>pm <span class="ot">&lt;-</span> <span class="fu">stepAIC</span>(model6, <span class="at">trace =</span> F, <span class="at">direction =</span> <span class="st">"both"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details><summary>Caret Models</summary><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Model 1: Establish Baseline</span></span>
+<span><span class="co"># This models uses only previous accident as a predictor</span></span>
+<span><span class="va">model1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">TARGET_FLAG</span> <span class="op">~</span> <span class="va">previous_accident</span>, </span>
+<span>              family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/family.html">binomial</a></span><span class="op">(</span>link <span class="op">=</span> <span class="st">"logit"</span><span class="op">)</span>, <span class="va">train</span><span class="op">)</span></span>
+<span><span class="co"># Model 2: Experimentally Determine Best Features by Hand</span></span>
+<span><span class="co"># These features were selected by alpha level and intuition</span></span>
+<span><span class="va">model2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">TARGET_FLAG</span> <span class="op">~</span> <span class="va">previous_accident</span> <span class="op">+</span> </span>
+<span>                <span class="va">city</span> <span class="op">+</span> <span class="va">young</span> <span class="op">+</span> <span class="va">clean_rec</span> <span class="op">+</span> </span>
+<span>                <span class="va">educated</span>, family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/family.html">binomial</a></span><span class="op">(</span>link <span class="op">=</span> <span class="st">"logit"</span><span class="op">)</span>, <span class="va">train</span><span class="op">)</span></span>
+<span><span class="co"># Model 3: Add Recommended Risk Predictors from III</span></span>
+<span><span class="co"># This model takes another step towards improving accuracy </span></span>
+<span><span class="va">model3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">TARGET_FLAG</span> <span class="op">~</span> <span class="va">previous_accident</span> <span class="op">+</span> </span>
+<span>                <span class="va">city</span> <span class="op">+</span> <span class="va">mstatus</span> <span class="op">+</span> <span class="va">income.values</span> <span class="op">+</span> </span>
+<span>                <span class="va">sex</span> <span class="op">+</span> <span class="va">car_use</span> <span class="op">+</span> <span class="va">educated</span> <span class="op">+</span> <span class="va">KIDSDRIV</span> <span class="op">+</span> </span>
+<span>                <span class="va">revoked</span>, family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/family.html">binomial</a></span><span class="op">(</span>link <span class="op">=</span> <span class="st">"logit"</span><span class="op">)</span>, </span>
+<span>              <span class="va">train</span><span class="op">)</span></span>
+<span><span class="co"># Model 4: All in One</span></span>
+<span><span class="co"># Examine results with all variables included, what worked?</span></span>
+<span><span class="va">model4</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">target_amt</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">train</span><span class="op">)</span> </span>
+<span><span class="co"># Model 5: Linear Regression with Dollar Estimators</span></span>
+<span><span class="co"># This model leans heavy on the variables with specific dollar figures</span></span>
+<span><span class="va">model5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">target_amt</span> <span class="op">~</span> <span class="va">income.values</span> <span class="op">+</span></span>
+<span>               <span class="va">home.values</span> <span class="op">+</span> <span class="va">bluebook.values</span> <span class="op">+</span> </span>
+<span>               <span class="va">oldclaim.values</span> <span class="op">+</span> <span class="va">avg_claim</span>, </span>
+<span>             <span class="va">train</span><span class="op">)</span> </span>
+<span><span class="co"># Model 6: Multidirectional StepAIC Regression</span></span>
+<span><span class="co"># This uses a Stepwise Akaike Information Criteria to evaluate </span></span>
+<span><span class="co"># and select predictors in the model with some special data prep</span></span>
+<span><span class="va">model6</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">target_amt</span> <span class="op">~</span> <span class="va">.</span> <span class="op">-</span><span class="va">TARGET_AMT</span> <span class="op">-</span><span class="va">TARGET_FLAG</span>, <span class="va">train</span><span class="op">)</span> </span>
+<span><span class="va">pm</span> <span class="op">&lt;-</span> <span class="fu">stepAIC</span><span class="op">(</span><span class="va">model6</span>, trace <span class="op">=</span> <span class="cn">F</span>, direction <span class="op">=</span> <span class="st">"both"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Another model wherein everything but the kitchen sink was thrown at it (aptly known as the kitchen sink model), gave us insights into which variables were significant to use and what their effect on the model would probably be. Of course, with a model that contains over 30 variables, there is room for some complex interactions to occur. We rely on our exploration and analysis to guide us in the creation of additional models alongside the results from the kitchen sink model, historical model, and conventional wisdom from the auto insurance domain.</p>
 <p>Since we humans tend to poorly judge relationships represented as mathematical operations, a stepwise AIC model was created to do a lot of work for us. This model performs a check by cycling through the variables both forwards and backwards to pick the variables that are most likely to improve the predictive capacity of the model. The AIC just stands for Akaike Information Criterion which is an estimator of prediction error. In this model, when stepping (or cycling) through variables, we are using this criterion to select variables that reduce the amount of error present in the model. Ideally, this will improve model quality and output.</p>
 <p>We finish with some general predictions of each model type. We created a historical model, kitchen sink model, a multidirectional stepwiseAIC, backward stepwiseAIC, high risk predictor model, and a conventional wisdom model using information from the Insurance Information Institute (III). These will be put to the test in the model selection process. Which one do you think will perform best?</p>
-</section>
-<section id="model-selection" class="level2">
-<h2 class="anchored" data-anchor-id="model-selection">Model Selection</h2>
+</section><section id="model-selection" class="level2"><h2 class="anchored" data-anchor-id="model-selection">Model Selection</h2>
 <p>To standardize the process of model selection, a function is created wherein all statistics are computed the same way. It begins by bringing in the holdout data we created in the data prep section. This is named the test data. With this we evaluate how accurately the model predicted the result. We then compute a confusion matrix which contains the rates of false positives, true positives, false negatives, and true negatives and estimate model specificity, sensitivity, precision, and recall with those values. These combined measures let us find the F1 score, and from them we can create a receiver operating characteristic (ROC) plot and find the area under the curve (AUC). These provide details about the accuracy and real-world effectiveness of a model.</p>
 <p>As a quick reference, we show the results from one of the best models, that of the multidirectional stepwiseAIC. The receiver operating characteristic curve is plotted alongside text containing the accuracy, its bounds, how precise and sensitive it is as well as multiple significance values including McNemars p-value and an accuracy p-value. Each model went through this evaluation process.</p>
 <div class="cell" data-hash="index_cache/html/model-selection-model6-summary_f6acdc174812c2b6c040a9c09e3e56ca">
-<details>
-<summary>Model Summary</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Function to Evaluate All Models</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>modstat <span class="ot">&lt;-</span> <span class="cf">function</span>(model, test, </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">target =</span> <span class="st">"TARGET_FLAG"</span>, <span class="at">threshold =</span> <span class="fl">0.5</span>){</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># test model using predictions with test data</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  test<span class="sc">$</span>new <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">predict.glm</span>(</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    model, test, <span class="st">"response"</span>) <span class="sc">&gt;=</span> threshold, <span class="dv">1</span>, <span class="dv">0</span>) </span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create confusion matrix with stats</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># shows true positive, false positive, and their inverse</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    cm <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(<span class="fu">factor</span>(test<span class="sc">$</span>new), </span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">factor</span>(test[[target]]), <span class="st">"1"</span>)</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Organize information into data frame</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">obs =</span> test<span class="sc">$</span>TARGET_FLAG, </span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>                     <span class="at">predicted =</span> test<span class="sc">$</span>new, </span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>                     <span class="at">probs =</span> <span class="fu">predict</span>(model, test))</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Calculate performance and significance values</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  Pscores <span class="ot">&lt;-</span> <span class="fu">prediction</span>(df<span class="sc">$</span>probs, </span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>                        df<span class="sc">$</span>obs)</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># AUC = "Area Under the Curve" </span></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  AUC <span class="ot">&lt;-</span> <span class="fu">performance</span>(Pscores, </span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>                     <span class="at">measure =</span> <span class="st">"auc"</span>)<span class="sc">@</span>y.values[[<span class="dv">1</span>]]</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    pscores <span class="ot">&lt;-</span> <span class="fu">performance</span>(Pscores, </span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"tpr"</span>, <span class="st">"fpr"</span>)</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plot the scores of true positive/ false positive</span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># This is a receiver operating characteristic (ROC) curve </span></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(pscores,<span class="at">main=</span><span class="st">"ROC Curve"</span>, </span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">sub =</span> <span class="fu">paste0</span>(<span class="st">"AUC: "</span>, </span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">round</span>(AUC, <span class="dv">3</span>)))</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Extract the F1 score </span></span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># place it below the plot for each model when run</span></span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">cat</span>(<span class="st">"F1 = "</span>, </span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>                       cm<span class="sc">$</span>byClass[<span class="dv">7</span>], <span class="st">" "</span>), cm)</span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Output results with a ROC curve and all scores </span></span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate and show ONLY model 6 for quick reference</span></span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a><span class="fu">modstat</span>(model6, test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
+<details><summary>Model Summary</summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create Function to Evaluate All Models</span></span>
+<span><span class="va">modstat</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">model</span>, <span class="va">test</span>, </span>
+<span>                    <span class="va">target</span> <span class="op">=</span> <span class="st">"TARGET_FLAG"</span>, <span class="va">threshold</span> <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="co"># test model using predictions with test data</span></span>
+<span>  <span class="va">test</span><span class="op">$</span><span class="va">new</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.glm.html">predict.glm</a></span><span class="op">(</span></span>
+<span>    <span class="va">model</span>, <span class="va">test</span>, <span class="st">"response"</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="va">threshold</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span> </span>
+<span>    </span>
+<span>    <span class="co"># create confusion matrix with stats</span></span>
+<span>    <span class="co"># shows true positive, false positive, and their inverse</span></span>
+<span>    <span class="va">cm</span> <span class="op">&lt;-</span> <span class="fu">confusionMatrix</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">test</span><span class="op">$</span><span class="va">new</span><span class="op">)</span>, </span>
+<span>                          <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">test</span><span class="op">[[</span><span class="va">target</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>, <span class="st">"1"</span><span class="op">)</span></span>
+<span>    </span>
+<span>    <span class="co"># Organize information into data frame</span></span>
+<span>    <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>obs <span class="op">=</span> <span class="va">test</span><span class="op">$</span><span class="va">TARGET_FLAG</span>, </span>
+<span>                     predicted <span class="op">=</span> <span class="va">test</span><span class="op">$</span><span class="va">new</span>, </span>
+<span>                     probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">model</span>, <span class="va">test</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># Calculate performance and significance values</span></span>
+<span>  <span class="va">Pscores</span> <span class="op">&lt;-</span> <span class="fu">prediction</span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">probs</span>, </span>
+<span>                        <span class="va">df</span><span class="op">$</span><span class="va">obs</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># AUC = "Area Under the Curve" </span></span>
+<span>  <span class="va">AUC</span> <span class="op">&lt;-</span> <span class="fu">performance</span><span class="op">(</span><span class="va">Pscores</span>, </span>
+<span>                     measure <span class="op">=</span> <span class="st">"auc"</span><span class="op">)</span><span class="op">@</span><span class="va">y.values</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span>    <span class="va">pscores</span> <span class="op">&lt;-</span> <span class="fu">performance</span><span class="op">(</span><span class="va">Pscores</span>, </span>
+<span>                           <span class="st">"tpr"</span>, <span class="st">"fpr"</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># Plot the scores of true positive/ false positive</span></span>
+<span>    <span class="co"># This is a receiver operating characteristic (ROC) curve </span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">pscores</span>,main<span class="op">=</span><span class="st">"ROC Curve"</span>, </span>
+<span>       sub <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"AUC: "</span>, </span>
+<span>                    <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">AUC</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># Extract the F1 score </span></span>
+<span>    <span class="co"># place it below the plot for each model when run</span></span>
+<span>  <span class="va">results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"F1 = "</span>, </span>
+<span>                       <span class="va">cm</span><span class="op">$</span><span class="va">byClass</span><span class="op">[</span><span class="fl">7</span><span class="op">]</span>, <span class="st">" "</span><span class="op">)</span>, <span class="va">cm</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="co"># Output results with a ROC curve and all scores </span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">results</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Calculate and show ONLY model 6 for quick reference</span></span>
+<span><span class="fu">modstat</span><span class="op">(</span><span class="va">model6</span>, <span class="va">test</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
 <p><img src="index_files/figure-html/model-selection-model6-summary-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -512,26 +457,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 [6] " list()"                                                                                                                                                                                                                                                                                                                                                                                        </code></pre>
 </div>
 </div>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+</section><section id="conclusion" class="level2"><h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
 <p>Risk varies widely from customer to customer, and a deep understanding of different risk factors helps predict the likelihood and cost of insurance claims. Many factors contribute to the frequency and severity of car accidents including how, where and under what conditions people drive, as well as what they are driving. We developed 6 models. Half of these were multiple linear regression models and the other half were binomial logistic regression. Both have their benefits in the right context.</p>
 <div class="cell" data-hash="index_cache/html/conclusion-model-comparison_f99809853813b3e1d735825179943b9a">
-<details>
-<summary>Comparison Table</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mod.stats.table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Model 1"</span>, <span class="fl">0.722</span>, <span class="fl">0.757</span>, <span class="fl">0.5</span>, .<span class="dv">01</span>, </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Model 2"</span>, <span class="fl">0.732</span>, <span class="fl">0.767</span>, <span class="fl">0.58</span>, <span class="fl">0.333</span>,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Model 3"</span>, <span class="fl">0.754</span>, <span class="fl">0.788</span>, <span class="fl">0.625</span>, <span class="fl">0.422</span>,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Model 4"</span>, <span class="fl">0.998</span>, <span class="fl">0.999</span>, <span class="fl">0.999</span>, <span class="fl">0.999</span>, </span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Model 5"</span>, <span class="fl">0.719</span>, <span class="fl">0.753</span>, <span class="fl">0.514</span>, .<span class="dv">090</span>,</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Model 6"</span>, <span class="fl">0.775</span>, <span class="fl">0.808</span>, <span class="fl">0.657</span>, <span class="fl">0.484</span>),</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">nrow =</span> <span class="dv">6</span>, <span class="at">byrow =</span> T))</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(mod.stats.table) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ID"</span>, <span class="st">"Lower Bound"</span>, <span class="st">"Upper Bound"</span>, </span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"Balanced Accuracy"</span>, <span class="st">"F1 Score"</span>)</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>mod.stats.table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
+<details><summary>Comparison Table</summary><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mod.stats.table</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>         <span class="st">"Model 1"</span>, <span class="fl">0.722</span>, <span class="fl">0.757</span>, <span class="fl">0.5</span>, <span class="fl">.01</span>, </span>
+<span>         <span class="st">"Model 2"</span>, <span class="fl">0.732</span>, <span class="fl">0.767</span>, <span class="fl">0.58</span>, <span class="fl">0.333</span>,</span>
+<span>         <span class="st">"Model 3"</span>, <span class="fl">0.754</span>, <span class="fl">0.788</span>, <span class="fl">0.625</span>, <span class="fl">0.422</span>,</span>
+<span>         <span class="st">"Model 4"</span>, <span class="fl">0.998</span>, <span class="fl">0.999</span>, <span class="fl">0.999</span>, <span class="fl">0.999</span>, </span>
+<span>         <span class="st">"Model 5"</span>, <span class="fl">0.719</span>, <span class="fl">0.753</span>, <span class="fl">0.514</span>, <span class="fl">.090</span>,</span>
+<span>         <span class="st">"Model 6"</span>, <span class="fl">0.775</span>, <span class="fl">0.808</span>, <span class="fl">0.657</span>, <span class="fl">0.484</span><span class="op">)</span>,</span>
+<span>         nrow <span class="op">=</span> <span class="fl">6</span>, byrow <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">mod.stats.table</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"ID"</span>, <span class="st">"Lower Bound"</span>, <span class="st">"Upper Bound"</span>, </span>
+<span>                               <span class="st">"Balanced Accuracy"</span>, <span class="st">"F1 Score"</span><span class="op">)</span></span>
+<span><span class="va">mod.stats.table</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
 
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -549,10 +489,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <!-- -->
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");

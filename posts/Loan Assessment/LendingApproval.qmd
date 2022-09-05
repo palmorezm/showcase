@@ -45,6 +45,8 @@ We will use 'r' for data modeling. All packages used for data exploration, visua
 
 ```{r libraries, include=FALSE, warning=FALSE, message=FALSE}
 # Libraries
+library(htmlwidgets)
+library(robservable)
 library(summarytools)
 library(tidyverse)
 library(DataExplorer)
@@ -57,7 +59,9 @@ library(caret)
 library(tree)
 library(randomForest)
 library(corrplot)
-set.seed(622)
+library(shiny)
+library(shinyjs)
+set.seed(12345)
 ```
 
 # Data Exploration
@@ -100,7 +104,6 @@ loan_data <- loan_data %>%
          Property_Area=as.factor(Property_Area),
          Credit_History=as.factor(Credit_History),
          Loan_Status=as.factor(Loan_Status))
-
 ```
 
 ## Data summary
@@ -154,71 +157,65 @@ plot_histogram(loan_data, geom_histogram_args = list("fill" = "tomato4"))
 
 The applicant income and co-applicant income variables are highly right skewed with a smaller number of individual applicants stretching the distribution towards higher incomes. For analysis purposes, we must keep in mind that only a handful of applicants had higher incomes while the bulk of applicants were concentrated at the lower end of the income distribution. The loan amount term has one spike at 360. Meanwhile, the loan amount is the closest to normal. These results are consistent with our summary table.
 
-Next we will review the impact of the categorical variables' proportions on loan approval in more detail by isolating the factor levels individually. Here again, we visualize the proportions as a bar chart without missing values and expand the size of the chart to see the nuances of each. These are placed alongside each variable's frequency table by level to visualize their proportions. The results are as follows:
+To review the impact of the categorical variables' proportions on loan approval in more detail, we isolate the factor levels individually. Here again, we visualize the proportions with and without missing values. Proportions are placed alongside each variable's frequency table. One example of this process, that of the amount of dependents for the individual, is shown.
+
 
 ```{r}
-loan_ch <- with(loan_data, table(Credit_History, Loan_Status)) %>% 
-  prop.table(margin = 1) %>% as.data.frame() %>% filter(Loan_Status == 'Y')
-
-loan_ch
+#| include: false
+fact_freq_table <- loan_fact %>%
+  gather() %>% 
+  group_by(key, value) %>% 
+  summarise(freq = n(), 
+            total = length(loan_fact$Credit_History), 
+            percent = round((freq/total)*100, 2))
+fact_freq_table$value[which(is.na(fact_freq_table$value))] <- "Missing"
 ```
+
+
 
 ```{r}
-ggplot(loan_ch, aes(x=Credit_History, y=Freq, fill=Credit_History)) + geom_bar(stat='identity') + labs(title = 'Approved Loans by Credit History', y = "Percentage", x = "Credit History")
+#| warning: false
+#| message: false 
+df <- fact_freq_table %>% 
+  dplyr::select(key, "value", "freq", percent) %>% 
+  rename(name = value, value = freq)
+df <- df %>% 
+  filter(key == "Dependents") 
+
+shiny::selectInput(inputId = "type", 
+            label = strong("Factor Selection"),
+            choices = unique(df$key),
+            selected = "Dependents")
+robservable(
+  "https://observablehq.com/@juba/draggable-pie-donut-chart",
+  include = c("chart", "draw"),
+  hide = "draw",
+  input = list(data = df),
+  width = 700
+)
 ```
 
-```{r}
-loan_gen <- with(loan_data, table(Gender, Loan_Status)) %>% 
-  prop.table(margin = 1) %>% as.data.frame() %>% filter(Loan_Status == 'Y')
 
-loan_gen
-```
 
-```{r}
-ggplot(loan_gen, aes(x=Gender, y=Freq, fill=Gender)) + geom_bar(stat='identity') + labs(title = 'Approved Loans by Gender', y = "Percentage", x = "Gender")
-```
-
-```{r}
-loan_ed <- with(loan_data, table(Education, Loan_Status)) %>% 
-  prop.table(margin = 1) %>% as.data.frame() %>% filter(Loan_Status == 'Y')
-
-loan_ed
-```
-
-```{r}
-ggplot(loan_ed, aes(x=Education, y=Freq, fill=Education)) + geom_bar(stat='identity') + labs(title = 'Approved Loans by Education', y = "Percentage", x = "Education")
-```
-
-```{r}
-loan_mar <- with(loan_data, table(Married, Loan_Status)) %>% 
-  prop.table(margin = 1) %>% as.data.frame() %>% filter(Loan_Status == 'Y')
-
-loan_mar
-```
-
-```{r}
-ggplot(loan_mar, aes(x=Married, y=Freq, fill=Married)) + geom_bar(stat='identity') + labs(title = 'Approved Loans by Married', y = "Percentage", x = "Married")
-```
 
 ```{r}
 loan_dep <- with(loan_data, table(Dependents, Loan_Status)) %>% 
   prop.table(margin = 1) %>% as.data.frame() %>% filter(Loan_Status == 'Y')
-
 loan_dep
 ```
 
 ```{r}
+#| include: false 
 ggplot(loan_dep, aes(x=Dependents, y=Freq, fill=Dependents)) + geom_bar(stat='identity') + labs(title = 'Approved Loans by Dependents', y = "Percentage", x = "Dependents")
 ```
 
-These bar charts confirm our thoughts about the dataset's disproportionalities. Missing values have little effect on the overall proportions and so they can be removed. It remains male dominated with applicants who are married, have no dependents, are highly educated, and have a long credit history.
+Although we only show one example, the remaining examples confirm our thoughts about the dataset's disproportionalities. Missing values have little effect on the overall proportions and so they can simply be removed or omitted. It remains male dominated with applicants who are married, have no dependents, are highly educated, and have a long credit history.
 
 ## Correlations
 
 To determine how well each variable is correlated with our target variable and with one another, we construct a correlation plot. This plot contains the values of all correlation between variables represented by colors and numbers. The row we review the most is our target variable, 'Loan_Status.'
 
 ```{r}
-
 G = cor(loan_data[6:(length(loan_data)-3)])
 corrplot(G, method = 'number') # colorful number
 ```

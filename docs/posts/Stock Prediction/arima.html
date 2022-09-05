@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.0.38">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Zach Palmore">
 <meta name="dcterms.date" content="2022-08-28">
-
 <title>Zachary Palmore - Time Series Analysis</title>
 <style>
 code{white-space: pre-wrap;}
@@ -82,7 +79,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -100,8 +96,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -119,23 +114,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit"
   }
-}</script>
-
-<script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+}</script><script src="../../site_libs/kePrint-0.0.1/kePrint.js"></script><link href="../../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
-<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
-
-
-<link rel="stylesheet" href="../../styles.css">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script><link rel="stylesheet" href="../../styles.css">
 </head>
-
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Zachary Palmore</span>
   </a>
@@ -144,24 +130,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html">Home</a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../about.html">About</a>
   </li>  
 </ul>
-              <div class="quarto-toggle-container">
+<div class="quarto-toggle-container">
                   <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
               </div>
               <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <div class="quarto-title-block"><div><h1 class="title">Time Series Analysis</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
             <p class="subtitle lead">Predicting Value of Uncertain Variables</p>
@@ -197,37 +179,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#challenge" id="toc-challenge" class="nav-link active" data-scroll-target="#challenge">Challenge</a></li>
+<li><a href="#challenge" id="toc-challenge" class="nav-link active" data-scroll-target="#challenge">Challenge</a></li>
   <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
   <li><a href="#prediction" id="toc-prediction" class="nav-link" data-scroll-target="#prediction">Prediction</a></li>
-  </ul>
-</nav>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
-
-
-
-
-<p>A good forecast is a blessing while the wrong forecast could prove to be dangerous</p>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><p>A good forecast is a blessing while the wrong forecast could prove to be dangerous</p>
 <p>View the full <a href="https://github.com/palmorezm/showcase/tree/master/posts/Stock%20Prediction">source code on GitHub</a>.</p>
-<section id="challenge" class="level2">
-<h2 class="anchored" data-anchor-id="challenge">Challenge</h2>
+<section id="challenge" class="level2"><h2 class="anchored" data-anchor-id="challenge">Challenge</h2>
 <p>Given stock value data source with several groups, we attempt to predict the next 140 values of a times series data set based on 1622 entries provided on multiple events. Our predictions will be fine-tuned to reduce the mean absolute percentage error (MAPE) as much as possible. The packages we will be using and all associated code to produce the models can be found in the attached markdown file. The data with its first five rows, are shown below.</p>
 <div class="cell" data-hash="arima_cache/html/unnamed-chunk-2_3f62647b13cec38924aee01000903691">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data source</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/palmorezm/msds/main/Predictive%20Analytics/Projects/Project1/project1data.csv"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># data &lt;- data %&gt;% </span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   rename(SeriesInd = ï..SeriesInd) </span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
+<details><summary>Code</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Data source</span></span>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/palmorezm/msds/main/Predictive%20Analytics/Projects/Project1/project1data.csv"</span><span class="op">)</span></span>
+<span><span class="co"># data &lt;- data %&gt;% </span></span>
+<span><span class="co">#   rename(SeriesInd = ï..SeriesInd) </span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">data</span>, <span class="fl">5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
 
 <div data-pagedtable="false">
   <script data-pagedtable-source="" type="application/json">
@@ -238,140 +209,127 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>We create forecasts for two preselected variables within each of six predetermined groups. These groups are denoted S01, S02, S03, S04, S05, and S06 respectively. There are five variables within each group that we have to work with. They are Var01, Var02, Var03, Var05, and Var07 respectively. Our date variable ‘SeriesInd,’ is displayed in its numeric serial number form calculated with Excel. Although we do not know what the variables stand for, we can develop models to try and forecast their behavior. This chart contains a breakdown of which variables are forecast in each group.</p>
 <div class="cell" data-hash="arima_cache/html/unnamed-chunk-3_a2aee77d89dd2b17e2408e80fdb10628">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Chart</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>varsbygroup <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="fu">c</span>(<span class="st">"S01"</span>, <span class="st">"S02"</span>, <span class="st">"S03"</span>,</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"S04"</span>, <span class="st">"S05"</span>, <span class="st">"S06"</span>, </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Var01"</span>, <span class="st">"Var02"</span>, <span class="st">"Var05"</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Var01"</span>, <span class="st">"Var02"</span>, <span class="st">"Var05"</span>,</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Var02"</span>, <span class="st">"Var03"</span>, <span class="st">"Var07"</span>,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"Var02"</span>, <span class="st">"Var03"</span>, <span class="st">"Var07"</span>),</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">nrow =</span> <span class="dv">6</span>, <span class="at">ncol=</span><span class="dv">3</span>))</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(varsbygroup) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Group"</span>, <span class="st">"Variable1"</span>, <span class="st">"Variable2"</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>varsbygroup <span class="sc">%&gt;%</span> </span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>(<span class="at">booktabs =</span> T) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="fu">c</span>(<span class="st">"striped"</span>, <span class="st">"HOLD_position"</span>, <span class="st">"scale_down"</span>), <span class="at">full_width =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
+<details><summary>Code</summary><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Chart</span></span>
+<span><span class="va">varsbygroup</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"S01"</span>, <span class="st">"S02"</span>, <span class="st">"S03"</span>,</span>
+<span>                                   <span class="st">"S04"</span>, <span class="st">"S05"</span>, <span class="st">"S06"</span>, </span>
+<span>                                   <span class="st">"Var01"</span>, <span class="st">"Var02"</span>, <span class="st">"Var05"</span>,</span>
+<span>                                   <span class="st">"Var01"</span>, <span class="st">"Var02"</span>, <span class="st">"Var05"</span>,</span>
+<span>                                   <span class="st">"Var02"</span>, <span class="st">"Var03"</span>, <span class="st">"Var07"</span>,</span>
+<span>                                   <span class="st">"Var02"</span>, <span class="st">"Var03"</span>, <span class="st">"Var07"</span><span class="op">)</span>,</span>
+<span>                                 nrow <span class="op">=</span> <span class="fl">6</span>, ncol<span class="op">=</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">varsbygroup</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Group"</span>, <span class="st">"Variable1"</span>, <span class="st">"Variable2"</span><span class="op">)</span></span>
+<span><span class="va">varsbygroup</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">kbl</span><span class="op">(</span>booktabs <span class="op">=</span> <span class="cn">T</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">kable_styling</span><span class="op">(</span>latex_options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"striped"</span>, <span class="st">"HOLD_position"</span>, <span class="st">"scale_down"</span><span class="op">)</span>, full_width <span class="op">=</span> <span class="cn">T</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
 
 <table class="table" style="margin-left: auto; margin-right: auto;">
- <thead>
-  <tr>
-   <th style="text-align:left;"> Group </th>
+<thead><tr>
+<th style="text-align:left;"> Group </th>
    <th style="text-align:left;"> Variable1 </th>
    <th style="text-align:left;"> Variable2 </th>
-  </tr>
- </thead>
+  </tr></thead>
 <tbody>
-  <tr>
-   <td style="text-align:left;"> S01 </td>
+<tr>
+<td style="text-align:left;"> S01 </td>
    <td style="text-align:left;"> Var01 </td>
    <td style="text-align:left;"> Var02 </td>
   </tr>
-  <tr>
-   <td style="text-align:left;"> S02 </td>
+<tr>
+<td style="text-align:left;"> S02 </td>
    <td style="text-align:left;"> Var02 </td>
    <td style="text-align:left;"> Var03 </td>
   </tr>
-  <tr>
-   <td style="text-align:left;"> S03 </td>
+<tr>
+<td style="text-align:left;"> S03 </td>
    <td style="text-align:left;"> Var05 </td>
    <td style="text-align:left;"> Var07 </td>
   </tr>
-  <tr>
-   <td style="text-align:left;"> S04 </td>
+<tr>
+<td style="text-align:left;"> S04 </td>
    <td style="text-align:left;"> Var01 </td>
    <td style="text-align:left;"> Var02 </td>
   </tr>
-  <tr>
-   <td style="text-align:left;"> S05 </td>
+<tr>
+<td style="text-align:left;"> S05 </td>
    <td style="text-align:left;"> Var02 </td>
    <td style="text-align:left;"> Var03 </td>
   </tr>
-  <tr>
-   <td style="text-align:left;"> S06 </td>
+<tr>
+<td style="text-align:left;"> S06 </td>
    <td style="text-align:left;"> Var05 </td>
    <td style="text-align:left;"> Var07 </td>
   </tr>
 </tbody>
 </table>
-
 </div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grouping</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>S01 <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">"S01"</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>S02 <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">"S02"</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>S03 <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">"S03"</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>S04 <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">"S04"</span>)</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>S05 <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">"S05"</span>)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>S06 <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(group <span class="sc">==</span> <span class="st">"S06"</span>)</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Imputation by function - missing something? lapply/sapply may work </span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>soximp <span class="ot">&lt;-</span> <span class="cf">function</span>(df){</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">colnames</span>(df)){</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">sum</span>(<span class="fu">is.na</span>(df[[i]])) <span class="sc">!=</span><span class="dv">0</span>){</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>      df[[i]][<span class="fu">is.na</span>(df[[i]])] <span class="ot">&lt;-</span> <span class="fu">median</span>(df[[i]], <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Imputation loops for each group by median </span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">colnames</span>(S01)){</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">sum</span>(<span class="fu">is.na</span>(S01[[i]])) <span class="sc">!=</span> <span class="dv">0</span>){</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    S01[[i]][<span class="fu">is.na</span>(S01[[i]])] <span class="ot">&lt;-</span> <span class="fu">median</span>(S01[[i]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  } </span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">colnames</span>(S02)){</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">sum</span>(<span class="fu">is.na</span>(S02[[i]])) <span class="sc">!=</span> <span class="dv">0</span>){</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    S02[[i]][<span class="fu">is.na</span>(S02[[i]])] <span class="ot">&lt;-</span> <span class="fu">median</span>(S02[[i]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  } </span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">colnames</span>(S03)){</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">sum</span>(<span class="fu">is.na</span>(S03[[i]])) <span class="sc">!=</span> <span class="dv">0</span>){</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    S03[[i]][<span class="fu">is.na</span>(S03[[i]])] <span class="ot">&lt;-</span> <span class="fu">median</span>(S03[[i]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>  } </span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">colnames</span>(S04)){</span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">sum</span>(<span class="fu">is.na</span>(S04[[i]])) <span class="sc">!=</span> <span class="dv">0</span>){</span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>    S04[[i]][<span class="fu">is.na</span>(S04[[i]])] <span class="ot">&lt;-</span> <span class="fu">median</span>(S04[[i]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>  } </span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">colnames</span>(S05)){</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">sum</span>(<span class="fu">is.na</span>(S05[[i]])) <span class="sc">!=</span> <span class="dv">0</span>){</span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>    S05[[i]][<span class="fu">is.na</span>(S05[[i]])] <span class="ot">&lt;-</span> <span class="fu">median</span>(S05[[i]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>  } </span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">colnames</span>(S06)){</span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">sum</span>(<span class="fu">is.na</span>(S06[[i]])) <span class="sc">!=</span> <span class="dv">0</span>){</span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>    S06[[i]][<span class="fu">is.na</span>(S06[[i]])] <span class="ot">&lt;-</span> <span class="fu">median</span>(S06[[i]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>  } </span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details><summary>Code</summary><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Grouping</span></span>
+<span><span class="va">S01</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">group</span> <span class="op">==</span> <span class="st">"S01"</span><span class="op">)</span></span>
+<span><span class="va">S02</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">group</span> <span class="op">==</span> <span class="st">"S02"</span><span class="op">)</span></span>
+<span><span class="va">S03</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">group</span> <span class="op">==</span> <span class="st">"S03"</span><span class="op">)</span></span>
+<span><span class="va">S04</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">group</span> <span class="op">==</span> <span class="st">"S04"</span><span class="op">)</span></span>
+<span><span class="va">S05</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">group</span> <span class="op">==</span> <span class="st">"S05"</span><span class="op">)</span></span>
+<span><span class="va">S06</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">group</span> <span class="op">==</span> <span class="st">"S06"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Imputation by function - missing something? lapply/sapply may work </span></span>
+<span><span class="va">soximp</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span>    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">df</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">!=</span><span class="fl">0</span><span class="op">)</span><span class="op">{</span></span>
+<span>      <span class="va">df</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">df</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">df</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span>    <span class="op">}</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co"># Imputation loops for each group by median </span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">S01</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">S01</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span><span class="op">{</span></span>
+<span>    <span class="va">S01</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">S01</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">S01</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> </span>
+<span><span class="op">}</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">S02</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">S02</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span><span class="op">{</span></span>
+<span>    <span class="va">S02</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">S02</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">S02</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> </span>
+<span><span class="op">}</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">S03</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">S03</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span><span class="op">{</span></span>
+<span>    <span class="va">S03</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">S03</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">S03</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> </span>
+<span><span class="op">}</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">S04</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">S04</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span><span class="op">{</span></span>
+<span>    <span class="va">S04</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">S04</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">S04</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> </span>
+<span><span class="op">}</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">S05</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">S05</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span><span class="op">{</span></span>
+<span>    <span class="va">S05</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">S05</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">S05</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> </span>
+<span><span class="op">}</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">S06</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">S06</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span><span class="op">{</span></span>
+<span>    <span class="va">S06</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">S06</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">S06</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> </span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Before we begin, the data is filtered to extract each time series by group. This isolates the Var01, Var02, Var03, Var05, and Var07 variables associated with groups S01, S02, and so on. Then, with each group and its respective variables’ behavior isolated, we clean and adjust the data to make use of it in the analysis. Once we determine the most appropriate models to forecast the proper variable in each group, we evaluate the results of our predictions. Our final forecasts are captured in the excel spreadsheet attached.</p>
-</section>
-<section id="analysis" class="level2">
-<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
+</section><section id="analysis" class="level2"><h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
 <p>We began by addressing missing values. Given 10,572 observations, about 8% of each variable was missing. Several methods were tried to address this but the best were Kalman smoothing and simple imputation by the median of each ‘Var0X’ variable to fill in where appropriate. The ‘SeriesInd’ numeric date was also converted from its serial number form to a common date-time series. We then examined each group’s variables separately.</p>
 <div class="cell" data-hash="arima_cache/html/unnamed-chunk-4_27625962b2afd75c13c15d8b97fc1a5b">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(fpp2)</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#S01</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>S01<span class="ot">&lt;-</span><span class="fu">subset</span>(data, group <span class="sc">==</span> <span class="st">"S01"</span>, <span class="at">select =</span> <span class="fu">c</span>(SeriesInd, Var01, Var02))<span class="sc">%&gt;%</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date=</span><span class="fu">as.Date</span>(SeriesInd, <span class="at">origin =</span> <span class="st">"1905-01-01"</span>))</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(S01)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
+<details><summary>Code</summary><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># library(fpp2)</span></span>
+<span></span>
+<span><span class="co">#S01</span></span>
+<span><span class="va">S01</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">group</span> <span class="op">==</span> <span class="st">"S01"</span>, select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">SeriesInd</span>, <span class="va">Var01</span>, <span class="va">Var02</span><span class="op">)</span><span class="op">)</span><span class="op">%&gt;%</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>date<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">SeriesInd</span>, origin <span class="op">=</span> <span class="st">"1905-01-01"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">S01</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code>   SeriesInd         Var01           Var02               date           
  Min.   :40669   Min.   :23.01   Min.   : 1339900   Min.   :2016-05-07  
  1st Qu.:41304   1st Qu.:29.85   1st Qu.: 5347550   1st Qu.:2018-01-31  
@@ -381,23 +339,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  Max.   :43221   Max.   :62.31   Max.   :48477500   Max.   :2023-05-03  
                  NA's   :142     NA's   :140                            </code></pre>
 </div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset Var01 and Var02 from S01.</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>S01_Var01<span class="ot">&lt;-</span>S01 <span class="sc">%&gt;%</span><span class="fu">select</span>(Var01)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>S01_Var01<span class="ot">&lt;-</span>S01_Var01[<span class="dv">1</span><span class="sc">:</span><span class="dv">1625</span>,]</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>S01_Var02<span class="ot">&lt;-</span>S01 <span class="sc">%&gt;%</span><span class="fu">select</span>(Var02)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>S01_Var02<span class="ot">&lt;-</span>S01_Var02[<span class="dv">1</span><span class="sc">:</span><span class="dv">1625</span>,]</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#S02</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>S02<span class="ot">&lt;-</span><span class="fu">subset</span>(data, group <span class="sc">==</span> <span class="st">"S02"</span>, <span class="at">select =</span> <span class="fu">c</span>(SeriesInd, Var02, Var03))<span class="sc">%&gt;%</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date=</span><span class="fu">as.Date</span>(SeriesInd, <span class="at">origin =</span> <span class="st">"1905-01-01"</span>))</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(S02)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
+<details><summary>Code</summary><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Subset Var01 and Var02 from S01.</span></span>
+<span><span class="va">S01_Var01</span><span class="op">&lt;-</span><span class="va">S01</span> <span class="op">%&gt;%</span><span class="fu">select</span><span class="op">(</span><span class="va">Var01</span><span class="op">)</span></span>
+<span><span class="va">S01_Var01</span><span class="op">&lt;-</span><span class="va">S01_Var01</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">1625</span>,<span class="op">]</span></span>
+<span></span>
+<span></span>
+<span><span class="va">S01_Var02</span><span class="op">&lt;-</span><span class="va">S01</span> <span class="op">%&gt;%</span><span class="fu">select</span><span class="op">(</span><span class="va">Var02</span><span class="op">)</span></span>
+<span><span class="va">S01_Var02</span><span class="op">&lt;-</span><span class="va">S01_Var02</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">1625</span>,<span class="op">]</span></span>
+<span></span>
+<span></span>
+<span><span class="co">#S02</span></span>
+<span><span class="va">S02</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">group</span> <span class="op">==</span> <span class="st">"S02"</span>, select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">SeriesInd</span>, <span class="va">Var02</span>, <span class="va">Var03</span><span class="op">)</span><span class="op">)</span><span class="op">%&gt;%</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>date<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">SeriesInd</span>, origin <span class="op">=</span> <span class="st">"1905-01-01"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">S02</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code>   SeriesInd         Var02               Var03            date           
  Min.   :40669   Min.   :  7128800   Min.   : 8.82   Min.   :2016-05-07  
  1st Qu.:41304   1st Qu.: 27880300   1st Qu.:11.82   1st Qu.:2018-01-31  
@@ -407,24 +362,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  Max.   :43221   Max.   :480879500   Max.   :38.28   Max.   :2023-05-03  
                  NA's   :140         NA's   :144                         </code></pre>
 </div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset Var02 and Var03 from S02.</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>S02_Var02<span class="ot">&lt;-</span>S02 <span class="sc">%&gt;%</span><span class="fu">select</span>(Var02)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>S02_Var02<span class="ot">&lt;-</span>S02_Var02[<span class="dv">1</span><span class="sc">:</span><span class="dv">1625</span>,]</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>S02_Var03<span class="ot">&lt;-</span>S02 <span class="sc">%&gt;%</span><span class="fu">select</span>(Var03)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>S02_Var03<span class="ot">&lt;-</span>S02_Var03[<span class="dv">1</span><span class="sc">:</span><span class="dv">1625</span>,]</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co">#S03</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>S03<span class="ot">&lt;-</span><span class="fu">subset</span>(data, group <span class="sc">==</span> <span class="st">"S03"</span>, <span class="at">select =</span> <span class="fu">c</span>(SeriesInd, Var05, Var07))<span class="sc">%&gt;%</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">date=</span><span class="fu">as.Date</span>(SeriesInd, <span class="at">origin =</span> <span class="st">"1905-01-01"</span>))</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(S03)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
+<details><summary>Code</summary><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Subset Var02 and Var03 from S02.</span></span>
+<span><span class="va">S02_Var02</span><span class="op">&lt;-</span><span class="va">S02</span> <span class="op">%&gt;%</span><span class="fu">select</span><span class="op">(</span><span class="va">Var02</span><span class="op">)</span></span>
+<span><span class="va">S02_Var02</span><span class="op">&lt;-</span><span class="va">S02_Var02</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">1625</span>,<span class="op">]</span></span>
+<span></span>
+<span></span>
+<span><span class="va">S02_Var03</span><span class="op">&lt;-</span><span class="va">S02</span> <span class="op">%&gt;%</span><span class="fu">select</span><span class="op">(</span><span class="va">Var03</span><span class="op">)</span></span>
+<span><span class="va">S02_Var03</span><span class="op">&lt;-</span><span class="va">S02_Var03</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">1625</span>,<span class="op">]</span></span>
+<span></span>
+<span></span>
+<span></span>
+<span><span class="co">#S03</span></span>
+<span><span class="va">S03</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">data</span>, <span class="va">group</span> <span class="op">==</span> <span class="st">"S03"</span>, select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">SeriesInd</span>, <span class="va">Var05</span>, <span class="va">Var07</span><span class="op">)</span><span class="op">)</span><span class="op">%&gt;%</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>date<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">SeriesInd</span>, origin <span class="op">=</span> <span class="st">"1905-01-01"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">S03</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code>   SeriesInd         Var05            Var07             date           
  Min.   :40669   Min.   : 27.48   Min.   : 27.44   Min.   :2016-05-07  
  1st Qu.:41304   1st Qu.: 53.30   1st Qu.: 53.46   1st Qu.:2018-01-31  
@@ -434,182 +386,160 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  Max.   :43221   Max.   :134.46   Max.   :133.00   Max.   :2023-05-03  
                  NA's   :144      NA's   :144                          </code></pre>
 </div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset Var05 and Var07 from S03.</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>S03_Var05<span class="ot">&lt;-</span>S03 <span class="sc">%&gt;%</span><span class="fu">select</span>(Var05)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>S03_Var05<span class="ot">&lt;-</span>S03_Var05[<span class="dv">1</span><span class="sc">:</span><span class="dv">1625</span>,]</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>S03_Var07<span class="ot">&lt;-</span>S03 <span class="sc">%&gt;%</span><span class="fu">select</span>(Var07)</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>S03_Var07<span class="ot">&lt;-</span>S03_Var07[<span class="dv">1</span><span class="sc">:</span><span class="dv">1625</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details><summary>Code</summary><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Subset Var05 and Var07 from S03.</span></span>
+<span><span class="va">S03_Var05</span><span class="op">&lt;-</span><span class="va">S03</span> <span class="op">%&gt;%</span><span class="fu">select</span><span class="op">(</span><span class="va">Var05</span><span class="op">)</span></span>
+<span><span class="va">S03_Var05</span><span class="op">&lt;-</span><span class="va">S03_Var05</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">1625</span>,<span class="op">]</span></span>
+<span></span>
+<span></span>
+<span><span class="va">S03_Var07</span><span class="op">&lt;-</span><span class="va">S03</span> <span class="op">%&gt;%</span><span class="fu">select</span><span class="op">(</span><span class="va">Var07</span><span class="op">)</span></span>
+<span><span class="va">S03_Var07</span><span class="op">&lt;-</span><span class="va">S03_Var07</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">1625</span>,<span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Statistical summaries, box plots, and histograms were run on each group to evaluate where the average value of each variable was, if its distribution was skewed, determine whether outliers were present, and provide other descriptors of the data. These informed us that the average value (mean) of the variables are similar but their range varies widely with Var05 at 186.01 while Var02 covers a range of 479 million. Our analysis solves this potential problem by focusing on variables of the same scales as the intended target.</p>
 <div class="cell" data-hash="arima_cache/html/unnamed-chunk-6_836de3a48c46be37c92f2b1a9d91ff6d">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(S01_Var01)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
+<details><summary>Code</summary><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">S01_Var01</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   23.01   29.85   35.72   39.47   48.76   62.38 </code></pre>
 </div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(ts_S01_Var01)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(ts_S01_Var01)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
+<details><summary>Code</summary><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">ts_S01_Var01</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">ts_S01_Var01</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
 <p><img src="arima_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">autoplot</span>(ts_S01_Var01)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
+<details><summary>Code</summary><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">autoplot</span><span class="op">(</span><span class="va">ts_S01_Var01</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
 <p><img src="arima_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Additionally, all but group S03 of the histograms exhibited right skewness, and Var02 and Var03 had outliers. These were replaced using Friedman’s super smoothing method. Due to the randomness of these variables, determining outliers was difficult and there is a presence of additional overly influential points as determined using Cook’s distance formula. We acknowledge the presence of these points but are unable to alter them as they are likely intentional based on the patterns in the data. For reference, the observations are shown in the scatter plot with color coding by each group.</p>
 <div class="cell" data-hash="arima_cache/html/unnamed-chunk-7_beb6c22858d2fbd07d84f47dc3d4a8f3">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>)]<span class="sc">%&gt;%</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(variable, value, <span class="sc">-</span>SeriesInd, <span class="sc">-</span>group) <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(., <span class="fu">aes</span>(value, SeriesInd, <span class="at">color =</span> group)) <span class="sc">+</span> </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">fill =</span> <span class="st">"white"</span>,</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">size=</span><span class="dv">1</span>, </span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">shape=</span><span class="dv">21</span>, </span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">alpha =</span> <span class="fl">0.75</span>) <span class="sc">+</span> </span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span> </span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_wrap</span>(<span class="sc">~</span>variable, </span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>             <span class="at">scales =</span><span class="st">"free"</span>) <span class="sc">+</span> </span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Variable Patterns"</span>, </span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Color Coded by Group"</span>, </span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">"Value"</span>, </span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">"Time"</span>, </span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Contains all non-null observations of the given data set"</span>) <span class="sc">+</span></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>), </span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>),</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">"bottom"</span>, </span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.ticks.x=</span><span class="fu">element_blank</span>(),</span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text.x=</span><span class="fu">element_blank</span>(), </span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>)</span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>        )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
+<details><summary>Code</summary><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">7</span><span class="op">)</span><span class="op">]</span><span class="op">%&gt;%</span></span>
+<span>  <span class="fu">gather</span><span class="op">(</span><span class="va">variable</span>, <span class="va">value</span>, <span class="op">-</span><span class="va">SeriesInd</span>, <span class="op">-</span><span class="va">group</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="va">.</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">value</span>, <span class="va">SeriesInd</span>, color <span class="op">=</span> <span class="va">group</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"white"</span>,</span>
+<span>             size<span class="op">=</span><span class="fl">1</span>, </span>
+<span>             shape<span class="op">=</span><span class="fl">21</span>, </span>
+<span>             alpha <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">coord_flip</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>   <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">variable</span>, </span>
+<span>             scales <span class="op">=</span><span class="st">"free"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Variable Patterns"</span>, </span>
+<span>       subtitle <span class="op">=</span> <span class="st">"Color Coded by Group"</span>, </span>
+<span>       x<span class="op">=</span><span class="st">"Value"</span>, </span>
+<span>       y<span class="op">=</span><span class="st">"Time"</span>, </span>
+<span>       caption <span class="op">=</span> <span class="st">"Contains all non-null observations of the given data set"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">theme</span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>hjust<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span>, </span>
+<span>        plot.subtitle <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>hjust<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>        legend.position <span class="op">=</span> <span class="st">"bottom"</span>, </span>
+<span>        axis.ticks.x<span class="op">=</span><span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>        axis.text.x<span class="op">=</span><span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>, </span>
+<span>        plot.caption <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>hjust<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span></span>
+<span>        <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
 <p><img src="arima_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Seasonality was also considered. It is possible this data follows a weak seasonal trend that increases during summer months but there is not a lot of evidence to support regular fluctuations. Regular gaps were noticed in the time series on a weekly basis and several methods were used in attempts to fix this. However, the data appears randomly distributed and as such, acts randomly. For this reason, we left the gaps alone and any further adjustments made were minimal to avoid disturbing any existing patterns in the data.</p>
 <p>We determined that the best model type was an Auto Regressive Integrated Moving Average (ARIMA) with drift. Unfortunately, all variables required differencing to achieve stationarity. This indicates that any predictions made with these variables may be unrealistic because of inherent random changes in statistics like the mean and variance of these variables over time. We transform the data in our attempts to achieve stationarity but it should be noted that our review of stationarity is only a rough estimate using the aforementioned summary statistics so that we may apply this ARIMA method. Otherwise, we would have to conclude this data is inherently unpredictable and as such, render model forecasts useless. Rather, we focus on forecasting each variable individually and try to keep it simple.</p>
-</section>
-<section id="prediction" class="level2">
-<h2 class="anchored" data-anchor-id="prediction">Prediction</h2>
+</section><section id="prediction" class="level2"><h2 class="anchored" data-anchor-id="prediction">Prediction</h2>
 <p>When predicting stock values over time, we know that there is a great deal of uncertainty in the outcome. However, our results perform better than expected when individual stock values are isolated and modeled over time with greater weight given to recent historical data. Using our Auto Regressive Integrated Moving Average (ARIMA) with drift, the first set of stock values are show with a cone of uncertainty to note 95% and 80% confidence intervals the interval of time.</p>
 <div class="cell" data-hash="arima_cache/html/unnamed-chunk-10_8d50e89a7c177d8250dcd03d2a93b7a6">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fcast0101)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
+<details><summary>Code</summary><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">fcast0101</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
 <p><img src="arima_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>These forecasts demonstrate how difficult it is to predict stocks values using day-value pairing. However, they also provide a clear estimation of the highest and lowest value points at a given day which can be an invaluable asset. These bounds around the estimated blue line show we should not expect values to go very far above 70 but they also are not likely to drop below 50 anytime soon. Of course, uncertainty grows the farther out our predictions are. Thus, the model must account for the growth in uncertainty over time to manage our risk. This trend is show in the chart below.</p>
 <div class="cell" data-hash="arima_cache/html/unnamed-chunk-13_0fba48258250f550cb87ff25c2d656c3">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fcast0101 <span class="sc">%&gt;%</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="st">`</span><span class="at">Hi 95</span><span class="st">`</span>)))) <span class="sc">+</span> </span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin=</span><span class="st">`</span><span class="at">Lo 95</span><span class="st">`</span>,<span class="at">ymax=</span><span class="st">`</span><span class="at">Hi 95</span><span class="st">`</span>), <span class="at">fill=</span><span class="st">"forest green"</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span> </span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin=</span><span class="st">`</span><span class="at">Lo 80</span><span class="st">`</span>,<span class="at">ymax=</span><span class="st">`</span><span class="at">Hi 80</span><span class="st">`</span>), <span class="at">fill=</span><span class="st">"dark green"</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="st">`</span><span class="at">Hi 95</span><span class="st">`</span>), <span class="at">color =</span> <span class="st">"grey"</span>, <span class="at">size=</span><span class="dv">2</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span> </span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="st">`</span><span class="at">Point Forecast</span><span class="st">`</span>), <span class="at">color =</span> <span class="st">"#000000"</span>, <span class="at">size=</span><span class="dv">1</span>, <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span> </span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="st">`</span><span class="at">Lo 95</span><span class="st">`</span>), <span class="at">color =</span> <span class="st">"grey"</span>, <span class="at">size=</span><span class="dv">2</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span> </span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> b1, <span class="at">lty =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> b2, <span class="at">lty =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> b3, <span class="at">lty =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b1),]<span class="sc">$</span><span class="st">`</span><span class="at">Hi 95</span><span class="st">`</span>, </span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xend =</span> b1, <span class="at">yend =</span> extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b1),]<span class="sc">$</span><span class="st">`</span><span class="at">Hi 95</span><span class="st">`</span>), <span class="at">lty =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b1),]<span class="sc">$</span><span class="st">`</span><span class="at">Lo 95</span><span class="st">`</span>, </span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xend =</span> b1, <span class="at">yend =</span> extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b1),]<span class="sc">$</span><span class="st">`</span><span class="at">Lo 95</span><span class="st">`</span>), <span class="at">lty =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b2),]<span class="sc">$</span><span class="st">`</span><span class="at">Hi 95</span><span class="st">`</span>, </span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xend =</span> b2, <span class="at">yend =</span> extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b2),]<span class="sc">$</span><span class="st">`</span><span class="at">Hi 95</span><span class="st">`</span>), <span class="at">lty =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b2),]<span class="sc">$</span><span class="st">`</span><span class="at">Lo 95</span><span class="st">`</span>, </span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xend =</span> b2, <span class="at">yend =</span> extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b2),]<span class="sc">$</span><span class="st">`</span><span class="at">Lo 95</span><span class="st">`</span>), <span class="at">lty =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b3),]<span class="sc">$</span><span class="st">`</span><span class="at">Hi 95</span><span class="st">`</span>, </span>
-<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xend =</span> b3, <span class="at">yend =</span> extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b3),]<span class="sc">$</span><span class="st">`</span><span class="at">Hi 95</span><span class="st">`</span>), <span class="at">lty =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b3),]<span class="sc">$</span><span class="st">`</span><span class="at">Lo 95</span><span class="st">`</span>, </span>
-<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xend =</span> b3, <span class="at">yend =</span> extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b3),]<span class="sc">$</span><span class="st">`</span><span class="at">Lo 95</span><span class="st">`</span>), <span class="at">lty =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b4),]<span class="sc">$</span><span class="st">`</span><span class="at">Hi 95</span><span class="st">`</span>, </span>
-<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xend =</span> b4, <span class="at">yend =</span> extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b4),]<span class="sc">$</span><span class="st">`</span><span class="at">Hi 95</span><span class="st">`</span>), <span class="at">lty =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b4),]<span class="sc">$</span><span class="st">`</span><span class="at">Lo 95</span><span class="st">`</span>, </span>
-<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xend =</span> b4, <span class="at">yend =</span> extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b4),]<span class="sc">$</span><span class="st">`</span><span class="at">Lo 95</span><span class="st">`</span>), <span class="at">lty =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), </span>
-<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>                     <span class="at">limits=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>), </span>
-<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, b1, b2, b3, b4)) <span class="sc">+</span></span>
-<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>), </span>
-<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>                     <span class="at">limits=</span><span class="fu">c</span>(<span class="fu">min</span>(fcast0101<span class="sc">$</span>lower), <span class="fu">max</span>(fcast0101<span class="sc">$</span>upper)), </span>
-<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>                     <span class="at">breaks =</span> <span class="fu">c</span>(<span class="fu">round</span>(fcast0101<span class="sc">$</span>mean[[<span class="dv">1</span>]], <span class="at">digits =</span> <span class="dv">2</span>),</span>
-<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>                                <span class="fu">round</span>(extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b1),]<span class="sc">$</span><span class="st">`</span><span class="at">Hi 95</span><span class="st">`</span>, <span class="dv">2</span>), </span>
-<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>                                <span class="fu">round</span>(extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b1),]<span class="sc">$</span><span class="st">`</span><span class="at">Lo 95</span><span class="st">`</span>, <span class="dv">2</span>),</span>
-<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>                                <span class="fu">round</span>(extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b2),]<span class="sc">$</span><span class="st">`</span><span class="at">Hi 95</span><span class="st">`</span>, <span class="dv">2</span>),</span>
-<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>                                <span class="fu">round</span>(extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b2),]<span class="sc">$</span><span class="st">`</span><span class="at">Lo 95</span><span class="st">`</span>, <span class="dv">2</span>), </span>
-<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>                                <span class="fu">round</span>(extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b3),]<span class="sc">$</span><span class="st">`</span><span class="at">Hi 95</span><span class="st">`</span>, <span class="dv">2</span>),</span>
-<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>                                <span class="fu">round</span>(extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b3),]<span class="sc">$</span><span class="st">`</span><span class="at">Lo 95</span><span class="st">`</span>, <span class="dv">2</span>), </span>
-<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>                                <span class="fu">round</span>(extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b4),]<span class="sc">$</span><span class="st">`</span><span class="at">Hi 95</span><span class="st">`</span>, <span class="dv">2</span>),</span>
-<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a>                                <span class="fu">round</span>(extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b4),]<span class="sc">$</span><span class="st">`</span><span class="at">Lo 95</span><span class="st">`</span>, <span class="dv">2</span>))) <span class="sc">+</span></span>
-<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fl">7.5</span>, <span class="at">y =</span><span class="fl">53.9</span>, <span class="at">label =</span> <span class="fu">paste0</span>(<span class="st">"MAPE ="</span>, <span class="fu">signif</span>(mape0101, <span class="dv">4</span>))) <span class="sc">+</span></span>
-<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"label"</span>,<span class="at">x=</span>txtx90,<span class="at">y=</span>extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> txtx90),]<span class="sc">$</span><span class="st">`</span><span class="at">Point Forecast</span><span class="st">`</span> <span class="sc">+</span> <span class="fl">3.50</span>, </span>
-<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">"95% Confidence"</span> ) <span class="sc">+</span> </span>
-<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> txtx90, <span class="at">y =</span> <span class="fu">mean</span>(extract<span class="sc">$</span><span class="st">`</span><span class="at">Point Forecast</span><span class="st">`</span>) <span class="sc">+</span> <span class="fl">4.75</span>, </span>
-<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a>           <span class="at">xend =</span> txtx90, </span>
-<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a>           <span class="at">yend =</span> extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> txtx90),]<span class="sc">$</span><span class="st">`</span><span class="at">Hi 95</span><span class="st">`</span>,</span>
-<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a>         <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type =</span> <span class="st">"closed"</span>, <span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.02</span>, <span class="st">"npc"</span>))) <span class="sc">+</span></span>
-<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> txtx90, <span class="at">y =</span> <span class="fu">mean</span>(extract<span class="sc">$</span><span class="st">`</span><span class="at">Point Forecast</span><span class="st">`</span>) <span class="sc">+</span> <span class="dv">3</span>, </span>
-<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a>           <span class="at">xend =</span> txtx90, </span>
-<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a>           <span class="at">yend =</span> extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> txtx90),]<span class="sc">$</span><span class="st">`</span><span class="at">Lo 95</span><span class="st">`</span>,</span>
-<span id="cb17-52"><a href="#cb17-52" aria-hidden="true" tabindex="-1"></a>         <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type =</span> <span class="st">"closed"</span>, <span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.02</span>, <span class="st">"npc"</span>))) <span class="sc">+</span> </span>
-<span id="cb17-53"><a href="#cb17-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"label"</span>,<span class="at">x=</span>txtx80, <span class="at">y=</span>extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> txtx90),]<span class="sc">$</span><span class="st">`</span><span class="at">Point Forecast</span><span class="st">`</span> <span class="sc">-</span> <span class="fl">3.01</span>, </span>
-<span id="cb17-54"><a href="#cb17-54" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">"80% Confidence"</span> ) <span class="sc">+</span></span>
-<span id="cb17-55"><a href="#cb17-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> txtx80, <span class="at">y =</span> <span class="fu">mean</span>(extract<span class="sc">$</span><span class="st">`</span><span class="at">Point Forecast</span><span class="st">`</span>) <span class="sc">-</span> <span class="fl">1.75</span>, </span>
-<span id="cb17-56"><a href="#cb17-56" aria-hidden="true" tabindex="-1"></a>           <span class="at">xend =</span> txtx80, </span>
-<span id="cb17-57"><a href="#cb17-57" aria-hidden="true" tabindex="-1"></a>           <span class="at">yend =</span> extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> txtx80),]<span class="sc">$</span><span class="st">`</span><span class="at">Hi 80</span><span class="st">`</span>,</span>
-<span id="cb17-58"><a href="#cb17-58" aria-hidden="true" tabindex="-1"></a>         <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type =</span> <span class="st">"closed"</span>, <span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.02</span>, <span class="st">"npc"</span>))) <span class="sc">+</span></span>
-<span id="cb17-59"><a href="#cb17-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> txtx80, <span class="at">y =</span> <span class="fu">mean</span>(extract<span class="sc">$</span><span class="st">`</span><span class="at">Point Forecast</span><span class="st">`</span>) <span class="sc">-</span><span class="fl">3.5</span>, </span>
-<span id="cb17-60"><a href="#cb17-60" aria-hidden="true" tabindex="-1"></a>           <span class="at">xend =</span> txtx80, </span>
-<span id="cb17-61"><a href="#cb17-61" aria-hidden="true" tabindex="-1"></a>           <span class="at">yend =</span> extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> txtx80),]<span class="sc">$</span><span class="st">`</span><span class="at">Lo 80</span><span class="st">`</span>,</span>
-<span id="cb17-62"><a href="#cb17-62" aria-hidden="true" tabindex="-1"></a>         <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type =</span> <span class="st">"closed"</span>, <span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.02</span>, <span class="st">"npc"</span>))) <span class="sc">+</span></span>
-<span id="cb17-63"><a href="#cb17-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"label"</span>,<span class="at">x=</span>b1 <span class="sc">-</span> <span class="fl">7.05</span>, <span class="at">y=</span><span class="fu">mean</span>(extract<span class="sc">$</span><span class="st">`</span><span class="at">Point Forecast</span><span class="st">`</span>) <span class="sc">+</span> <span class="dv">6</span>, </span>
-<span id="cb17-64"><a href="#cb17-64" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">"Day 15:"</span>, <span class="fu">signif</span>(extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b1),]<span class="sc">$</span><span class="st">`</span><span class="at">Point Forecast</span><span class="st">`</span>, <span class="dv">4</span>))) <span class="sc">+</span></span>
-<span id="cb17-65"><a href="#cb17-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> b1 <span class="sc">-</span> <span class="dv">7</span>, <span class="at">y =</span> <span class="fu">mean</span>(extract<span class="sc">$</span><span class="st">`</span><span class="at">Point Forecast</span><span class="st">`</span>) <span class="sc">+</span> <span class="dv">5</span>, </span>
-<span id="cb17-66"><a href="#cb17-66" aria-hidden="true" tabindex="-1"></a>           <span class="at">yend =</span> extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b1),]<span class="sc">$</span><span class="st">`</span><span class="at">Point Forecast</span><span class="st">`</span>,</span>
-<span id="cb17-67"><a href="#cb17-67" aria-hidden="true" tabindex="-1"></a>           <span class="at">xend =</span> b1, </span>
-<span id="cb17-68"><a href="#cb17-68" aria-hidden="true" tabindex="-1"></a>         <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type =</span> <span class="st">"closed"</span>, <span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.02</span>, <span class="st">"npc"</span>)))  <span class="sc">+</span></span>
-<span id="cb17-69"><a href="#cb17-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"label"</span>,<span class="at">x=</span>b2 <span class="sc">-</span> <span class="dv">5</span>, <span class="at">y=</span><span class="fu">mean</span>(extract<span class="sc">$</span><span class="st">`</span><span class="at">Point Forecast</span><span class="st">`</span>) <span class="sc">+</span> <span class="dv">9</span>, </span>
-<span id="cb17-70"><a href="#cb17-70" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">"Day 30:"</span>, <span class="fu">signif</span>(extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b2),]<span class="sc">$</span><span class="st">`</span><span class="at">Point Forecast</span><span class="st">`</span>, <span class="dv">4</span>))) <span class="sc">+</span></span>
-<span id="cb17-71"><a href="#cb17-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> b2 <span class="sc">-</span> <span class="dv">4</span>, <span class="at">y =</span> <span class="fu">mean</span>(extract<span class="sc">$</span><span class="st">`</span><span class="at">Point Forecast</span><span class="st">`</span>) <span class="sc">+</span> <span class="fl">8.0</span>, </span>
-<span id="cb17-72"><a href="#cb17-72" aria-hidden="true" tabindex="-1"></a>           <span class="at">yend =</span> extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b2),]<span class="sc">$</span><span class="st">`</span><span class="at">Point Forecast</span><span class="st">`</span>,</span>
-<span id="cb17-73"><a href="#cb17-73" aria-hidden="true" tabindex="-1"></a>           <span class="at">xend =</span> b2, </span>
-<span id="cb17-74"><a href="#cb17-74" aria-hidden="true" tabindex="-1"></a>         <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type =</span> <span class="st">"closed"</span>, <span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.02</span>, <span class="st">"npc"</span>)))  <span class="sc">+</span></span>
-<span id="cb17-75"><a href="#cb17-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"label"</span>,<span class="at">x=</span>b3 <span class="sc">-</span> <span class="dv">10</span>, <span class="at">y=</span><span class="fu">mean</span>(extract<span class="sc">$</span><span class="st">`</span><span class="at">Point Forecast</span><span class="st">`</span>) <span class="sc">+</span> <span class="dv">11</span>, </span>
-<span id="cb17-76"><a href="#cb17-76" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">"Day 60:"</span>, <span class="fu">signif</span>(extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b3),]<span class="sc">$</span><span class="st">`</span><span class="at">Point Forecast</span><span class="st">`</span>, <span class="dv">4</span>))) <span class="sc">+</span></span>
-<span id="cb17-77"><a href="#cb17-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> b3 <span class="sc">-</span> <span class="dv">10</span>, <span class="at">y =</span> <span class="fu">mean</span>(extract<span class="sc">$</span><span class="st">`</span><span class="at">Point Forecast</span><span class="st">`</span>) <span class="sc">+</span> <span class="fl">9.75</span>, </span>
-<span id="cb17-78"><a href="#cb17-78" aria-hidden="true" tabindex="-1"></a>           <span class="at">yend =</span> extract[<span class="fu">which</span>(extract<span class="sc">$</span>Day <span class="sc">==</span> b3),]<span class="sc">$</span><span class="st">`</span><span class="at">Point Forecast</span><span class="st">`</span>,</span>
-<span id="cb17-79"><a href="#cb17-79" aria-hidden="true" tabindex="-1"></a>           <span class="at">xend =</span> b3, </span>
-<span id="cb17-80"><a href="#cb17-80" aria-hidden="true" tabindex="-1"></a>         <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">type =</span> <span class="st">"closed"</span>, <span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.02</span>, <span class="st">"npc"</span>))) <span class="sc">+</span></span>
-<span id="cb17-81"><a href="#cb17-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Day"</span>, <span class="at">y =</span> <span class="st">"Value"</span>, </span>
-<span id="cb17-82"><a href="#cb17-82" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Value Estimation is Less Certain with Time"</span>, </span>
-<span id="cb17-83"><a href="#cb17-83" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Stock Market Day-Value Pairs over 100 Days Shows Growth of Uncertainty"</span>) <span class="sc">+</span> </span>
-<span id="cb17-84"><a href="#cb17-84" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>), </span>
-<span id="cb17-85"><a href="#cb17-85" aria-hidden="true" tabindex="-1"></a>                          <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
+<details><summary>Code</summary><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fcast0101</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">`Hi 95`</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_ribbon</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>ymin<span class="op">=</span><span class="va">`Lo 95`</span>,ymax<span class="op">=</span><span class="va">`Hi 95`</span><span class="op">)</span>, fill<span class="op">=</span><span class="st">"forest green"</span>, alpha<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_ribbon</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>ymin<span class="op">=</span><span class="va">`Lo 80`</span>,ymax<span class="op">=</span><span class="va">`Hi 80`</span><span class="op">)</span>, fill<span class="op">=</span><span class="st">"dark green"</span>, alpha<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">`Hi 95`</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"grey"</span>, size<span class="op">=</span><span class="fl">2</span>, alpha <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">`Point Forecast`</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"#000000"</span>, size<span class="op">=</span><span class="fl">1</span>, lty <span class="op">=</span> <span class="fl">1</span>, alpha <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_line</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>y <span class="op">=</span> <span class="va">`Lo 95`</span><span class="op">)</span>, color <span class="op">=</span> <span class="st">"grey"</span>, size<span class="op">=</span><span class="fl">2</span>, alpha <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">geom_vline</span><span class="op">(</span>xintercept <span class="op">=</span> <span class="va">b1</span>, lty <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_vline</span><span class="op">(</span>xintercept <span class="op">=</span> <span class="va">b2</span>, lty <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_vline</span><span class="op">(</span>xintercept <span class="op">=</span> <span class="va">b3</span>, lty <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_segment</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b1</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Hi 95`</span>, </span>
+<span>                   xend <span class="op">=</span> <span class="va">b1</span>, yend <span class="op">=</span> <span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b1</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Hi 95`</span><span class="op">)</span>, lty <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_segment</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b1</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Lo 95`</span>, </span>
+<span>                   xend <span class="op">=</span> <span class="va">b1</span>, yend <span class="op">=</span> <span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b1</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Lo 95`</span><span class="op">)</span>, lty <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_segment</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b2</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Hi 95`</span>, </span>
+<span>                   xend <span class="op">=</span> <span class="va">b2</span>, yend <span class="op">=</span> <span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b2</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Hi 95`</span><span class="op">)</span>, lty <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_segment</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b2</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Lo 95`</span>, </span>
+<span>                   xend <span class="op">=</span> <span class="va">b2</span>, yend <span class="op">=</span> <span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b2</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Lo 95`</span><span class="op">)</span>, lty <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_segment</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b3</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Hi 95`</span>, </span>
+<span>                   xend <span class="op">=</span> <span class="va">b3</span>, yend <span class="op">=</span> <span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b3</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Hi 95`</span><span class="op">)</span>, lty <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_segment</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b3</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Lo 95`</span>, </span>
+<span>                   xend <span class="op">=</span> <span class="va">b3</span>, yend <span class="op">=</span> <span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b3</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Lo 95`</span><span class="op">)</span>, lty <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_segment</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b4</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Hi 95`</span>, </span>
+<span>                   xend <span class="op">=</span> <span class="va">b4</span>, yend <span class="op">=</span> <span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b4</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Hi 95`</span><span class="op">)</span>, lty <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_segment</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b4</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Lo 95`</span>, </span>
+<span>                   xend <span class="op">=</span> <span class="va">b4</span>, yend <span class="op">=</span> <span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b4</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Lo 95`</span><span class="op">)</span>, lty <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_x_continuous</span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, </span>
+<span>                     limits<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">100</span><span class="op">)</span>, </span>
+<span>                     breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="va">b1</span>, <span class="va">b2</span>, <span class="va">b3</span>, <span class="va">b4</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_y_continuous</span><span class="op">(</span>expand <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>, </span>
+<span>                     limits<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">fcast0101</span><span class="op">$</span><span class="va">lower</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">fcast0101</span><span class="op">$</span><span class="va">upper</span><span class="op">)</span><span class="op">)</span>, </span>
+<span>                     breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">fcast0101</span><span class="op">$</span><span class="va">mean</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>,</span>
+<span>                                <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b1</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Hi 95`</span>, <span class="fl">2</span><span class="op">)</span>, </span>
+<span>                                <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b1</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Lo 95`</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>                                <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b2</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Hi 95`</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>                                <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b2</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Lo 95`</span>, <span class="fl">2</span><span class="op">)</span>, </span>
+<span>                                <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b3</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Hi 95`</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>                                <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b3</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Lo 95`</span>, <span class="fl">2</span><span class="op">)</span>, </span>
+<span>                                <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b4</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Hi 95`</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>                                <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b4</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Lo 95`</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">annotate</span><span class="op">(</span><span class="st">"text"</span>, x <span class="op">=</span> <span class="fl">7.5</span>, y <span class="op">=</span><span class="fl">53.9</span>, label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"MAPE ="</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">signif</a></span><span class="op">(</span><span class="va">mape0101</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">annotate</span><span class="op">(</span><span class="st">"label"</span>,x<span class="op">=</span><span class="va">txtx90</span>,y<span class="op">=</span><span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">txtx90</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Point Forecast`</span> <span class="op">+</span> <span class="fl">3.50</span>, </span>
+<span>           label <span class="op">=</span> <span class="st">"95% Confidence"</span> <span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">annotate</span><span class="op">(</span><span class="st">"segment"</span>, x <span class="op">=</span> <span class="va">txtx90</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">`Point Forecast`</span><span class="op">)</span> <span class="op">+</span> <span class="fl">4.75</span>, </span>
+<span>           xend <span class="op">=</span> <span class="va">txtx90</span>, </span>
+<span>           yend <span class="op">=</span> <span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">txtx90</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Hi 95`</span>,</span>
+<span>         arrow <span class="op">=</span> <span class="fu">arrow</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"closed"</span>, length <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">0.02</span>, <span class="st">"npc"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">annotate</span><span class="op">(</span><span class="st">"segment"</span>, x <span class="op">=</span> <span class="va">txtx90</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">`Point Forecast`</span><span class="op">)</span> <span class="op">+</span> <span class="fl">3</span>, </span>
+<span>           xend <span class="op">=</span> <span class="va">txtx90</span>, </span>
+<span>           yend <span class="op">=</span> <span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">txtx90</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Lo 95`</span>,</span>
+<span>         arrow <span class="op">=</span> <span class="fu">arrow</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"closed"</span>, length <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">0.02</span>, <span class="st">"npc"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">annotate</span><span class="op">(</span><span class="st">"label"</span>,x<span class="op">=</span><span class="va">txtx80</span>, y<span class="op">=</span><span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">txtx90</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Point Forecast`</span> <span class="op">-</span> <span class="fl">3.01</span>, </span>
+<span>           label <span class="op">=</span> <span class="st">"80% Confidence"</span> <span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">annotate</span><span class="op">(</span><span class="st">"segment"</span>, x <span class="op">=</span> <span class="va">txtx80</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">`Point Forecast`</span><span class="op">)</span> <span class="op">-</span> <span class="fl">1.75</span>, </span>
+<span>           xend <span class="op">=</span> <span class="va">txtx80</span>, </span>
+<span>           yend <span class="op">=</span> <span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">txtx80</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Hi 80`</span>,</span>
+<span>         arrow <span class="op">=</span> <span class="fu">arrow</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"closed"</span>, length <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">0.02</span>, <span class="st">"npc"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">annotate</span><span class="op">(</span><span class="st">"segment"</span>, x <span class="op">=</span> <span class="va">txtx80</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">`Point Forecast`</span><span class="op">)</span> <span class="op">-</span><span class="fl">3.5</span>, </span>
+<span>           xend <span class="op">=</span> <span class="va">txtx80</span>, </span>
+<span>           yend <span class="op">=</span> <span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">txtx80</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Lo 80`</span>,</span>
+<span>         arrow <span class="op">=</span> <span class="fu">arrow</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"closed"</span>, length <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">0.02</span>, <span class="st">"npc"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">annotate</span><span class="op">(</span><span class="st">"label"</span>,x<span class="op">=</span><span class="va">b1</span> <span class="op">-</span> <span class="fl">7.05</span>, y<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">`Point Forecast`</span><span class="op">)</span> <span class="op">+</span> <span class="fl">6</span>, </span>
+<span>           label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Day 15:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">signif</a></span><span class="op">(</span><span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b1</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Point Forecast`</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">annotate</span><span class="op">(</span><span class="st">"segment"</span>, x <span class="op">=</span> <span class="va">b1</span> <span class="op">-</span> <span class="fl">7</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">`Point Forecast`</span><span class="op">)</span> <span class="op">+</span> <span class="fl">5</span>, </span>
+<span>           yend <span class="op">=</span> <span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b1</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Point Forecast`</span>,</span>
+<span>           xend <span class="op">=</span> <span class="va">b1</span>, </span>
+<span>         arrow <span class="op">=</span> <span class="fu">arrow</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"closed"</span>, length <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">0.02</span>, <span class="st">"npc"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>  <span class="op">+</span></span>
+<span>  <span class="fu">annotate</span><span class="op">(</span><span class="st">"label"</span>,x<span class="op">=</span><span class="va">b2</span> <span class="op">-</span> <span class="fl">5</span>, y<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">`Point Forecast`</span><span class="op">)</span> <span class="op">+</span> <span class="fl">9</span>, </span>
+<span>           label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Day 30:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">signif</a></span><span class="op">(</span><span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b2</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Point Forecast`</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">annotate</span><span class="op">(</span><span class="st">"segment"</span>, x <span class="op">=</span> <span class="va">b2</span> <span class="op">-</span> <span class="fl">4</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">`Point Forecast`</span><span class="op">)</span> <span class="op">+</span> <span class="fl">8.0</span>, </span>
+<span>           yend <span class="op">=</span> <span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b2</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Point Forecast`</span>,</span>
+<span>           xend <span class="op">=</span> <span class="va">b2</span>, </span>
+<span>         arrow <span class="op">=</span> <span class="fu">arrow</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"closed"</span>, length <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">0.02</span>, <span class="st">"npc"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>  <span class="op">+</span></span>
+<span>  <span class="fu">annotate</span><span class="op">(</span><span class="st">"label"</span>,x<span class="op">=</span><span class="va">b3</span> <span class="op">-</span> <span class="fl">10</span>, y<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">`Point Forecast`</span><span class="op">)</span> <span class="op">+</span> <span class="fl">11</span>, </span>
+<span>           label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Day 60:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Round.html">signif</a></span><span class="op">(</span><span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b3</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Point Forecast`</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">annotate</span><span class="op">(</span><span class="st">"segment"</span>, x <span class="op">=</span> <span class="va">b3</span> <span class="op">-</span> <span class="fl">10</span>, y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">`Point Forecast`</span><span class="op">)</span> <span class="op">+</span> <span class="fl">9.75</span>, </span>
+<span>           yend <span class="op">=</span> <span class="va">extract</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.html">which</a></span><span class="op">(</span><span class="va">extract</span><span class="op">$</span><span class="va">Day</span> <span class="op">==</span> <span class="va">b3</span><span class="op">)</span>,<span class="op">]</span><span class="op">$</span><span class="va">`Point Forecast`</span>,</span>
+<span>           xend <span class="op">=</span> <span class="va">b3</span>, </span>
+<span>         arrow <span class="op">=</span> <span class="fu">arrow</span><span class="op">(</span>type <span class="op">=</span> <span class="st">"closed"</span>, length <span class="op">=</span> <span class="fu">unit</span><span class="op">(</span><span class="fl">0.02</span>, <span class="st">"npc"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Day"</span>, y <span class="op">=</span> <span class="st">"Value"</span>, </span>
+<span>       title <span class="op">=</span> <span class="st">"Value Estimation is Less Certain with Time"</span>, </span>
+<span>       subtitle <span class="op">=</span> <span class="st">"Stock Market Day-Value Pairs over 100 Days Shows Growth of Uncertainty"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">theme</span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>, </span>
+<span>                          plot.subtitle <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details><div class="cell-output-display">
 <p><img src="arima_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
@@ -618,10 +548,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <!-- -->
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
