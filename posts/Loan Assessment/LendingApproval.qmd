@@ -39,9 +39,7 @@ In this challenge we will develop models that allow us to predict whether a loan
 
 For this challenge, we begin with data exploration to understand the relationships our target variable 'Loan_Status' will have with our indicator variables and the variables' relationships to each other. This allows us to determine the steps necessary to set up for model development. Once we have an understanding of these variables we use that knowledge to prepare the data. We handle missing values, subset, train and split the data 75/25 so that we may better extract information when modeling. Then, we build the models and predict with the testing dataset.
 
-We focus on prediction accuracy when assessing the models but consider a host of performance statistics and real-world applications to determine which model is best.
-
-We will use 'r' for data modeling. All packages used for data exploration, visualization, preparation and modeling are listed in Code Appendix.
+We focus on prediction accuracy when assessing the models but consider a host of performance statistics and real-world applications to determine which model is best. We use a mix of python and R for data modeling with Shiny and JavaScript for visualizations. All packages used for data exploration, visualization, preparation and modeling are listed. 
 
 ```{r libraries, include=FALSE, warning=FALSE, message=FALSE}
 # Libraries
@@ -68,7 +66,7 @@ set.seed(12345)
 
 ## Data Characteristics
 
-There are 614 observations of 12 variables. Each observation is an applicant's application for a loan with its corresponding variables of interest. Below is the description of the variables of interest in the data set.
+Normally, there are many thousands of records or observations with descriptive variables of each. Here, we use a small, subset for example purposes. Each observation represents an applicant's application for a loan with its corresponding variables of interest. Below is the description of the variables of interest in the data set.
 
 | VARIABLE NAME     | DESCRIPTION                                   |
 |-------------------|-----------------------------------------------|
