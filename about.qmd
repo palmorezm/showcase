@@ -14,6 +14,6 @@ about:
 
 [Zachary Palmore - Data Scientist](https://www.linkedin.com/in/zachary-palmore-361919104/)
 
-Zach Palmore is currently working as a Data Scientist in Rock County, WI. When not innovating data pipelines, he enjoys spending time gardening and making homemade pizzas.
+Zach Palmore is currently working as a Data Scientist in Rock County, WI. When not innovating data pipelines, he enjoys spending time gardening and trying new foods.
 
 M.S. Data Science
